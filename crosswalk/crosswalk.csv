@@ -1,0 +1,35 @@
+id,title,min_tier,NIST AI RMF,ISO/IEC 42001,EU AI Act,OWASP LLM 2026,OWASP Agentic 2026,MITRE ATLAS
+GOV-01,Accountable ownership,0,GOVERN 2.1; GOVERN 2.3,A.3.2,,,,
+GOV-02,AI policy and risk appetite,0,GOVERN 1.2; GOVERN 1.3; GOVERN 1.4; MAP 1.5,A.2.2; A.2.4,Art. 5,,,
+GOV-03,Regulatory obligations register,0,GOVERN 1.1,A.2.3,Art. 6,,,
+GOV-04,AI literacy and role training,0,GOVERN 2.2; GOVERN 4.1,A.4.6,Art. 4,,,
+INV-01,"Inventory of AI systems, agents and components",0,GOVERN 1.6; MAP 1.1,A.4.2; A.6.2.7,,,,
+INV-02,Autonomy and impact classification,0,MAP 2.1; MAP 3.3; MAP 5.1,A.5.2; A.5.4,Art. 6,LLM03,,
+INV-03,Threat and impact assessment before release,2,GOVERN 1.5; GOVERN 4.2; MAP 5.1; MANAGE 1.1; MANAGE 1.3,A.5.2; A.5.3; A.6.2.5,Art. 9,,,
+INV-04,Safe retirement,1,GOVERN 1.7,A.6.2.6,,,ASI10,
+SUP-01,"Approved sources for models, MCP servers and skills",1,GOVERN 6.1; MAP 4.1; MANAGE 3.1,A.10.3,Art. 25,LLM04,ASI04,AML.T0010.005; AML.T0110; AML.T0111
+SUP-02,Version pinning and tool-definition change detection,1,MANAGE 3.1; MANAGE 3.2,A.10.3,,LLM04,ASI04,AML.T0109; AML.T0110.000
+SUP-03,Contract terms for AI providers,0,GOVERN 6.1; GOVERN 6.2,A.10.2; A.10.3,Art. 25,LLM04,,
+IAM-01,Distinct identity for every agent,1,MEASURE 2.8,,,,ASI03,
+IAM-02,Least privilege and short-lived delegated credentials,1,MAP 4.2,A.9.4,,LLM03,ASI02; ASI03,AML.T0055; AML.T0098
+IAM-03,Secrets kept out of agent context,1,MEASURE 2.7,,,LLM02; LLM08,ASI03,AML.T0083
+INP-01,External content treated as untrusted,1,MEASURE 2.7,,Art. 15,LLM01,ASI01,AML.T0051.001; AML.T0053
+INP-02,Scanning of agent instruction files,0,MEASURE 2.7,A.6.2.4,,LLM01,ASI01; ASI04,AML.T0081; AML.T0068
+INP-03,Memory and retrieval integrity,1,MEASURE 2.7,A.7.5,Art. 15,LLM05; LLM09,ASI06,AML.T0080.000; AML.T0070
+ACT-01,Human approval for consequential actions,2,MAP 3.5,A.9.2,Art. 14,LLM03,ASI02; ASI09,AML.T0101; AML.T0086
+ACT-02,Policy enforced outside the model,1,MAP 4.2,,Art. 15,LLM03,ASI01; ASI02,AML.T0053
+ACT-03,Sandboxed code execution,2,MEASURE 2.7,,,LLM10,ASI05,AML.T0105
+ACT-04,Egress and exfiltration controls,1,MEASURE 2.7; MEASURE 2.10,,,LLM02,ASI02,AML.T0086; AML.T0136
+ACT-05,Trust boundaries between agents,2,MAP 4.2,,,,ASI07; ASI08,AML.T0118; AML.T0143
+ACT-06,Resource and spend limits,1,MANAGE 2.4,A.6.2.6,,LLM06,ASI08,AML.T0034.002; AML.T0029
+DAT-01,Data classes approved per system and provider,0,MEASURE 2.10,A.7.2,,LLM02,,
+DAT-02,Safe handling of model output,1,MEASURE 2.7,,,LLM10,ASI05,
+OPS-01,Action-level logging,1,MEASURE 2.4; MANAGE 4.1,A.6.2.8,Art. 12; Art. 26,,ASI10,
+OPS-02,Kill switch and credential revocation,2,MANAGE 2.3; MANAGE 2.4; MEASURE 2.6,A.6.2.6,Art. 14,,ASI08; ASI10,
+OPS-03,AI incident response,1,MANAGE 4.1; MANAGE 4.3; GOVERN 4.3,A.3.3; A.8.4,Art. 73,,ASI10,
+OPS-04,Behavioural monitoring,2,MEASURE 2.4; MEASURE 3.1,A.6.2.6,Art. 72,,ASI01; ASI10,
+TST-01,Adversarial testing before release,2,MEASURE 1.1; MEASURE 2.7,A.6.2.4,Art. 15,LLM01; LLM02,ASI01; ASI02,AML.T0051; AML.T0054
+TST-02,Continuous regression testing,2,MEASURE 1.2; MEASURE 2.4,A.6.2.4,,LLM01,ASI01,AML.T0051
+TST-03,Independent assurance,3,MEASURE 1.3,,,,,
+HUM-01,Disclosure of AI interaction,0,MEASURE 2.8,A.8.2,Art. 50,LLM07,ASI09,
+HUM-02,"Oversight that is meaningful, not ceremonial",2,MAP 3.5; MAP 2.2,A.9.2,Art. 14,LLM07,ASI09,
