@@ -133,7 +133,7 @@ Models, MCP servers, skills and agent plugins are used only from an approved reg
 - **OWASP LLM 2026:** LLM04 Supply Chain
 - **OWASP Agentic 2026:** ASI04 Agentic Supply Chain Vulnerabilities
 - **MITRE ATLAS:** AML.T0010.005, AML.T0110, AML.T0111
-- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
 ### SUP-02
 
@@ -201,7 +201,7 @@ Credentials and keys never appear in prompts, agent configuration files, memory 
 - **OWASP LLM 2026:** LLM02 Sensitive Information Disclosure, LLM08 Hidden Context Exposure
 - **OWASP Agentic 2026:** ASI03 Identity and Privilege Abuse
 - **MITRE ATLAS:** AML.T0083
-- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter)
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint)
 
 ## Input and context integrity
 
@@ -232,7 +232,7 @@ Agent instruction files (skills, AGENTS.md, IDE rules, MCP configuration) are sc
 - **OWASP LLM 2026:** LLM01 Prompt Injection
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack, ASI04 Agentic Supply Chain Vulnerabilities
 - **MITRE ATLAS:** AML.T0081, AML.T0068
-- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter)
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint)
 
 ### INP-03
 
@@ -306,7 +306,7 @@ Agents can reach only approved destinations. Outbound requests, rendered links a
 - **OWASP LLM 2026:** LLM02 Sensitive Information Disclosure
 - **OWASP Agentic 2026:** ASI02 Tool Misuse and Exploitation
 - **MITRE ATLAS:** AML.T0086, AML.T0136
-- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
 ### ACT-05
 
