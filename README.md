@@ -47,6 +47,8 @@ The controls point to four open-source tools that produce evidence for them:
 | [agentlint](https://github.com/thenayanhazra/agentlint) | Instruction-file scanning, secrets in agent context, exfiltration sinks (INP-02, IAM-03, ACT-04) |
 | [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer) | Adversarial and regression testing with bypass rates (TST-01, TST-02, KRI-04) |
 
+[AI Security Assessment](https://github.com/thenayanhazra/ai-security-assessment) runs all four against one target and reports the results against these controls, with ratings based on the key risk indicators.
+
 ## How the mappings stay accurate
 
 Framework mappings go stale quietly, and a wrong citation in front of an auditor is worse than none. So the controls live in one data file, [`data/controls.yaml`](data/controls.yaml), and everything else is generated from it.
