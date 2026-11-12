@@ -42,10 +42,10 @@ The controls point to four open-source tools that produce evidence for them:
 
 | Tool | Tests |
 |---|---|
-| [AI Threat Modelling Engine](https://github.com/thenayanhazra/AI-Threat-Modelling-Engine) | Threat and impact assessment before release (INV-03) |
-| [MCP Adversarial Harness](https://github.com/thenayanhazra/MCP-Adversarial-Harness) | Supply-chain intake, policy enforcement, exfiltration and adversarial testing (SUP-01, ACT-02, ACT-04, TST-01) |
-| [agentlint](https://github.com/thenayanhazra/Skill-Agent-File-Linter) | Instruction-file scanning, secrets in agent context, exfiltration sinks (INP-02, IAM-03, ACT-04) |
-| [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/LLM-Prompt-Injection-Fuzzer) | Adversarial and regression testing with bypass rates (TST-01, TST-02, KRI-04) |
+| [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine) | Threat and impact assessment before release (INV-03) |
+| [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness) | Supply-chain intake, policy enforcement, exfiltration and adversarial testing (SUP-01, ACT-02, ACT-04, TST-01) |
+| [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter) | Instruction-file scanning, secrets in agent context, exfiltration sinks (INP-02, IAM-03, ACT-04) |
+| [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer) | Adversarial and regression testing with bypass rates (TST-01, TST-02, KRI-04) |
 
 ## How the mappings stay accurate
 

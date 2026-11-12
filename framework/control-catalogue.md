@@ -103,7 +103,7 @@ Agents at tier 2 and above have a documented threat model and impact assessment,
 - **NIST AI RMF:** GOVERN 1.5, GOVERN 4.2, MAP 5.1, MANAGE 1.1, MANAGE 1.3
 - **ISO/IEC 42001:** A.5.2, A.5.3, A.6.2.5
 - **EU AI Act:** Art. 9
-- **Open-source tooling:** [AI Threat Modelling Engine](https://github.com/thenayanhazra/AI-Threat-Modelling-Engine)
+- **Open-source tooling:** [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine)
 
 ### INV-04
 
@@ -133,7 +133,7 @@ Models, MCP servers, skills and agent plugins are used only from an approved reg
 - **OWASP LLM 2026:** LLM04 Supply Chain
 - **OWASP Agentic 2026:** ASI04 Agentic Supply Chain Vulnerabilities
 - **MITRE ATLAS:** AML.T0010.005, AML.T0110, AML.T0111
-- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/Skill-Agent-File-Linter), [MCP Adversarial Harness](https://github.com/thenayanhazra/MCP-Adversarial-Harness)
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
 ### SUP-02
 
@@ -201,7 +201,7 @@ Credentials and keys never appear in prompts, agent configuration files, memory 
 - **OWASP LLM 2026:** LLM02 Sensitive Information Disclosure, LLM08 Hidden Context Exposure
 - **OWASP Agentic 2026:** ASI03 Identity and Privilege Abuse
 - **MITRE ATLAS:** AML.T0083
-- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/Skill-Agent-File-Linter)
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter)
 
 ## Input and context integrity
 
@@ -232,7 +232,7 @@ Agent instruction files (skills, AGENTS.md, IDE rules, MCP configuration) are sc
 - **OWASP LLM 2026:** LLM01 Prompt Injection
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack, ASI04 Agentic Supply Chain Vulnerabilities
 - **MITRE ATLAS:** AML.T0081, AML.T0068
-- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/Skill-Agent-File-Linter)
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter)
 
 ### INP-03
 
@@ -279,7 +279,7 @@ Allowed tools, parameters, destinations and rates are enforced by a policy layer
 - **OWASP LLM 2026:** LLM03 Excessive Agency
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack, ASI02 Tool Misuse and Exploitation
 - **MITRE ATLAS:** AML.T0053
-- **Open-source tooling:** [MCP Adversarial Harness](https://github.com/thenayanhazra/MCP-Adversarial-Harness)
+- **Open-source tooling:** [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
 ### ACT-03
 
@@ -306,7 +306,7 @@ Agents can reach only approved destinations. Outbound requests, rendered links a
 - **OWASP LLM 2026:** LLM02 Sensitive Information Disclosure
 - **OWASP Agentic 2026:** ASI02 Tool Misuse and Exploitation
 - **MITRE ATLAS:** AML.T0086, AML.T0136
-- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/Skill-Agent-File-Linter), [MCP Adversarial Harness](https://github.com/thenayanhazra/MCP-Adversarial-Harness)
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
 ### ACT-05
 
@@ -430,7 +430,7 @@ Agents at tier 2 and above are tested before release, and after material change,
 - **OWASP LLM 2026:** LLM01 Prompt Injection, LLM02 Sensitive Information Disclosure
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack, ASI02 Tool Misuse and Exploitation
 - **MITRE ATLAS:** AML.T0051, AML.T0054
-- **Open-source tooling:** [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/LLM-Prompt-Injection-Fuzzer), [MCP Adversarial Harness](https://github.com/thenayanhazra/MCP-Adversarial-Harness)
+- **Open-source tooling:** [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
 ### TST-02
 
@@ -445,7 +445,7 @@ The attack corpus runs in CI against the production system prompt and configurat
 - **OWASP LLM 2026:** LLM01 Prompt Injection
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack
 - **MITRE ATLAS:** AML.T0051
-- **Open-source tooling:** [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/LLM-Prompt-Injection-Fuzzer)
+- **Open-source tooling:** [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer)
 
 ### TST-03
 

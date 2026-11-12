@@ -24,10 +24,10 @@ ATLAS_URL = "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/
 REF_KEYS = ["nist_ai_rmf", "iso_42001", "eu_ai_act", "owasp_llm", "owasp_asi"]
 REQUIRED = ["id", "title", "requirement", "evidence", "min_tier", *REF_KEYS, "mitre_atlas"]
 KNOWN_TOOLS = {
-    "AI-Threat-Modelling-Engine",
-    "MCP-Adversarial-Harness",
-    "Skill-Agent-File-Linter",
-    "LLM-Prompt-Injection-Fuzzer",
+    "ai-threat-modelling-engine",
+    "mcp-adversarial-harness",
+    "skill-agent-file-linter",
+    "llm-prompt-injection-fuzzer",
 }
 ATLAS_REF = re.compile(r"\bAML\.T\d{4}(?:\.\d{3})?\b")
 LINK = re.compile(r"\]\((?!https?://|mailto:|#)([^)\s]+)\)")
