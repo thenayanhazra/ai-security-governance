@@ -25,16 +25,16 @@ COLUMNS = [
     ("mitre_atlas", "MITRE ATLAS"),
 ]
 TOOL_LINKS = {
-    "AI-Threat-Modelling-Engine": "https://github.com/thenayanhazra/AI-Threat-Modelling-Engine",
-    "MCP-Adversarial-Harness": "https://github.com/thenayanhazra/MCP-Adversarial-Harness",
-    "Skill-Agent-File-Linter": "https://github.com/thenayanhazra/Skill-Agent-File-Linter",
-    "LLM-Prompt-Injection-Fuzzer": "https://github.com/thenayanhazra/LLM-Prompt-Injection-Fuzzer",
+    "ai-threat-modelling-engine": "https://github.com/thenayanhazra/ai-threat-modelling-engine",
+    "mcp-adversarial-harness": "https://github.com/thenayanhazra/mcp-adversarial-harness",
+    "skill-agent-file-linter": "https://github.com/thenayanhazra/skill-agent-file-linter",
+    "llm-prompt-injection-fuzzer": "https://github.com/thenayanhazra/llm-prompt-injection-fuzzer",
 }
 TOOL_NAMES = {
-    "AI-Threat-Modelling-Engine": "AI Threat Modelling Engine",
-    "MCP-Adversarial-Harness": "MCP Adversarial Harness",
-    "Skill-Agent-File-Linter": "agentlint",
-    "LLM-Prompt-Injection-Fuzzer": "LLM Prompt Injection Fuzzer",
+    "ai-threat-modelling-engine": "AI Threat Modelling Engine",
+    "mcp-adversarial-harness": "MCP Adversarial Harness",
+    "skill-agent-file-linter": "agentlint",
+    "llm-prompt-injection-fuzzer": "LLM Prompt Injection Fuzzer",
 }
 
 

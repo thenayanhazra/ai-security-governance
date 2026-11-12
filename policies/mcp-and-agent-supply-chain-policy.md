@@ -90,8 +90,8 @@ Every new component, and every update, is reviewed before approval. The depth of
 
 Open-source tooling that supports this review:
 
-- [agentlint](https://github.com/thenayanhazra/Skill-Agent-File-Linter) for static scanning of instruction files and MCP configuration.
-- [MCP Adversarial Harness](https://github.com/thenayanhazra/MCP-Adversarial-Harness) for adversarial testing of MCP servers.
+- [agentlint](https://github.com/thenayanhazra/skill-agent-file-linter) for static scanning of instruction files and MCP configuration.
+- [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness) for adversarial testing of MCP servers.
 
 ## 5. Roles
 

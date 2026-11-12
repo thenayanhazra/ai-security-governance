@@ -21,7 +21,7 @@ The thresholds are starting points. Calibrate them to the organisation's risk ap
 
 ## Notes on the harder ones
 
-**KRI-04, bypass rate.** Use the same corpus every quarter so results are comparable, and add new techniques as a separate line until there is a baseline for them. Report the median across agents, and name any single agent above the red threshold. The [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/LLM-Prompt-Injection-Fuzzer) produces this number per category.
+**KRI-04, bypass rate.** Use the same corpus every quarter so results are comparable, and add new techniques as a separate line until there is a baseline for them. Report the median across agents, and name any single agent above the red threshold. The [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer) produces this number per category.
 
 **KRI-05, time to stop.** Measure from the decision to stop until the agent has stopped acting and its credentials no longer work, not until someone has opened a ticket. An exercise that has not happened counts as red.
 

@@ -121,7 +121,7 @@ controls:
     owasp_llm: []
     owasp_asi: []
     mitre_atlas: []
-    tooling: [AI-Threat-Modelling-Engine]
+    tooling: [ai-threat-modelling-engine]
 
   - id: INV-04
     title: Safe retirement
@@ -152,7 +152,7 @@ controls:
     owasp_llm: [LLM04]
     owasp_asi: [ASI04]
     mitre_atlas: [AML.T0010.005, AML.T0110, AML.T0111]
-    tooling: [Skill-Agent-File-Linter, MCP-Adversarial-Harness]
+    tooling: [skill-agent-file-linter, mcp-adversarial-harness]
 
   - id: SUP-02
     title: Version pinning and tool-definition change detection
@@ -228,7 +228,7 @@ controls:
     owasp_llm: [LLM02, LLM08]
     owasp_asi: [ASI03]
     mitre_atlas: [AML.T0083]
-    tooling: [Skill-Agent-File-Linter]
+    tooling: [skill-agent-file-linter]
 
   - id: INP-01
     title: External content treated as untrusted
@@ -259,7 +259,7 @@ controls:
     owasp_llm: [LLM01]
     owasp_asi: [ASI01, ASI04]
     mitre_atlas: [AML.T0081, AML.T0068]
-    tooling: [Skill-Agent-File-Linter]
+    tooling: [skill-agent-file-linter]
 
   - id: INP-03
     title: Memory and retrieval integrity
@@ -305,7 +305,7 @@ controls:
     owasp_llm: [LLM03]
     owasp_asi: [ASI01, ASI02]
     mitre_atlas: [AML.T0053]
-    tooling: [MCP-Adversarial-Harness]
+    tooling: [mcp-adversarial-harness]
 
   - id: ACT-03
     title: Sandboxed code execution
@@ -334,7 +334,7 @@ controls:
     owasp_llm: [LLM02]
     owasp_asi: [ASI02]
     mitre_atlas: [AML.T0086, AML.T0136]
-    tooling: [Skill-Agent-File-Linter, MCP-Adversarial-Harness]
+    tooling: [skill-agent-file-linter, mcp-adversarial-harness]
 
   - id: ACT-05
     title: Trust boundaries between agents
@@ -467,7 +467,7 @@ controls:
     owasp_llm: [LLM01, LLM02]
     owasp_asi: [ASI01, ASI02]
     mitre_atlas: [AML.T0051, AML.T0054]
-    tooling: [LLM-Prompt-Injection-Fuzzer, MCP-Adversarial-Harness]
+    tooling: [llm-prompt-injection-fuzzer, mcp-adversarial-harness]
 
   - id: TST-02
     title: Continuous regression testing
@@ -482,7 +482,7 @@ controls:
     owasp_llm: [LLM01]
     owasp_asi: [ASI01]
     mitre_atlas: [AML.T0051]
-    tooling: [LLM-Prompt-Injection-Fuzzer]
+    tooling: [llm-prompt-injection-fuzzer]
 
   - id: TST-03
     title: Independent assurance
