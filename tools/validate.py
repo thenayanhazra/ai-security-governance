@@ -26,7 +26,7 @@ REQUIRED = ["id", "title", "requirement", "evidence", "min_tier", *REF_KEYS, "mi
 KNOWN_TOOLS = {
     "ai-threat-modelling-engine",
     "mcp-adversarial-harness",
-    "skill-agent-file-linter",
+    "agentlint",
     "llm-prompt-injection-fuzzer",
 }
 ATLAS_REF = re.compile(r"\bAML\.T\d{4}(?:\.\d{3})?\b")

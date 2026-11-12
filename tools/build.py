@@ -27,13 +27,13 @@ COLUMNS = [
 TOOL_LINKS = {
     "ai-threat-modelling-engine": "https://github.com/thenayanhazra/ai-threat-modelling-engine",
     "mcp-adversarial-harness": "https://github.com/thenayanhazra/mcp-adversarial-harness",
-    "skill-agent-file-linter": "https://github.com/thenayanhazra/skill-agent-file-linter",
+    "agentlint": "https://github.com/thenayanhazra/agentlint",
     "llm-prompt-injection-fuzzer": "https://github.com/thenayanhazra/llm-prompt-injection-fuzzer",
 }
 TOOL_NAMES = {
     "ai-threat-modelling-engine": "AI Threat Modelling Engine",
     "mcp-adversarial-harness": "MCP Adversarial Harness",
-    "skill-agent-file-linter": "agentlint",
+    "agentlint": "agentlint",
     "llm-prompt-injection-fuzzer": "LLM Prompt Injection Fuzzer",
 }
 
