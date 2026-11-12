@@ -1,0 +1,528 @@
+# Single source of truth for the control catalogue and crosswalk.
+# Edit here, then run: python tools/build.py && python tools/validate.py
+#
+# min_tier: lowest autonomy tier the control applies to (see framework/ai-agent-risk-framework.md)
+#   0 Assist, 1 Retrieve, 2 Act with approval, 3 Act autonomously
+
+domains:
+  GOV: Governance and accountability
+  INV: Inventory and classification
+  SUP: Supply chain
+  IAM: Agent identity and authority
+  INP: Input and context integrity
+  ACT: Action and tool control
+  DAT: Data protection
+  OPS: Monitoring and response
+  TST: Testing and assurance
+  HUM: Human oversight and transparency
+
+controls:
+  - id: GOV-01
+    title: Accountable ownership
+    requirement: >-
+      A named executive owns enterprise AI risk. Every AI system and agent in the
+      inventory has an accountable business owner and a technical owner, and their
+      decision rights are written down.
+    evidence: AI risk RACI; owner fields populated for every inventory entry.
+    min_tier: 0
+    nist_ai_rmf: [GOVERN 2.1, GOVERN 2.3]
+    iso_42001: [A.3.2]
+    eu_ai_act: []
+    owasp_llm: []
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: GOV-02
+    title: AI policy and risk appetite
+    requirement: >-
+      A board-approved AI policy sets risk appetite, prohibited uses and the highest
+      autonomy tier the organisation will accept for each class of data and action.
+      It is reviewed at least once a year and after any major AI incident.
+    evidence: Approved policy with version history; board or committee minutes.
+    min_tier: 0
+    nist_ai_rmf: [GOVERN 1.2, GOVERN 1.3, GOVERN 1.4, MAP 1.5]
+    iso_42001: [A.2.2, A.2.4]
+    eu_ai_act: [Art. 5]
+    owasp_llm: []
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: GOV-03
+    title: Regulatory obligations register
+    requirement: >-
+      The AI laws that apply to each system, and the dates they take effect, are
+      recorded against that system, including its EU AI Act risk classification. The
+      register is reviewed when the system or the law changes.
+    evidence: Obligations register linked to the inventory; review log.
+    min_tier: 0
+    nist_ai_rmf: [GOVERN 1.1]
+    iso_42001: [A.2.3]
+    eu_ai_act: [Art. 6]
+    owasp_llm: []
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: GOV-04
+    title: AI literacy and role training
+    requirement: >-
+      People who build, approve, operate or oversee AI systems receive training for
+      their role, including how prompt injection and agent misuse work. Completion is
+      tracked.
+    evidence: Training curriculum by role; completion records.
+    min_tier: 0
+    nist_ai_rmf: [GOVERN 2.2, GOVERN 4.1]
+    iso_42001: [A.4.6]
+    eu_ai_act: [Art. 4]
+    owasp_llm: []
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: INV-01
+    title: Inventory of AI systems, agents and components
+    requirement: >-
+      Every AI system, agent, model, MCP server and skill in use is recorded with its
+      owner, purpose, data accessed, tools granted, autonomy tier and status. Discovery
+      runs regularly to find unregistered use.
+    evidence: Inventory export; discovery reports and how findings were resolved.
+    min_tier: 0
+    nist_ai_rmf: [GOVERN 1.6, MAP 1.1]
+    iso_42001: [A.4.2, A.6.2.7]
+    eu_ai_act: []
+    owasp_llm: []
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: INV-02
+    title: Autonomy and impact classification
+    requirement: >-
+      Each agent is assigned an autonomy tier based on what it can do without human
+      approval, and an impact rating based on the worst credible outcome. Together they
+      decide which controls apply.
+    evidence: Classification record per system, approved by the risk owner.
+    min_tier: 0
+    nist_ai_rmf: [MAP 2.1, MAP 3.3, MAP 5.1]
+    iso_42001: [A.5.2, A.5.4]
+    eu_ai_act: [Art. 6]
+    owasp_llm: [LLM03]
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: INV-03
+    title: Threat and impact assessment before release
+    requirement: >-
+      Agents at tier 2 and above have a documented threat model and impact assessment,
+      approved by the risk owner, before production and after any material change to
+      tools, data or autonomy.
+    evidence: Signed assessment; change records that triggered reassessment.
+    min_tier: 2
+    nist_ai_rmf: [GOVERN 1.5, GOVERN 4.2, MAP 5.1, MANAGE 1.1, MANAGE 1.3]
+    iso_42001: [A.5.2, A.5.3, A.6.2.5]
+    eu_ai_act: [Art. 9]
+    owasp_llm: []
+    owasp_asi: []
+    mitre_atlas: []
+    tooling: [AI-Threat-Modelling-Engine]
+
+  - id: INV-04
+    title: Safe retirement
+    requirement: >-
+      When an agent or component is withdrawn, its credentials are revoked, its memory
+      and retrieval indexes are purged or archived under retention rules, its tool
+      connections are removed and the inventory is updated.
+    evidence: Decommissioning checklist; credential revocation records.
+    min_tier: 1
+    nist_ai_rmf: [GOVERN 1.7]
+    iso_42001: [A.6.2.6]
+    eu_ai_act: []
+    owasp_llm: []
+    owasp_asi: [ASI10]
+    mitre_atlas: []
+
+  - id: SUP-01
+    title: Approved sources for models, MCP servers and skills
+    requirement: >-
+      Models, MCP servers, skills and agent plugins are used only from an approved
+      registry. New entries pass an intake review covering provenance, maintainer,
+      licence, permissions requested, static scanning and adversarial testing.
+    evidence: Registry with intake records; rejected-request log.
+    min_tier: 1
+    nist_ai_rmf: [GOVERN 6.1, MAP 4.1, MANAGE 3.1]
+    iso_42001: [A.10.3]
+    eu_ai_act: [Art. 25]
+    owasp_llm: [LLM04]
+    owasp_asi: [ASI04]
+    mitre_atlas: [AML.T0010.005, AML.T0110, AML.T0111]
+    tooling: [Skill-Agent-File-Linter, MCP-Adversarial-Harness]
+
+  - id: SUP-02
+    title: Version pinning and tool-definition change detection
+    requirement: >-
+      Approved components are pinned to a reviewed version or hash. Tool definitions
+      are fingerprinted, and any change to a tool's description, schema or permissions
+      blocks its use until it is reviewed again.
+    evidence: Lock files or hashes; change alerts and their review outcomes.
+    min_tier: 1
+    nist_ai_rmf: [MANAGE 3.1, MANAGE 3.2]
+    iso_42001: [A.10.3]
+    eu_ai_act: []
+    owasp_llm: [LLM04]
+    owasp_asi: [ASI04]
+    mitre_atlas: [AML.T0109, AML.T0110.000]
+
+  - id: SUP-03
+    title: Contract terms for AI providers
+    requirement: >-
+      Contracts with model and AI service providers cover data use and retention,
+      training on customer data, incident notification, sub-processors, notice of
+      model changes and audit rights.
+    evidence: Contract clause checklist per provider.
+    min_tier: 0
+    nist_ai_rmf: [GOVERN 6.1, GOVERN 6.2]
+    iso_42001: [A.10.2, A.10.3]
+    eu_ai_act: [Art. 25]
+    owasp_llm: [LLM04]
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: IAM-01
+    title: Distinct identity for every agent
+    requirement: >-
+      Each agent runs under its own non-human identity, never a shared account or a
+      person's account, so every action can be traced to the agent and to the person
+      or process that started it.
+    evidence: Identity register; sample of actions traced end to end.
+    min_tier: 1
+    nist_ai_rmf: [MEASURE 2.8]
+    iso_42001: []
+    eu_ai_act: []
+    owasp_llm: []
+    owasp_asi: [ASI03]
+    mitre_atlas: []
+
+  - id: IAM-02
+    title: Least privilege and short-lived delegated credentials
+    requirement: >-
+      Agents receive only the tools, scopes and data the task needs. Credentials are
+      short-lived and bound to a specific task and resource; for MCP this means
+      audience-bound tokens, and tokens are never passed through to downstream services.
+    evidence: Scope reviews; token lifetime configuration; MCP authorization settings.
+    min_tier: 1
+    nist_ai_rmf: [MAP 4.2]
+    iso_42001: [A.9.4]
+    eu_ai_act: []
+    owasp_llm: [LLM03]
+    owasp_asi: [ASI02, ASI03]
+    mitre_atlas: [AML.T0055, AML.T0098]
+
+  - id: IAM-03
+    title: Secrets kept out of agent context
+    requirement: >-
+      Credentials and keys never appear in prompts, agent configuration files, memory
+      or tool descriptions. Agents obtain them from a secrets broker at the moment of
+      use, and the model never sees them.
+    evidence: Configuration scans; secrets-broker integration records.
+    min_tier: 1
+    nist_ai_rmf: [MEASURE 2.7]
+    iso_42001: []
+    eu_ai_act: []
+    owasp_llm: [LLM02, LLM08]
+    owasp_asi: [ASI03]
+    mitre_atlas: [AML.T0083]
+    tooling: [Skill-Agent-File-Linter]
+
+  - id: INP-01
+    title: External content treated as untrusted
+    requirement: >-
+      Content from tools, documents, web pages, email and other agents is labelled as
+      data, kept separate from instructions, and cannot on its own trigger a privileged
+      action.
+    evidence: Design review showing trust labelling; test results for indirect injection.
+    min_tier: 1
+    nist_ai_rmf: [MEASURE 2.7]
+    iso_42001: []
+    eu_ai_act: [Art. 15]
+    owasp_llm: [LLM01]
+    owasp_asi: [ASI01]
+    mitre_atlas: [AML.T0051.001, AML.T0053]
+
+  - id: INP-02
+    title: Scanning of agent instruction files
+    requirement: >-
+      Agent instruction files (skills, AGENTS.md, IDE rules, MCP configuration) are
+      scanned in CI for hidden Unicode, override patterns and exfiltration sinks before
+      they are merged or installed.
+    evidence: CI configuration; scan results on recent merges.
+    min_tier: 0
+    nist_ai_rmf: [MEASURE 2.7]
+    iso_42001: [A.6.2.4]
+    eu_ai_act: []
+    owasp_llm: [LLM01]
+    owasp_asi: [ASI01, ASI04]
+    mitre_atlas: [AML.T0081, AML.T0068]
+    tooling: [Skill-Agent-File-Linter]
+
+  - id: INP-03
+    title: Memory and retrieval integrity
+    requirement: >-
+      Writes to long-term memory and retrieval indexes are limited to trusted sources
+      and tagged with their provenance. Memory can be inspected and purged per user and
+      per agent.
+    evidence: Write-path design; provenance fields; purge procedure and test.
+    min_tier: 1
+    nist_ai_rmf: [MEASURE 2.7]
+    iso_42001: [A.7.5]
+    eu_ai_act: [Art. 15]
+    owasp_llm: [LLM05, LLM09]
+    owasp_asi: [ASI06]
+    mitre_atlas: [AML.T0080.000, AML.T0070]
+
+  - id: ACT-01
+    title: Human approval for consequential actions
+    requirement: >-
+      Actions that move money, delete or change records, send external communications,
+      change access or run code outside a sandbox need explicit human approval that
+      shows the exact action and its parameters.
+    evidence: Action catalogue with approval requirements; approval logs.
+    min_tier: 2
+    nist_ai_rmf: [MAP 3.5]
+    iso_42001: [A.9.2]
+    eu_ai_act: [Art. 14]
+    owasp_llm: [LLM03]
+    owasp_asi: [ASI02, ASI09]
+    mitre_atlas: [AML.T0101, AML.T0086]
+
+  - id: ACT-02
+    title: Policy enforced outside the model
+    requirement: >-
+      Allowed tools, parameters, destinations and rates are enforced by a policy layer
+      that the model cannot change. The model's own judgement is never the only control
+      on what an agent does.
+    evidence: Policy configuration; denied-action logs.
+    min_tier: 1
+    nist_ai_rmf: [MAP 4.2]
+    iso_42001: []
+    eu_ai_act: [Art. 15]
+    owasp_llm: [LLM03]
+    owasp_asi: [ASI01, ASI02]
+    mitre_atlas: [AML.T0053]
+    tooling: [MCP-Adversarial-Harness]
+
+  - id: ACT-03
+    title: Sandboxed code execution
+    requirement: >-
+      Code and commands generated by an agent run in an isolated, short-lived sandbox
+      with no standing credentials and network access limited to an allow-list.
+    evidence: Sandbox configuration; escape-test results.
+    min_tier: 2
+    nist_ai_rmf: [MEASURE 2.7]
+    iso_42001: []
+    eu_ai_act: []
+    owasp_llm: [LLM10]
+    owasp_asi: [ASI05]
+    mitre_atlas: [AML.T0105]
+
+  - id: ACT-04
+    title: Egress and exfiltration controls
+    requirement: >-
+      Agents can reach only approved destinations. Outbound requests, rendered links and
+      images are filtered so that data cannot leave through URLs or markdown.
+    evidence: Egress allow-list; output-rendering filter tests.
+    min_tier: 1
+    nist_ai_rmf: [MEASURE 2.7, MEASURE 2.10]
+    iso_42001: []
+    eu_ai_act: []
+    owasp_llm: [LLM02]
+    owasp_asi: [ASI02]
+    mitre_atlas: [AML.T0086, AML.T0136]
+    tooling: [Skill-Agent-File-Linter, MCP-Adversarial-Harness]
+
+  - id: ACT-05
+    title: Trust boundaries between agents
+    requirement: >-
+      Messages between agents are authenticated and treated as untrusted input. No agent
+      can grant another more authority than it holds itself, and delegation depth and
+      fan-out are capped.
+    evidence: Inter-agent protocol design; authority-propagation tests.
+    min_tier: 2
+    nist_ai_rmf: [MAP 4.2]
+    iso_42001: []
+    eu_ai_act: []
+    owasp_llm: []
+    owasp_asi: [ASI07, ASI08]
+    mitre_atlas: [AML.T0118, AML.T0143]
+
+  - id: ACT-06
+    title: Resource and spend limits
+    requirement: >-
+      Each agent has limits on tokens, tool calls, spend and run time, and halts
+      automatically when a limit is reached.
+    evidence: Budget configuration; halt events.
+    min_tier: 1
+    nist_ai_rmf: [MANAGE 2.4]
+    iso_42001: [A.6.2.6]
+    eu_ai_act: []
+    owasp_llm: [LLM06]
+    owasp_asi: [ASI08]
+    mitre_atlas: [AML.T0034.002, AML.T0029]
+
+  - id: DAT-01
+    title: Data classes approved per system and provider
+    requirement: >-
+      The classes of data each AI system and provider may process are defined.
+      Restricted data cannot reach a model or tool that is not approved for it.
+    evidence: Data-use matrix; DLP rules on AI traffic.
+    min_tier: 0
+    nist_ai_rmf: [MEASURE 2.10]
+    iso_42001: [A.7.2]
+    eu_ai_act: []
+    owasp_llm: [LLM02]
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: DAT-02
+    title: Safe handling of model output
+    requirement: >-
+      Model output is validated and encoded before it reaches browsers, shells,
+      databases or other systems, in the same way as untrusted user input.
+    evidence: Code review findings; output-handling tests.
+    min_tier: 1
+    nist_ai_rmf: [MEASURE 2.7]
+    iso_42001: []
+    eu_ai_act: []
+    owasp_llm: [LLM10]
+    owasp_asi: [ASI05]
+    mitre_atlas: []
+
+  - id: OPS-01
+    title: Action-level logging
+    requirement: >-
+      Every prompt, tool call, parameter set, approval decision and result is logged with
+      the agent's identity and a correlation ID, retained according to policy and
+      protected from tampering.
+    evidence: Log schema; retention settings; integrity controls.
+    min_tier: 1
+    nist_ai_rmf: [MEASURE 2.4, MANAGE 4.1]
+    iso_42001: [A.6.2.8]
+    eu_ai_act: [Art. 12, Art. 26]
+    owasp_llm: []
+    owasp_asi: [ASI10]
+    mitre_atlas: []
+
+  - id: OPS-02
+    title: Kill switch and credential revocation
+    requirement: >-
+      Any agent can be paused, its credentials revoked and its recent actions listed
+      within a set time: 15 minutes for tier 3. The procedure is exercised at least twice
+      a year.
+    evidence: Runbook; exercise records with measured times.
+    min_tier: 2
+    nist_ai_rmf: [MANAGE 2.3, MANAGE 2.4, MEASURE 2.6]
+    iso_42001: [A.6.2.6]
+    eu_ai_act: [Art. 14]
+    owasp_llm: []
+    owasp_asi: [ASI08, ASI10]
+    mitre_atlas: []
+
+  - id: OPS-03
+    title: AI incident response
+    requirement: >-
+      Incident runbooks cover prompt injection, data leakage through agents, runaway or
+      rogue agents and compromised MCP servers, including regulatory notification where
+      it is required. Staff and users have a clear channel to report concerns about an
+      AI system's behaviour.
+    evidence: Runbooks; exercise reports; incident records; reporting channel and its log.
+    min_tier: 1
+    nist_ai_rmf: [MANAGE 4.1, MANAGE 4.3, GOVERN 4.3]
+    iso_42001: [A.3.3, A.8.4]
+    eu_ai_act: [Art. 73]
+    owasp_llm: []
+    owasp_asi: [ASI10]
+    mitre_atlas: []
+
+  - id: OPS-04
+    title: Behavioural monitoring
+    requirement: >-
+      Each agent's normal behaviour is baselined. Unusual tools, destinations, volumes or
+      deviation from the assigned goal raise an alert.
+    evidence: Detection rules; alert history and triage outcomes.
+    min_tier: 2
+    nist_ai_rmf: [MEASURE 2.4, MEASURE 3.1]
+    iso_42001: [A.6.2.6]
+    eu_ai_act: [Art. 72]
+    owasp_llm: []
+    owasp_asi: [ASI01, ASI10]
+    mitre_atlas: []
+
+  - id: TST-01
+    title: Adversarial testing before release
+    requirement: >-
+      Agents at tier 2 and above are tested before release, and after material change,
+      for prompt injection, tool misuse and data leakage using a maintained attack
+      corpus. Results are recorded against acceptance thresholds.
+    evidence: Test reports with bypass rates against thresholds.
+    min_tier: 2
+    nist_ai_rmf: [MEASURE 1.1, MEASURE 2.7]
+    iso_42001: [A.6.2.4]
+    eu_ai_act: [Art. 15]
+    owasp_llm: [LLM01, LLM02]
+    owasp_asi: [ASI01, ASI02]
+    mitre_atlas: [AML.T0051, AML.T0054]
+    tooling: [LLM-Prompt-Injection-Fuzzer, MCP-Adversarial-Harness]
+
+  - id: TST-02
+    title: Continuous regression testing
+    requirement: >-
+      The attack corpus runs in CI against the production system prompt and
+      configuration. A bypass rate above threshold blocks the release.
+    evidence: CI pipeline; trend of bypass rate by release.
+    min_tier: 2
+    nist_ai_rmf: [MEASURE 1.2, MEASURE 2.4]
+    iso_42001: [A.6.2.4]
+    eu_ai_act: []
+    owasp_llm: [LLM01]
+    owasp_asi: [ASI01]
+    mitre_atlas: [AML.T0051]
+    tooling: [LLM-Prompt-Injection-Fuzzer]
+
+  - id: TST-03
+    title: Independent assurance
+    requirement: >-
+      Tier 3 agents receive independent review, by internal audit or an external party,
+      at least once a year.
+    evidence: Assurance reports and management responses.
+    min_tier: 3
+    nist_ai_rmf: [MEASURE 1.3]
+    iso_42001: []
+    eu_ai_act: []
+    owasp_llm: []
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: HUM-01
+    title: Disclosure of AI interaction
+    requirement: >-
+      People are told when they are dealing with an AI system or receiving AI-generated
+      content, and agents acting for someone identify themselves to third parties.
+    evidence: UI copy; content-marking configuration; agent identification headers.
+    min_tier: 0
+    nist_ai_rmf: [MEASURE 2.8]
+    iso_42001: [A.8.2]
+    eu_ai_act: [Art. 50]
+    owasp_llm: [LLM07]
+    owasp_asi: [ASI09]
+    mitre_atlas: []
+
+  - id: HUM-02
+    title: Oversight that is meaningful, not ceremonial
+    requirement: >-
+      Approval screens state what will happen and why, rather than asking for a bare
+      yes or no. Approval rates and decision times are monitored to detect
+      rubber-stamping.
+    evidence: Approval UI review; approval-rate and decision-time metrics.
+    min_tier: 2
+    nist_ai_rmf: [MAP 3.5, MAP 2.2]
+    iso_42001: [A.9.2]
+    eu_ai_act: [Art. 14]
+    owasp_llm: [LLM07]
+    owasp_asi: [ASI09]
+    mitre_atlas: []
