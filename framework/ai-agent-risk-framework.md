@@ -46,6 +46,8 @@ The impact rating describes the worst credible outcome if the system is misused 
 | High | Personal, financial or regulated data; actions that affect customers, money or access; external communications in the organisation's name. |
 | Severe | Safety, legal rights, large financial loss, or actions that cannot be reversed. Includes high-risk uses under the EU AI Act. |
 
+A control in the [control catalogue](control-catalogue.md) applies whenever a system reaches its minimum autonomy tier **or** its impact trigger. A tier 0 or tier 1 system rated high or severe impact—for example, a high-risk advisory model under the EU AI Act—still requires pre-release threat and impact assessment, adversarial testing, logging, monitoring and meaningful human oversight.
+
 ## Approval route
 
 Tier and impact together decide who must approve a system before it goes live, and how often it is reviewed.

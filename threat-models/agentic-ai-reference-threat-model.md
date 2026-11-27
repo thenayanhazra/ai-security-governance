@@ -41,14 +41,14 @@ flowchart LR
   O --> PL
   PL --> T1
   PL --> T2
-  O <-- "messages" --> A2
-  O --> S
+  PL <-- "authenticated messages" --> A2
+  PL --> S
   T1 --> D
   T2 --> X
   ID -. "short-lived, scoped tokens" .-> PL
 ```
 
-Every arrow that crosses a trust zone is a place where content can carry instructions or where authority can leak. The two that matter most are content flowing *into* the orchestrator from tools, memory and other agents, and actions flowing *out* through the policy layer.
+Every arrow that crosses a trust zone is a place where content can carry instructions or where authority can leak. The two that matter most are content flowing *into* the orchestrator from tools, memory and other agents, and actions flowing *out* through the policy layer—including tool invocations, sandboxed code execution and inter-agent delegation, none of which should bypass policy enforcement.
 
 ## Components
 

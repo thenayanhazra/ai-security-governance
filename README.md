@@ -42,10 +42,10 @@ The controls point to four open-source tools that produce evidence for them:
 
 | Tool | Tests |
 |---|---|
-| [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine) | Threat and impact assessment before release (INV-03) |
-| [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness) | Supply-chain intake, policy enforcement, exfiltration and adversarial testing (SUP-01, ACT-02, ACT-04, TST-01) |
-| [agentlint](https://github.com/thenayanhazra/agentlint) | Instruction-file scanning, secrets in agent context, exfiltration sinks (INP-02, IAM-03, ACT-04) |
-| [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer) | Adversarial and regression testing with bypass rates (TST-01, TST-02, KRI-04) |
+| [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine) | Pre-release threat modelling and architecture/infrastructure controls (INV-03, SUP-02, IAM-01, IAM-02, ACT-03, ACT-04, ACT-06, DAT-01, OPS-01) |
+| [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness) | Supply-chain intake, confused deputy, indirect injection, policy enforcement, exfiltration and adversarial testing (SUP-01, IAM-02, INP-01, ACT-02, ACT-04, DAT-02, TST-01, HUM-02) |
+| [agentlint](https://github.com/thenayanhazra/agentlint) | Instruction-file scanning, unpinned components, excess authority, secrets in agent context and exfiltration sinks (SUP-01, SUP-02, IAM-02, IAM-03, INP-01, INP-02, ACT-02, ACT-04) |
+| [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer) | Prompt injection, context manipulation and regression testing with bypass rates (INP-01, ACT-05, TST-01, TST-02, KRI-04) |
 
 [AI Security Assessment](https://github.com/thenayanhazra/ai-security-assessment) runs all four against one target and reports the results against these controls, with ratings based on the key risk indicators.
 
@@ -53,9 +53,9 @@ The controls point to four open-source tools that produce evidence for them:
 
 Framework mappings go stale quietly, and a wrong citation in front of an auditor is worse than none. So the controls live in one data file, [`data/controls.yaml`](data/controls.yaml), and everything else is generated from it.
 
-- [`tools/validate.py`](tools/validate.py) rejects any NIST, ISO, EU AI Act or OWASP identifier that is not in the [reference list](data/references.yaml) for the version in use.
+- [`tools/validate.py`](tools/validate.py) rejects any NIST, ISO, EU AI Act, OWASP or MITRE ATLAS identifier that is not in the [reference list](data/references.yaml) for the version in use.
 - Every MITRE ATLAS ID, in the data and in the prose, is checked against [MITRE's published data](https://github.com/mitre-atlas/atlas-data). CI warns when MITRE releases a new version.
-- Every relative link in the repository must resolve.
+- Every control ID cited in prose, and every relative link and heading anchor in the repository, must resolve.
 - [`tools/build.py --check`](tools/build.py) fails if the catalogue or crosswalk has been edited by hand.
 
 ```bash

@@ -3,6 +3,8 @@
 #
 # min_tier: lowest autonomy tier the control applies to (see framework/ai-agent-risk-framework.md)
 #   0 Assist, 1 Retrieve, 2 Act with approval, 3 Act autonomously
+# or_impact: optional impact rating (low, moderate, high, severe) that also triggers
+#   the control at lower autonomy tiers (for example, tier 0-1 high-risk systems).
 
 domains:
   GOV: Governance and accountability
@@ -110,11 +112,12 @@ controls:
   - id: INV-03
     title: Threat and impact assessment before release
     requirement: >-
-      Agents at tier 2 and above have a documented threat model and impact assessment,
-      approved by the risk owner, before production and after any material change to
-      tools, data or autonomy.
+      Systems at tier 2 and above, or rated high or severe impact, have a documented
+      threat model and impact assessment, approved by the risk owner, before
+      production and after any material change to tools, data or autonomy.
     evidence: Signed assessment; change records that triggered reassessment.
     min_tier: 2
+    or_impact: high
     nist_ai_rmf: [GOVERN 1.5, GOVERN 4.2, MAP 5.1, MANAGE 1.1, MANAGE 1.3]
     iso_42001: [A.5.2, A.5.3, A.6.2.5]
     eu_ai_act: [Art. 9]
@@ -131,6 +134,7 @@ controls:
       connections are removed and the inventory is updated.
     evidence: Decommissioning checklist; credential revocation records.
     min_tier: 1
+    or_impact: high
     nist_ai_rmf: [GOVERN 1.7]
     iso_42001: [A.6.2.6]
     eu_ai_act: []
@@ -146,6 +150,7 @@ controls:
       licence, permissions requested, static scanning and adversarial testing.
     evidence: Registry with intake records; rejected-request log.
     min_tier: 1
+    or_impact: high
     nist_ai_rmf: [GOVERN 6.1, MAP 4.1, MANAGE 3.1]
     iso_42001: [A.10.3]
     eu_ai_act: [Art. 25]
@@ -162,12 +167,14 @@ controls:
       blocks its use until it is reviewed again.
     evidence: Lock files or hashes; change alerts and their review outcomes.
     min_tier: 1
+    or_impact: high
     nist_ai_rmf: [MANAGE 3.1, MANAGE 3.2]
     iso_42001: [A.10.3]
     eu_ai_act: []
     owasp_llm: [LLM04]
     owasp_asi: [ASI04]
     mitre_atlas: [AML.T0109, AML.T0110.000]
+    tooling: [agentlint, ai-threat-modelling-engine]
 
   - id: SUP-03
     title: Contract terms for AI providers
@@ -198,6 +205,7 @@ controls:
     owasp_llm: []
     owasp_asi: [ASI03]
     mitre_atlas: []
+    tooling: [ai-threat-modelling-engine]
 
   - id: IAM-02
     title: Least privilege and short-lived delegated credentials
@@ -213,6 +221,7 @@ controls:
     owasp_llm: [LLM03]
     owasp_asi: [ASI02, ASI03]
     mitre_atlas: [AML.T0055, AML.T0098]
+    tooling: [agentlint, mcp-adversarial-harness, ai-threat-modelling-engine]
 
   - id: IAM-03
     title: Secrets kept out of agent context
@@ -222,6 +231,7 @@ controls:
       use, and the model never sees them.
     evidence: Configuration scans; secrets-broker integration records.
     min_tier: 1
+    or_impact: high
     nist_ai_rmf: [MEASURE 2.7]
     iso_42001: []
     eu_ai_act: []
@@ -238,12 +248,14 @@ controls:
       action.
     evidence: Design review showing trust labelling; test results for indirect injection.
     min_tier: 1
+    or_impact: high
     nist_ai_rmf: [MEASURE 2.7]
     iso_42001: []
     eu_ai_act: [Art. 15]
     owasp_llm: [LLM01]
     owasp_asi: [ASI01]
     mitre_atlas: [AML.T0051.001, AML.T0053]
+    tooling: [agentlint, mcp-adversarial-harness, llm-prompt-injection-fuzzer]
 
   - id: INP-02
     title: Scanning of agent instruction files
@@ -304,8 +316,8 @@ controls:
     eu_ai_act: [Art. 15]
     owasp_llm: [LLM03]
     owasp_asi: [ASI01, ASI02]
-    mitre_atlas: [AML.T0053]
-    tooling: [mcp-adversarial-harness]
+    mitre_atlas: [AML.T0051.000, AML.T0053]
+    tooling: [mcp-adversarial-harness, agentlint]
 
   - id: ACT-03
     title: Sandboxed code execution
@@ -320,6 +332,7 @@ controls:
     owasp_llm: [LLM10]
     owasp_asi: [ASI05]
     mitre_atlas: [AML.T0105]
+    tooling: [ai-threat-modelling-engine]
 
   - id: ACT-04
     title: Egress and exfiltration controls
@@ -328,13 +341,14 @@ controls:
       images are filtered so that data cannot leave through URLs or markdown.
     evidence: Egress allow-list; output-rendering filter tests.
     min_tier: 1
+    or_impact: high
     nist_ai_rmf: [MEASURE 2.7, MEASURE 2.10]
     iso_42001: []
     eu_ai_act: []
     owasp_llm: [LLM02]
     owasp_asi: [ASI02]
     mitre_atlas: [AML.T0086, AML.T0136]
-    tooling: [agentlint, mcp-adversarial-harness]
+    tooling: [agentlint, mcp-adversarial-harness, ai-threat-modelling-engine]
 
   - id: ACT-05
     title: Trust boundaries between agents
@@ -350,6 +364,7 @@ controls:
     owasp_llm: []
     owasp_asi: [ASI07, ASI08]
     mitre_atlas: [AML.T0118, AML.T0143]
+    tooling: [llm-prompt-injection-fuzzer]
 
   - id: ACT-06
     title: Resource and spend limits
@@ -358,12 +373,14 @@ controls:
       automatically when a limit is reached.
     evidence: Budget configuration; halt events.
     min_tier: 1
+    or_impact: high
     nist_ai_rmf: [MANAGE 2.4]
     iso_42001: [A.6.2.6]
     eu_ai_act: []
     owasp_llm: [LLM06]
     owasp_asi: [ASI08]
     mitre_atlas: [AML.T0034.002, AML.T0029]
+    tooling: [ai-threat-modelling-engine]
 
   - id: DAT-01
     title: Data classes approved per system and provider
@@ -378,6 +395,7 @@ controls:
     owasp_llm: [LLM02]
     owasp_asi: []
     mitre_atlas: []
+    tooling: [ai-threat-modelling-engine]
 
   - id: DAT-02
     title: Safe handling of model output
@@ -386,12 +404,14 @@ controls:
       databases or other systems, in the same way as untrusted user input.
     evidence: Code review findings; output-handling tests.
     min_tier: 1
+    or_impact: moderate
     nist_ai_rmf: [MEASURE 2.7]
     iso_42001: []
     eu_ai_act: []
     owasp_llm: [LLM10]
     owasp_asi: [ASI05]
     mitre_atlas: []
+    tooling: [mcp-adversarial-harness]
 
   - id: OPS-01
     title: Action-level logging
@@ -401,12 +421,14 @@ controls:
       protected from tampering.
     evidence: Log schema; retention settings; integrity controls.
     min_tier: 1
+    or_impact: high
     nist_ai_rmf: [MEASURE 2.4, MANAGE 4.1]
     iso_42001: [A.6.2.8]
     eu_ai_act: [Art. 12, Art. 26]
     owasp_llm: []
     owasp_asi: [ASI10]
     mitre_atlas: []
+    tooling: [ai-threat-modelling-engine]
 
   - id: OPS-02
     title: Kill switch and credential revocation
@@ -416,6 +438,7 @@ controls:
       a year.
     evidence: Runbook; exercise records with measured times.
     min_tier: 2
+    or_impact: severe
     nist_ai_rmf: [MANAGE 2.3, MANAGE 2.4, MEASURE 2.6]
     iso_42001: [A.6.2.6]
     eu_ai_act: [Art. 14]
@@ -432,6 +455,7 @@ controls:
       AI system's behaviour.
     evidence: Runbooks; exercise reports; incident records; reporting channel and its log.
     min_tier: 1
+    or_impact: high
     nist_ai_rmf: [MANAGE 4.1, MANAGE 4.3, GOVERN 4.3]
     iso_42001: [A.3.3, A.8.4]
     eu_ai_act: [Art. 73]
@@ -446,6 +470,7 @@ controls:
       deviation from the assigned goal raise an alert.
     evidence: Detection rules; alert history and triage outcomes.
     min_tier: 2
+    or_impact: high
     nist_ai_rmf: [MEASURE 2.4, MEASURE 3.1]
     iso_42001: [A.6.2.6]
     eu_ai_act: [Art. 72]
@@ -456,17 +481,19 @@ controls:
   - id: TST-01
     title: Adversarial testing before release
     requirement: >-
-      Agents at tier 2 and above are tested before release, and after material change,
-      for prompt injection, tool misuse and data leakage using a maintained attack
-      corpus. Results are recorded against acceptance thresholds.
+      Systems at tier 2 and above, or rated high or severe impact, are tested before
+      release, and after material change, for prompt injection, tool misuse and data
+      leakage using a maintained attack corpus. Results are recorded against acceptance
+      thresholds.
     evidence: Test reports with bypass rates against thresholds.
     min_tier: 2
+    or_impact: high
     nist_ai_rmf: [MEASURE 1.1, MEASURE 2.7]
     iso_42001: [A.6.2.4]
     eu_ai_act: [Art. 15]
     owasp_llm: [LLM01, LLM02]
     owasp_asi: [ASI01, ASI02]
-    mitre_atlas: [AML.T0051, AML.T0054]
+    mitre_atlas: [AML.T0051, AML.T0051.000, AML.T0054]
     tooling: [llm-prompt-injection-fuzzer, mcp-adversarial-harness]
 
   - id: TST-02
@@ -476,6 +503,7 @@ controls:
       configuration. A bypass rate above threshold blocks the release.
     evidence: CI pipeline; trend of bypass rate by release.
     min_tier: 2
+    or_impact: high
     nist_ai_rmf: [MEASURE 1.2, MEASURE 2.4]
     iso_42001: [A.6.2.4]
     eu_ai_act: []
@@ -487,10 +515,11 @@ controls:
   - id: TST-03
     title: Independent assurance
     requirement: >-
-      Tier 3 agents receive independent review, by internal audit or an external party,
-      at least once a year.
+      Tier 3 agents and severe-impact systems receive independent review, by internal
+      audit or an external party, at least once a year.
     evidence: Assurance reports and management responses.
     min_tier: 3
+    or_impact: severe
     nist_ai_rmf: [MEASURE 1.3]
     iso_42001: []
     eu_ai_act: []
@@ -520,9 +549,11 @@ controls:
       rubber-stamping.
     evidence: Approval UI review; approval-rate and decision-time metrics.
     min_tier: 2
+    or_impact: high
     nist_ai_rmf: [MAP 3.5, MAP 2.2]
     iso_42001: [A.9.2]
     eu_ai_act: [Art. 14]
     owasp_llm: [LLM07]
     owasp_asi: [ASI09]
     mitre_atlas: []
+    tooling: [mcp-adversarial-harness]

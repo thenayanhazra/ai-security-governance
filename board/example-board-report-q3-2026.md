@@ -10,7 +10,7 @@
 
 ### 1. Summary
 
-AI use remains within appetite overall, but the number of agents that can act on customer accounts doubled this quarter and our ability to stop them quickly has not kept pace. One indicator is red: our slowest tier 3 agent took 52 minutes to stop in September's exercise against a 15-minute target. We ask the committee to approve a pause on new tier 3 deployments until that is fixed, expected by the end of January.
+AI use remains within appetite overall, but the number of agents that can act on customer accounts doubled this quarter and our ability to stop them quickly has not kept pace. One indicator is red: our slowest tier 3 agent took 72 minutes to stop in September's exercise against a 15-minute target (exceeding the 60-minute red threshold). We ask the committee to approve a pause on new tier 3 deployments until that is fixed, expected by the end of January.
 
 **Overall position:** Approaching limit
 
@@ -32,7 +32,7 @@ Growth came mainly from the customer operations programme, which moved two compl
 |---|---|---|---|---|
 | Inventory coverage | ≥ 98% | 94% | 98.5% | Green |
 | Prompt injection bypass rate (median, tier 2 and 3) | ≤ 5% | 9% | 6% | Amber |
-| Time to stop a tier 3 agent | ≤ 15 min | 12 min | 52 min | Red |
+| Time to stop a tier 3 agent | ≤ 15 min | 12 min | 72 min | Red |
 | Unreviewed MCP tool changes | 0 | Not measured | 1 (under 24 hours) | Amber |
 | Rubber-stamp rate | < 10% | 31% | 14% | Amber |
 | AI security incidents | No severity 1 or 2 | None | One severity 3 | Green |

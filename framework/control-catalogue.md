@@ -2,7 +2,7 @@
 
 # Control catalogue
 
-34 controls in 10 domains. Each control states what must be true, the evidence an assessor would ask for, the lowest autonomy tier it applies to, and where it maps in the major frameworks. Tiers are defined in the [risk framework](ai-agent-risk-framework.md#autonomy-tiers).
+34 controls in 10 domains. Each control states what must be true, the evidence an assessor would ask for, the autonomy tier and impact rating that trigger it, and where it maps in the major frameworks. Tiers and impact ratings are defined in the [risk framework](ai-agent-risk-framework.md#autonomy-tiers).
 
 | Domain | Controls |
 |---|---|
@@ -96,9 +96,9 @@ Each agent is assigned an autonomy tier based on what it can do without human ap
 
 **Threat and impact assessment before release**
 
-Agents at tier 2 and above have a documented threat model and impact assessment, approved by the risk owner, before production and after any material change to tools, data or autonomy.
+Systems at tier 2 and above, or rated high or severe impact, have a documented threat model and impact assessment, approved by the risk owner, before production and after any material change to tools, data or autonomy.
 
-- **Applies from:** tier 2 Act with approval
+- **Applies from:** tier 2 Act with approval, or High impact and above
 - **Evidence:** Signed assessment; change records that triggered reassessment.
 - **NIST AI RMF:** GOVERN 1.5, GOVERN 4.2, MAP 5.1, MANAGE 1.1, MANAGE 1.3
 - **ISO/IEC 42001:** A.5.2, A.5.3, A.6.2.5
@@ -111,7 +111,7 @@ Agents at tier 2 and above have a documented threat model and impact assessment,
 
 When an agent or component is withdrawn, its credentials are revoked, its memory and retrieval indexes are purged or archived under retention rules, its tool connections are removed and the inventory is updated.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or High impact and above
 - **Evidence:** Decommissioning checklist; credential revocation records.
 - **NIST AI RMF:** GOVERN 1.7
 - **ISO/IEC 42001:** A.6.2.6
@@ -125,14 +125,14 @@ When an agent or component is withdrawn, its credentials are revoked, its memory
 
 Models, MCP servers, skills and agent plugins are used only from an approved registry. New entries pass an intake review covering provenance, maintainer, licence, permissions requested, static scanning and adversarial testing.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or High impact and above
 - **Evidence:** Registry with intake records; rejected-request log.
 - **NIST AI RMF:** GOVERN 6.1, MAP 4.1, MANAGE 3.1
 - **ISO/IEC 42001:** A.10.3
 - **EU AI Act:** Art. 25
 - **OWASP LLM 2026:** LLM04 Supply Chain
 - **OWASP Agentic 2026:** ASI04 Agentic Supply Chain Vulnerabilities
-- **MITRE ATLAS:** AML.T0010.005, AML.T0110, AML.T0111
+- **MITRE ATLAS:** AML.T0010.005 Supply Chain Compromise: AI Agent Tool, AML.T0110 AI Agent Tool Poisoning, AML.T0111 AI Supply Chain Reputation Inflation
 - **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
 ### SUP-02
@@ -141,13 +141,14 @@ Models, MCP servers, skills and agent plugins are used only from an approved reg
 
 Approved components are pinned to a reviewed version or hash. Tool definitions are fingerprinted, and any change to a tool's description, schema or permissions blocks its use until it is reviewed again.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or High impact and above
 - **Evidence:** Lock files or hashes; change alerts and their review outcomes.
 - **NIST AI RMF:** MANAGE 3.1, MANAGE 3.2
 - **ISO/IEC 42001:** A.10.3
 - **OWASP LLM 2026:** LLM04 Supply Chain
 - **OWASP Agentic 2026:** ASI04 Agentic Supply Chain Vulnerabilities
-- **MITRE ATLAS:** AML.T0109, AML.T0110.000
+- **MITRE ATLAS:** AML.T0109 AI Supply Chain Rug Pull, AML.T0110.000 AI Agent Tool Poisoning: Definition and Instructions
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint), [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine)
 
 ### SUP-03
 
@@ -174,6 +175,7 @@ Each agent runs under its own non-human identity, never a shared account or a pe
 - **Evidence:** Identity register; sample of actions traced end to end.
 - **NIST AI RMF:** MEASURE 2.8
 - **OWASP Agentic 2026:** ASI03 Identity and Privilege Abuse
+- **Open-source tooling:** [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine)
 
 ### IAM-02
 
@@ -187,7 +189,8 @@ Agents receive only the tools, scopes and data the task needs. Credentials are s
 - **ISO/IEC 42001:** A.9.4
 - **OWASP LLM 2026:** LLM03 Excessive Agency
 - **OWASP Agentic 2026:** ASI02 Tool Misuse and Exploitation, ASI03 Identity and Privilege Abuse
-- **MITRE ATLAS:** AML.T0055, AML.T0098
+- **MITRE ATLAS:** AML.T0055 Unsecured Credentials, AML.T0098 AI Agent Tool Credential Harvesting
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness), [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine)
 
 ### IAM-03
 
@@ -195,12 +198,12 @@ Agents receive only the tools, scopes and data the task needs. Credentials are s
 
 Credentials and keys never appear in prompts, agent configuration files, memory or tool descriptions. Agents obtain them from a secrets broker at the moment of use, and the model never sees them.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or High impact and above
 - **Evidence:** Configuration scans; secrets-broker integration records.
 - **NIST AI RMF:** MEASURE 2.7
 - **OWASP LLM 2026:** LLM02 Sensitive Information Disclosure, LLM08 Hidden Context Exposure
 - **OWASP Agentic 2026:** ASI03 Identity and Privilege Abuse
-- **MITRE ATLAS:** AML.T0083
+- **MITRE ATLAS:** AML.T0083 Credentials from AI Agent Configuration
 - **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint)
 
 ## Input and context integrity
@@ -211,13 +214,14 @@ Credentials and keys never appear in prompts, agent configuration files, memory 
 
 Content from tools, documents, web pages, email and other agents is labelled as data, kept separate from instructions, and cannot on its own trigger a privileged action.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or High impact and above
 - **Evidence:** Design review showing trust labelling; test results for indirect injection.
 - **NIST AI RMF:** MEASURE 2.7
 - **EU AI Act:** Art. 15
 - **OWASP LLM 2026:** LLM01 Prompt Injection
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack
-- **MITRE ATLAS:** AML.T0051.001, AML.T0053
+- **MITRE ATLAS:** AML.T0051.001 LLM Prompt Injection: Indirect, AML.T0053 AI Agent Tool Invocation
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness), [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer)
 
 ### INP-02
 
@@ -231,7 +235,7 @@ Agent instruction files (skills, AGENTS.md, IDE rules, MCP configuration) are sc
 - **ISO/IEC 42001:** A.6.2.4
 - **OWASP LLM 2026:** LLM01 Prompt Injection
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack, ASI04 Agentic Supply Chain Vulnerabilities
-- **MITRE ATLAS:** AML.T0081, AML.T0068
+- **MITRE ATLAS:** AML.T0081 Modify AI Agent Configuration, AML.T0068 LLM Prompt Obfuscation
 - **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint)
 
 ### INP-03
@@ -247,7 +251,7 @@ Writes to long-term memory and retrieval indexes are limited to trusted sources 
 - **EU AI Act:** Art. 15
 - **OWASP LLM 2026:** LLM05 Data and Model Poisoning, LLM09 Vector and Embedding Weaknesses
 - **OWASP Agentic 2026:** ASI06 Memory and Context Poisoning
-- **MITRE ATLAS:** AML.T0080.000, AML.T0070
+- **MITRE ATLAS:** AML.T0080.000 AI Agent Context Poisoning: Memory, AML.T0070 RAG Poisoning
 
 ## Action and tool control
 
@@ -264,7 +268,7 @@ Actions that move money, delete or change records, send external communications,
 - **EU AI Act:** Art. 14
 - **OWASP LLM 2026:** LLM03 Excessive Agency
 - **OWASP Agentic 2026:** ASI02 Tool Misuse and Exploitation, ASI09 Human-Agent Trust Exploitation
-- **MITRE ATLAS:** AML.T0101, AML.T0086
+- **MITRE ATLAS:** AML.T0101 Data Destruction via AI Agent Tool Invocation, AML.T0086 Exfiltration via AI Agent Tool Invocation
 
 ### ACT-02
 
@@ -278,8 +282,8 @@ Allowed tools, parameters, destinations and rates are enforced by a policy layer
 - **EU AI Act:** Art. 15
 - **OWASP LLM 2026:** LLM03 Excessive Agency
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack, ASI02 Tool Misuse and Exploitation
-- **MITRE ATLAS:** AML.T0053
-- **Open-source tooling:** [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
+- **MITRE ATLAS:** AML.T0051.000 LLM Prompt Injection: Direct, AML.T0053 AI Agent Tool Invocation
+- **Open-source tooling:** [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness), [agentlint](https://github.com/thenayanhazra/agentlint)
 
 ### ACT-03
 
@@ -292,7 +296,8 @@ Code and commands generated by an agent run in an isolated, short-lived sandbox 
 - **NIST AI RMF:** MEASURE 2.7
 - **OWASP LLM 2026:** LLM10 Improper Output Handling
 - **OWASP Agentic 2026:** ASI05 Unexpected Code Execution
-- **MITRE ATLAS:** AML.T0105
+- **MITRE ATLAS:** AML.T0105 Escape to Host
+- **Open-source tooling:** [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine)
 
 ### ACT-04
 
@@ -300,13 +305,13 @@ Code and commands generated by an agent run in an isolated, short-lived sandbox 
 
 Agents can reach only approved destinations. Outbound requests, rendered links and images are filtered so that data cannot leave through URLs or markdown.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or High impact and above
 - **Evidence:** Egress allow-list; output-rendering filter tests.
 - **NIST AI RMF:** MEASURE 2.7, MEASURE 2.10
 - **OWASP LLM 2026:** LLM02 Sensitive Information Disclosure
 - **OWASP Agentic 2026:** ASI02 Tool Misuse and Exploitation
-- **MITRE ATLAS:** AML.T0086, AML.T0136
-- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
+- **MITRE ATLAS:** AML.T0086 Exfiltration via AI Agent Tool Invocation, AML.T0136 Exfiltration via AI User Interface
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness), [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine)
 
 ### ACT-05
 
@@ -318,7 +323,8 @@ Messages between agents are authenticated and treated as untrusted input. No age
 - **Evidence:** Inter-agent protocol design; authority-propagation tests.
 - **NIST AI RMF:** MAP 4.2
 - **OWASP Agentic 2026:** ASI07 Insecure Inter-Agent Communication, ASI08 Cascading Failures
-- **MITRE ATLAS:** AML.T0118, AML.T0143
+- **MITRE ATLAS:** AML.T0118 Autonomous AI Agent Communication, AML.T0143 LLM Prompt Propagation
+- **Open-source tooling:** [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer)
 
 ### ACT-06
 
@@ -326,13 +332,14 @@ Messages between agents are authenticated and treated as untrusted input. No age
 
 Each agent has limits on tokens, tool calls, spend and run time, and halts automatically when a limit is reached.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or High impact and above
 - **Evidence:** Budget configuration; halt events.
 - **NIST AI RMF:** MANAGE 2.4
 - **ISO/IEC 42001:** A.6.2.6
 - **OWASP LLM 2026:** LLM06 Unbounded Consumption
 - **OWASP Agentic 2026:** ASI08 Cascading Failures
-- **MITRE ATLAS:** AML.T0034.002, AML.T0029
+- **MITRE ATLAS:** AML.T0034.002 Cost Harvesting: Agentic Resource Consumption, AML.T0029 Denial of AI Service
+- **Open-source tooling:** [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine)
 
 ## Data protection
 
@@ -347,6 +354,7 @@ The classes of data each AI system and provider may process are defined. Restric
 - **NIST AI RMF:** MEASURE 2.10
 - **ISO/IEC 42001:** A.7.2
 - **OWASP LLM 2026:** LLM02 Sensitive Information Disclosure
+- **Open-source tooling:** [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine)
 
 ### DAT-02
 
@@ -354,11 +362,12 @@ The classes of data each AI system and provider may process are defined. Restric
 
 Model output is validated and encoded before it reaches browsers, shells, databases or other systems, in the same way as untrusted user input.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or Moderate impact and above
 - **Evidence:** Code review findings; output-handling tests.
 - **NIST AI RMF:** MEASURE 2.7
 - **OWASP LLM 2026:** LLM10 Improper Output Handling
 - **OWASP Agentic 2026:** ASI05 Unexpected Code Execution
+- **Open-source tooling:** [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
 ## Monitoring and response
 
@@ -368,12 +377,13 @@ Model output is validated and encoded before it reaches browsers, shells, databa
 
 Every prompt, tool call, parameter set, approval decision and result is logged with the agent's identity and a correlation ID, retained according to policy and protected from tampering.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or High impact and above
 - **Evidence:** Log schema; retention settings; integrity controls.
 - **NIST AI RMF:** MEASURE 2.4, MANAGE 4.1
 - **ISO/IEC 42001:** A.6.2.8
 - **EU AI Act:** Art. 12, Art. 26
 - **OWASP Agentic 2026:** ASI10 Rogue Agents
+- **Open-source tooling:** [AI Threat Modelling Engine](https://github.com/thenayanhazra/ai-threat-modelling-engine)
 
 ### OPS-02
 
@@ -381,7 +391,7 @@ Every prompt, tool call, parameter set, approval decision and result is logged w
 
 Any agent can be paused, its credentials revoked and its recent actions listed within a set time: 15 minutes for tier 3. The procedure is exercised at least twice a year.
 
-- **Applies from:** tier 2 Act with approval
+- **Applies from:** tier 2 Act with approval, or Severe impact
 - **Evidence:** Runbook; exercise records with measured times.
 - **NIST AI RMF:** MANAGE 2.3, MANAGE 2.4, MEASURE 2.6
 - **ISO/IEC 42001:** A.6.2.6
@@ -394,7 +404,7 @@ Any agent can be paused, its credentials revoked and its recent actions listed w
 
 Incident runbooks cover prompt injection, data leakage through agents, runaway or rogue agents and compromised MCP servers, including regulatory notification where it is required. Staff and users have a clear channel to report concerns about an AI system's behaviour.
 
-- **Applies from:** tier 1 Retrieve
+- **Applies from:** tier 1 Retrieve, or High impact and above
 - **Evidence:** Runbooks; exercise reports; incident records; reporting channel and its log.
 - **NIST AI RMF:** MANAGE 4.1, MANAGE 4.3, GOVERN 4.3
 - **ISO/IEC 42001:** A.3.3, A.8.4
@@ -407,7 +417,7 @@ Incident runbooks cover prompt injection, data leakage through agents, runaway o
 
 Each agent's normal behaviour is baselined. Unusual tools, destinations, volumes or deviation from the assigned goal raise an alert.
 
-- **Applies from:** tier 2 Act with approval
+- **Applies from:** tier 2 Act with approval, or High impact and above
 - **Evidence:** Detection rules; alert history and triage outcomes.
 - **NIST AI RMF:** MEASURE 2.4, MEASURE 3.1
 - **ISO/IEC 42001:** A.6.2.6
@@ -420,16 +430,16 @@ Each agent's normal behaviour is baselined. Unusual tools, destinations, volumes
 
 **Adversarial testing before release**
 
-Agents at tier 2 and above are tested before release, and after material change, for prompt injection, tool misuse and data leakage using a maintained attack corpus. Results are recorded against acceptance thresholds.
+Systems at tier 2 and above, or rated high or severe impact, are tested before release, and after material change, for prompt injection, tool misuse and data leakage using a maintained attack corpus. Results are recorded against acceptance thresholds.
 
-- **Applies from:** tier 2 Act with approval
+- **Applies from:** tier 2 Act with approval, or High impact and above
 - **Evidence:** Test reports with bypass rates against thresholds.
 - **NIST AI RMF:** MEASURE 1.1, MEASURE 2.7
 - **ISO/IEC 42001:** A.6.2.4
 - **EU AI Act:** Art. 15
 - **OWASP LLM 2026:** LLM01 Prompt Injection, LLM02 Sensitive Information Disclosure
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack, ASI02 Tool Misuse and Exploitation
-- **MITRE ATLAS:** AML.T0051, AML.T0054
+- **MITRE ATLAS:** AML.T0051 LLM Prompt Injection, AML.T0051.000 LLM Prompt Injection: Direct, AML.T0054 LLM Jailbreak
 - **Open-source tooling:** [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer), [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
 ### TST-02
@@ -438,22 +448,22 @@ Agents at tier 2 and above are tested before release, and after material change,
 
 The attack corpus runs in CI against the production system prompt and configuration. A bypass rate above threshold blocks the release.
 
-- **Applies from:** tier 2 Act with approval
+- **Applies from:** tier 2 Act with approval, or High impact and above
 - **Evidence:** CI pipeline; trend of bypass rate by release.
 - **NIST AI RMF:** MEASURE 1.2, MEASURE 2.4
 - **ISO/IEC 42001:** A.6.2.4
 - **OWASP LLM 2026:** LLM01 Prompt Injection
 - **OWASP Agentic 2026:** ASI01 Agent Goal Hijack
-- **MITRE ATLAS:** AML.T0051
+- **MITRE ATLAS:** AML.T0051 LLM Prompt Injection
 - **Open-source tooling:** [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer)
 
 ### TST-03
 
 **Independent assurance**
 
-Tier 3 agents receive independent review, by internal audit or an external party, at least once a year.
+Tier 3 agents and severe-impact systems receive independent review, by internal audit or an external party, at least once a year.
 
-- **Applies from:** tier 3 Act autonomously
+- **Applies from:** tier 3 Act autonomously, or Severe impact
 - **Evidence:** Assurance reports and management responses.
 - **NIST AI RMF:** MEASURE 1.3
 
@@ -479,11 +489,12 @@ People are told when they are dealing with an AI system or receiving AI-generate
 
 Approval screens state what will happen and why, rather than asking for a bare yes or no. Approval rates and decision times are monitored to detect rubber-stamping.
 
-- **Applies from:** tier 2 Act with approval
+- **Applies from:** tier 2 Act with approval, or High impact and above
 - **Evidence:** Approval UI review; approval-rate and decision-time metrics.
 - **NIST AI RMF:** MAP 3.5, MAP 2.2
 - **ISO/IEC 42001:** A.9.2
 - **EU AI Act:** Art. 14
 - **OWASP LLM 2026:** LLM07 Misinformation
 - **OWASP Agentic 2026:** ASI09 Human-Agent Trust Exploitation
+- **Open-source tooling:** [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 

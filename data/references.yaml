@@ -1,6 +1,6 @@
 # Identifiers the control catalogue is allowed to cite, and the version of each
 # framework they come from. tools/validate.py rejects anything not listed here.
-# MITRE ATLAS IDs are checked separately against MITRE's published data.
+# MITRE ATLAS IDs are also checked against MITRE's published data.
 
 frameworks:
   nist_ai_rmf:
@@ -9,7 +9,7 @@ frameworks:
     url: https://airc.nist.gov/airmf-resources/airmf/5-sec-core/
   iso_42001:
     name: ISO/IEC 42001
-    version: "ISO/IEC 42001:2023, Annex A"
+    version: "ISO/IEC 42001:2023, Annex A (all 38 reference controls)"
     url: https://www.iso.org/standard/81230.html
   eu_ai_act:
     name: EU AI Act
@@ -28,6 +28,7 @@ frameworks:
     version: "v2026.10"
     url: https://atlas.mitre.org/
 
+# Complete set of 72 NIST AI RMF 1.0 subcategories (19 categories across 4 functions)
 nist_ai_rmf:
   GOVERN 1.1: Legal and regulatory requirements involving AI are understood, managed and documented
   GOVERN 1.2: Trustworthy AI characteristics are integrated into policies and practices
@@ -39,38 +40,70 @@ nist_ai_rmf:
   GOVERN 2.1: Roles, responsibilities and lines of communication for AI risk are documented and clear
   GOVERN 2.2: Personnel and partners receive AI risk training
   GOVERN 2.3: Executive leadership takes responsibility for decisions about AI risk
+  GOVERN 3.1: Decision-making about AI risk mapping, measurement and management is informed by a diverse team
+  GOVERN 3.2: Policies and procedures define roles and responsibilities for human-AI configurations and oversight
   GOVERN 4.1: Policies foster critical thinking and a safety-first mindset
   GOVERN 4.2: Teams document and communicate AI risks and impacts
   GOVERN 4.3: Practices enable AI testing, incident identification and information sharing
+  GOVERN 5.1: Policies and practices collect and integrate feedback from relevant external AI actors
+  GOVERN 5.2: Mechanisms incorporate adjudicated feedback from relevant AI actors into system design
   GOVERN 6.1: Policies address AI risks from third-party entities, including IP infringement
   GOVERN 6.2: Contingency processes handle failures or incidents in high-risk third-party data or AI systems
   MAP 1.1: Intended purposes, context, norms, settings and expectations are documented
+  MAP 1.2: Interdisciplinary perspectives inform context establishment and are documented
+  MAP 1.3: Organisational mission and goals for AI technology are understood and documented
+  MAP 1.4: Business value or context of business use is clearly defined or re-evaluated
   MAP 1.5: Organisational risk tolerances are determined and documented
+  MAP 1.6: System requirements are elicited from and understood by relevant AI actors, including socio-technical effects
   MAP 2.1: Specific tasks and methods the AI system supports are defined
   MAP 2.2: Knowledge limits and human oversight of outputs are documented
+  MAP 2.3: Scientific integrity and TEVV considerations are identified and documented
+  MAP 3.1: Potential benefits of intended AI system functionality are examined and documented
+  MAP 3.2: Potential costs, including non-monetary costs of errors, are examined and documented
   MAP 3.3: Targeted application scope is specified and documented
+  MAP 3.4: Operator and practitioner proficiency with AI system performance is defined and assessed
   MAP 3.5: Human oversight processes are defined, assessed and documented
   MAP 4.1: Approaches for mapping technology and legal risks of components are documented
   MAP 4.2: Internal risk controls for components, including third-party AI, are identified and documented
   MAP 5.1: Likelihood and magnitude of each identified impact are documented
+  MAP 5.2: Regular engagement with relevant AI actors integrates feedback about potential impacts
   MEASURE 1.1: Metrics are selected for the most significant risks; unmeasured risks are documented
   MEASURE 1.2: Metrics and control effectiveness are regularly reassessed
   MEASURE 1.3: Independent assessors are involved in regular assessments
+  MEASURE 2.1: Test sets, metrics and details about TEVV tools are documented
+  MEASURE 2.2: Evaluations involving human subjects meet applicable requirements
+  MEASURE 2.3: AI system performance or assurance criteria are measured in conditions similar to deployment
   MEASURE 2.4: Functionality and behaviour are monitored in production
+  MEASURE 2.5: AI system validity and reliability are demonstrated and limitations documented
   MEASURE 2.6: Safety risks are evaluated regularly and the system fails safely
   MEASURE 2.7: Security and resilience are evaluated and documented
   MEASURE 2.8: Transparency and accountability risks are examined and documented
+  MEASURE 2.9: AI model is explained, validated and interpreted in context
   MEASURE 2.10: Privacy risk is examined and documented
+  MEASURE 2.11: Fairness and bias are evaluated and results documented
+  MEASURE 2.12: Environmental impact and sustainability of AI model training and management are assessed
+  MEASURE 2.13: Effectiveness of employed TEVV metrics and processes is evaluated and documented
   MEASURE 3.1: Existing, unanticipated and emerging risks are tracked over time
+  MEASURE 3.2: Risk tracking approaches are considered for settings where risks are difficult to assess
+  MEASURE 3.3: Feedback processes for end users and impacted communities to report problems and appeal outcomes are established
+  MEASURE 4.1: Measurement approaches for identifying AI risks are connected to deployment contexts and informed by domain experts
+  MEASURE 4.2: Measurement results regarding trustworthiness are validated by domain experts and relevant AI actors
+  MEASURE 4.3: Measurable performance improvements or declines are identified and documented
   MANAGE 1.1: A determination is made whether the AI system achieves its purpose and should proceed
+  MANAGE 1.2: Treatment of documented AI risks is prioritised based on impact, likelihood and available resources
   MANAGE 1.3: Responses to high-priority risks are developed, planned and documented
+  MANAGE 1.4: Negative residual risks to downstream acquirers and end users are documented
+  MANAGE 2.1: Resources required to manage AI risks are taken into account along with viable non-AI alternative systems
+  MANAGE 2.2: Mechanisms are in place to sustain the value of deployed AI systems
   MANAGE 2.3: Procedures respond to and recover from previously unknown risks
   MANAGE 2.4: Mechanisms exist to supersede, disengage or deactivate AI systems
   MANAGE 3.1: Third-party AI risks are monitored and controls applied
   MANAGE 3.2: Pre-trained models are monitored as part of regular maintenance
   MANAGE 4.1: Post-deployment monitoring, incident response and change management are implemented
+  MANAGE 4.2: Measurable activities for continual improvement are integrated into AI system updates
   MANAGE 4.3: Incidents and errors are communicated and tracked through recovery
 
+# Complete set of 38 ISO/IEC 42001:2023 Annex A reference controls (paraphrased titles)
 iso_42001:
   A.2.2: AI policy
   A.2.3: Alignment with other organisational policies
@@ -78,35 +111,60 @@ iso_42001:
   A.3.2: AI roles and responsibilities
   A.3.3: Reporting of concerns
   A.4.2: Resource documentation
+  A.4.3: Data resources
+  A.4.4: Tooling resources
+  A.4.5: System and computing resources
   A.4.6: Human resources
   A.5.2: AI system impact assessment process
   A.5.3: Documentation of AI system impact assessments
   A.5.4: Assessing AI system impact on individuals or groups of individuals
+  A.5.5: Assessing societal impacts of AI systems
+  A.6.1.2: Objectives for responsible development of AI system
+  A.6.1.3: Processes for responsible AI system design and development
+  A.6.2.2: AI system requirements and specification
+  A.6.2.3: Documentation of AI system design and development
   A.6.2.4: AI system verification and validation
   A.6.2.5: AI system deployment
   A.6.2.6: AI system operation and monitoring
   A.6.2.7: AI system technical documentation
   A.6.2.8: AI system recording of event logs
   A.7.2: Data for development and enhancement of AI system
+  A.7.3: Acquisition of data
+  A.7.4: Quality of data for AI systems
   A.7.5: Data provenance
+  A.7.6: Data preparation
   A.8.2: System documentation and information for users
+  A.8.3: External reporting
   A.8.4: Communication of incidents
+  A.8.5: Information for interested parties
   A.9.2: Processes for responsible use of AI systems
+  A.9.3: Objectives for responsible use of AI system
   A.9.4: Intended use of the AI system
   A.10.2: Allocating responsibilities
   A.10.3: Suppliers
+  A.10.4: Customers
 
+# Key governance, risk and compliance articles of the EU AI Act
 eu_ai_act:
   Art. 4: AI literacy
   Art. 5: Prohibited AI practices
   Art. 6: Classification rules for high-risk AI systems
   Art. 9: Risk management system (high-risk)
+  Art. 10: Data and data governance (high-risk)
+  Art. 11: Technical documentation (high-risk)
   Art. 12: Record-keeping (high-risk)
+  Art. 13: Transparency and provision of information to deployers (high-risk)
   Art. 14: Human oversight (high-risk)
   Art. 15: Accuracy, robustness and cybersecurity (high-risk)
+  Art. 16: Obligations of providers of high-risk AI systems
+  Art. 17: Quality management system (high-risk)
   Art. 25: Responsibilities along the AI value chain
   Art. 26: Obligations of deployers of high-risk AI systems
+  Art. 27: Fundamental rights impact assessment (deployers of high-risk systems)
+  Art. 43: Conformity assessment (high-risk)
   Art. 50: Transparency obligations for certain AI systems
+  Art. 53: Obligations for providers of general-purpose AI models
+  Art. 55: Obligations for providers of GPAI models with systemic risk
   Art. 72: Post-market monitoring (providers of high-risk systems)
   Art. 73: Reporting of serious incidents (high-risk)
 
@@ -133,3 +191,35 @@ owasp_asi:
   ASI08: Cascading Failures
   ASI09: Human-Agent Trust Exploitation
   ASI10: Rogue Agents
+
+# Agentic and LLM MITRE ATLAS techniques in scope of this repository
+# (every ID is verified against MITRE's published ATLAS-latest.yaml by tools/validate.py)
+mitre_atlas:
+  AML.T0010.005: "Supply Chain Compromise: AI Agent Tool"
+  AML.T0029: Denial of AI Service
+  AML.T0034.002: "Cost Harvesting: Agentic Resource Consumption"
+  AML.T0051: LLM Prompt Injection
+  AML.T0051.000: "LLM Prompt Injection: Direct"
+  AML.T0051.001: "LLM Prompt Injection: Indirect"
+  AML.T0053: AI Agent Tool Invocation
+  AML.T0054: LLM Jailbreak
+  AML.T0055: Unsecured Credentials
+  AML.T0068: LLM Prompt Obfuscation
+  AML.T0069.002: "Discover LLM System Information: System Prompt"
+  AML.T0070: RAG Poisoning
+  AML.T0080.000: "AI Agent Context Poisoning: Memory"
+  AML.T0081: Modify AI Agent Configuration
+  AML.T0082: RAG Credential Harvesting
+  AML.T0083: Credentials from AI Agent Configuration
+  AML.T0086: Exfiltration via AI Agent Tool Invocation
+  AML.T0098: AI Agent Tool Credential Harvesting
+  AML.T0099: AI Agent Tool Data Poisoning
+  AML.T0101: Data Destruction via AI Agent Tool Invocation
+  AML.T0105: Escape to Host
+  AML.T0109: AI Supply Chain Rug Pull
+  AML.T0110: AI Agent Tool Poisoning
+  AML.T0110.000: "AI Agent Tool Poisoning: Definition and Instructions"
+  AML.T0111: AI Supply Chain Reputation Inflation
+  AML.T0118: Autonomous AI Agent Communication
+  AML.T0136: Exfiltration via AI User Interface
+  AML.T0143: LLM Prompt Propagation
