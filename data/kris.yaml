@@ -1,0 +1,185 @@
+# Single source of truth for the key risk indicators (KRIs).
+# Edit here, then run: python tools/build.py && python tools/validate.py
+
+kris:
+  - id: KRI-01
+    name: Inventory coverage
+    measure: Registered AI systems, agents and components with a named owner, as a share of all found by discovery
+    green: "≥ 98%"
+    amber: "90% to < 98%"
+    red: "< 90%"
+    thresholds:
+      unit: percent
+      direction: higher_is_better
+      green_min: 98
+      amber_min: 90
+    controls: [INV-01, GOV-01]
+
+  - id: KRI-02
+    name: Unregistered AI found
+    measure: New AI tools, MCP servers or agents found in use without registration, per quarter
+    green: "≤ 5"
+    amber: "6–15"
+    red: "> 15"
+    thresholds:
+      unit: count
+      direction: lower_is_better
+      green_max: 5
+      amber_max: 15
+    controls: [INV-01, SUP-01]
+
+  - id: KRI-03
+    name: Assessment currency
+    measure: Tier 2 and 3 systems, and high or severe impact systems, whose threat and impact assessment reflects their current tools, data and tier
+    green: "100%"
+    amber: "95% to < 100%"
+    red: "< 95%"
+    thresholds:
+      unit: percent
+      direction: higher_is_better
+      green_min: 100
+      amber_min: 95
+    controls: [INV-03]
+
+  - id: KRI-04
+    name: Prompt injection bypass rate
+    measure: Median share of the standard attack corpus that succeeds against tier 2 and 3 agents
+    green: "≤ 5%"
+    amber: "> 5% to 15%"
+    red: "> 15%"
+    thresholds:
+      unit: percent
+      direction: lower_is_better
+      green_max: 5
+      amber_max: 15
+    controls: [TST-01, TST-02]
+    note: >-
+      Use the same corpus every quarter so results are comparable, and add new
+      techniques as a separate line until there is a baseline for them. Report the
+      median across agents, and name any single agent above the red threshold. The
+      [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer)
+      produces this number per category.
+
+  - id: KRI-05
+    name: Time to stop an agent
+    measure: Longest time, in the latest exercise, to pause a tier 3 agent and revoke its credentials
+    green: "≤ 15 min"
+    amber: "> 15 to 60 min"
+    red: "> 60 min, or no exercise in 6 months"
+    thresholds:
+      unit: minutes
+      direction: lower_is_better
+      green_max: 15
+      amber_max: 60
+    controls: [OPS-02]
+    note: >-
+      Measure from the decision to stop until the agent has stopped acting and its
+      credentials no longer work, not until someone has opened a ticket. An exercise
+      that has not happened counts as red.
+
+  - id: KRI-06
+    name: Unreviewed tool changes
+    measure: MCP tool definitions in use that changed since their last review
+    green: "0"
+    amber: "1–2, each ≤ 48 hours old"
+    red: "> 2, or any > 48 hours old"
+    thresholds:
+      unit: count
+      direction: lower_is_better
+      green_max: 0
+      amber_max: 2
+    controls: [SUP-02]
+    note: >-
+      MCP servers can change a tool's description after it has been approved. This
+      indicator only works if tool definitions are fingerprinted at approval time;
+      if they are not, report it as "not measurable" rather than zero.
+
+  - id: KRI-07
+    name: Rubber-stamp rate
+    measure: Human approvals given in under three seconds, as a share of all approvals
+    green: "< 10%"
+    amber: "10% to 25%"
+    red: "> 25%"
+    thresholds:
+      unit: percent
+      direction: lower_is_better
+      green_max: 9.99
+      amber_max: 25
+    controls: [HUM-02, ACT-01]
+    note: >-
+      Three seconds is roughly the time it takes to read one line. A high rate
+      usually means approvals are requested too often, not that reviewers are
+      careless. The fix is fewer, clearer approval requests.
+
+  - id: KRI-08
+    name: Over-privileged agents
+    measure: Agents holding scopes beyond their documented need at the last access review
+    green: "< 5%"
+    amber: "5% to 15%"
+    red: "> 15%"
+    thresholds:
+      unit: percent
+      direction: lower_is_better
+      green_max: 4.99
+      amber_max: 15
+    controls: [IAM-02]
+
+  - id: KRI-09
+    name: Agents without their own identity
+    measure: Agents acting under a person's account or a shared account
+    green: "0"
+    amber: "1–2, with approved exception"
+    red: "> 2, or any without exception"
+    thresholds:
+      unit: count
+      direction: lower_is_better
+      green_max: 0
+      amber_max: 2
+    controls: [IAM-01]
+
+  - id: KRI-10
+    name: Overdue AI security findings
+    measure: Critical and high findings on AI systems past their remediation deadline
+    green: "0"
+    amber: "1–3"
+    red: "> 3"
+    thresholds:
+      unit: count
+      direction: lower_is_better
+      green_max: 0
+      amber_max: 3
+    controls: [TST-01, TST-03]
+
+  - id: KRI-11
+    name: AI security incidents
+    measure: Incidents involving AI systems in the quarter, by severity
+    green: "No severity 1 or 2"
+    amber: "One severity 2"
+    red: "Any severity 1, or ≥ 2 severity 2"
+    controls: [OPS-03, OPS-04]
+
+  - id: KRI-12
+    name: Training coverage
+    measure: In-scope staff who completed role-based AI training in the last 12 months
+    green: "≥ 95%"
+    amber: "85% to < 95%"
+    red: "< 85%"
+    thresholds:
+      unit: percent
+      direction: higher_is_better
+      green_min: 95
+      amber_min: 85
+    controls: [GOV-04]
+
+  - id: KRI-13
+    name: Overdue risk exceptions
+    measure: Active AI policy or control exceptions past their 90-day expiry date (tracked in the [exception register](../templates/exception-register-template.md))
+    green: "0"
+    amber: "1–2, renewal in progress"
+    red: "> 2, or any tier 3 exception overdue"
+    thresholds:
+      unit: count
+      direction: lower_is_better
+      green_max: 0
+      amber_max: 2
+    controls: [GOV-02, SUP-01]

@@ -1,0 +1,18 @@
+[project]
+name = "ai-security-governance"
+version = "1.0.0"
+description = "Governance-as-code kit for AI systems and autonomous agents: risk framework, control catalogue, crosswalk, board pack, policies, templates, runbooks and machine-readable exports."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "check-jsonschema>=0.29",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,1901 @@
+{
+  "schema_version": "1.0.0",
+  "source": "https://github.com/thenayanhazra/ai-security-governance",
+  "frameworks": {
+    "nist_ai_rmf": {
+      "name": "NIST AI Risk Management Framework",
+      "version": "AI RMF 1.0 (NIST AI 100-1). NIST has said 1.0 is under revision.",
+      "url": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/"
+    },
+    "iso_42001": {
+      "name": "ISO/IEC 42001",
+      "version": "ISO/IEC 42001:2023, Annex A (all 38 reference controls)",
+      "url": "https://www.iso.org/standard/81230.html"
+    },
+    "eu_ai_act": {
+      "name": "EU AI Act",
+      "version": "Regulation (EU) 2024/1689 as amended by Regulation (EU) 2026/1744 (Digital Omnibus on AI)",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+    },
+    "owasp_llm": {
+      "name": "OWASP Top 10 for LLM Applications",
+      "version": "2026 edition (published August 2026)",
+      "url": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/"
+    },
+    "owasp_asi": {
+      "name": "OWASP Top 10 for Agentic Applications",
+      "version": "2026 edition (published December 2025)",
+      "url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/"
+    },
+    "mitre_atlas": {
+      "name": "MITRE ATLAS",
+      "version": "v2026.10",
+      "url": "https://atlas.mitre.org/"
+    }
+  },
+  "tiers": {
+    "0": "0 Assist",
+    "1": "1 Retrieve",
+    "2": "2 Act with approval",
+    "3": "3 Act autonomously"
+  },
+  "impacts": {
+    "low": "Low",
+    "moderate": "Moderate",
+    "high": "High",
+    "severe": "Severe"
+  },
+  "approval_matrix": {
+    "0": {
+      "low": "Team lead",
+      "moderate": "Team lead",
+      "high": "AI risk forum",
+      "severe": "AI risk forum"
+    },
+    "1": {
+      "low": "Team lead",
+      "moderate": "AI risk forum",
+      "high": "AI risk forum",
+      "severe": "Executive risk owner"
+    },
+    "2": {
+      "low": "AI risk forum",
+      "moderate": "AI risk forum",
+      "high": "Executive risk owner",
+      "severe": "Executive committee"
+    },
+    "3": {
+      "low": "AI risk forum",
+      "moderate": "Executive risk owner",
+      "high": "Executive committee",
+      "severe": "Not permitted without board approval"
+    }
+  },
+  "domains": {
+    "GOV": "Governance and accountability",
+    "INV": "Inventory and classification",
+    "SUP": "Supply chain",
+    "IAM": "Agent identity and authority",
+    "INP": "Input and context integrity",
+    "ACT": "Action and tool control",
+    "DAT": "Data protection",
+    "OPS": "Monitoring and response",
+    "TST": "Testing and assurance",
+    "HUM": "Human oversight and transparency"
+  },
+  "controls": [
+    {
+      "id": "GOV-01",
+      "title": "Accountable ownership",
+      "requirement": "A named executive owns enterprise AI risk. Every AI system and agent in the inventory has an accountable business owner and a technical owner, and their decision rights are written down.",
+      "evidence": "AI risk RACI; owner fields populated for every inventory entry.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "GOVERN 2.1",
+        "GOVERN 2.3"
+      ],
+      "iso_42001": [
+        "A.3.2"
+      ],
+      "eu_ai_act": [],
+      "owasp_llm": [],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Governance and accountability",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "GOV-02",
+      "title": "AI policy and risk appetite",
+      "requirement": "A board-approved AI policy sets risk appetite, prohibited uses and the highest autonomy tier the organisation will accept for each class of data and action. It is reviewed at least once a year and after any major AI incident.",
+      "evidence": "Approved policy with version history; board or committee minutes.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "GOVERN 1.2",
+        "GOVERN 1.3",
+        "GOVERN 1.4",
+        "MAP 1.5"
+      ],
+      "iso_42001": [
+        "A.2.2",
+        "A.2.4"
+      ],
+      "eu_ai_act": [
+        "Art. 5"
+      ],
+      "owasp_llm": [],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Governance and accountability",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "GOV-03",
+      "title": "Regulatory obligations register",
+      "requirement": "The AI laws that apply to each system, and the dates they take effect, are recorded against that system, including its EU AI Act risk classification. The register is reviewed when the system or the law changes.",
+      "evidence": "Obligations register linked to the inventory; review log.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "GOVERN 1.1"
+      ],
+      "iso_42001": [
+        "A.2.3"
+      ],
+      "eu_ai_act": [
+        "Art. 6"
+      ],
+      "owasp_llm": [],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Governance and accountability",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "GOV-04",
+      "title": "AI literacy and role training",
+      "requirement": "People who build, approve, operate or oversee AI systems receive training for their role, including how prompt injection and agent misuse work. Completion is tracked.",
+      "evidence": "Training curriculum by role; completion records.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "GOVERN 2.2",
+        "GOVERN 4.1"
+      ],
+      "iso_42001": [
+        "A.4.6"
+      ],
+      "eu_ai_act": [
+        "Art. 4"
+      ],
+      "owasp_llm": [],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Governance and accountability",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "GOV-05",
+      "title": "Governance of coding agents and SaaS-embedded AI",
+      "requirement": "AI capabilities embedded in SaaS platforms (such as office, CRM and ticketing copilots) and developer coding agents follow the same inventory, data-use and approval rules as custom-built agents. Vendor AI features default to off until reviewed, and coding agents operate with branch protection, mandatory human pull-request review and isolated credentials.",
+      "evidence": "SaaS AI feature review records; repository protection and coding-agent policy settings.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "GOVERN 1.6",
+        "GOVERN 6.1",
+        "MAP 3.3"
+      ],
+      "iso_42001": [
+        "A.4.4",
+        "A.9.4",
+        "A.10.3"
+      ],
+      "eu_ai_act": [
+        "Art. 26"
+      ],
+      "owasp_llm": [
+        "LLM03",
+        "LLM04"
+      ],
+      "owasp_asi": [
+        "ASI02",
+        "ASI04"
+      ],
+      "mitre_atlas": [
+        "AML.T0081"
+      ],
+      "tooling": [
+        "agentlint"
+      ],
+      "domain": "Governance and accountability",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "INV-01",
+      "title": "Inventory of AI systems, agents and components",
+      "requirement": "Every AI system, agent, model, MCP server and skill in use is recorded with its owner, purpose, data accessed, tools granted, autonomy tier and status. Discovery runs regularly to find unregistered use.",
+      "evidence": "Inventory export; discovery reports and how findings were resolved.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "GOVERN 1.6",
+        "MAP 1.1"
+      ],
+      "iso_42001": [
+        "A.4.2",
+        "A.6.2.7"
+      ],
+      "eu_ai_act": [],
+      "owasp_llm": [],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Inventory and classification",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "INV-02",
+      "title": "Autonomy and impact classification",
+      "requirement": "Each agent is assigned an autonomy tier based on what it can do without human approval, and an impact rating based on the worst credible outcome. Together they decide which controls apply.",
+      "evidence": "Classification record per system, approved by the risk owner.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "MAP 2.1",
+        "MAP 3.3",
+        "MAP 5.1"
+      ],
+      "iso_42001": [
+        "A.5.2",
+        "A.5.4"
+      ],
+      "eu_ai_act": [
+        "Art. 6"
+      ],
+      "owasp_llm": [
+        "LLM03"
+      ],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Inventory and classification",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "INV-03",
+      "title": "Threat and impact assessment before release",
+      "requirement": "Systems at tier 2 and above, or rated high or severe impact, have a documented threat model and impact assessment, approved by the risk owner, before production and after any material change to tools, data or autonomy.",
+      "evidence": "Signed assessment; change records that triggered reassessment.",
+      "min_tier": 2,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "GOVERN 1.5",
+        "GOVERN 4.2",
+        "MAP 5.1",
+        "MANAGE 1.1",
+        "MANAGE 1.3"
+      ],
+      "iso_42001": [
+        "A.5.2",
+        "A.5.3",
+        "A.6.2.5"
+      ],
+      "eu_ai_act": [
+        "Art. 9"
+      ],
+      "owasp_llm": [],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "tooling": [
+        "ai-threat-modelling-engine"
+      ],
+      "domain": "Inventory and classification",
+      "applies_from": "tier 2 Act with approval, or High impact and above"
+    },
+    {
+      "id": "INV-04",
+      "title": "Safe retirement",
+      "requirement": "When an agent or component is withdrawn, its credentials are revoked, its memory and retrieval indexes are purged or archived under retention rules, its tool connections are removed and the inventory is updated.",
+      "evidence": "Decommissioning checklist; credential revocation records.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "GOVERN 1.7"
+      ],
+      "iso_42001": [
+        "A.6.2.6"
+      ],
+      "eu_ai_act": [],
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI10"
+      ],
+      "mitre_atlas": [],
+      "domain": "Inventory and classification",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "SUP-01",
+      "title": "Approved sources for models, MCP servers and skills",
+      "requirement": "Models, MCP servers, skills and agent plugins are used only from an approved registry. New entries pass an intake review covering provenance, maintainer, licence, permissions requested, static scanning and adversarial testing.",
+      "evidence": "Registry with intake records; rejected-request log.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "GOVERN 6.1",
+        "MAP 4.1",
+        "MANAGE 3.1"
+      ],
+      "iso_42001": [
+        "A.10.3"
+      ],
+      "eu_ai_act": [
+        "Art. 25"
+      ],
+      "owasp_llm": [
+        "LLM04"
+      ],
+      "owasp_asi": [
+        "ASI04"
+      ],
+      "mitre_atlas": [
+        "AML.T0010.005",
+        "AML.T0110",
+        "AML.T0111"
+      ],
+      "tooling": [
+        "agentlint",
+        "mcp-adversarial-harness"
+      ],
+      "domain": "Supply chain",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "SUP-02",
+      "title": "Version pinning and tool-definition change detection",
+      "requirement": "Approved components are pinned to a reviewed version or hash. Tool definitions are fingerprinted, and any change to a tool's description, schema or permissions blocks its use until it is reviewed again.",
+      "evidence": "Lock files or hashes; change alerts and their review outcomes.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MANAGE 3.1",
+        "MANAGE 3.2"
+      ],
+      "iso_42001": [
+        "A.10.3"
+      ],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM04"
+      ],
+      "owasp_asi": [
+        "ASI04"
+      ],
+      "mitre_atlas": [
+        "AML.T0109",
+        "AML.T0110.000"
+      ],
+      "tooling": [
+        "agentlint",
+        "ai-threat-modelling-engine"
+      ],
+      "domain": "Supply chain",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "SUP-03",
+      "title": "Contract terms for AI providers",
+      "requirement": "Contracts with model and AI service providers cover data use and retention, training on customer data, incident notification, sub-processors, notice of model changes and audit rights.",
+      "evidence": "Contract clause checklist per provider.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "GOVERN 6.1",
+        "GOVERN 6.2"
+      ],
+      "iso_42001": [
+        "A.10.2",
+        "A.10.3"
+      ],
+      "eu_ai_act": [
+        "Art. 25"
+      ],
+      "owasp_llm": [
+        "LLM04"
+      ],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Supply chain",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "SUP-04",
+      "title": "Model version pinning and provider change management",
+      "requirement": "Production systems pin explicit model snapshots rather than rolling aliases where providers support it. Upstream model updates, deprecations or tool provider changes trigger regression testing before promotion, and high or severe impact systems maintain a documented fallback or exit path.",
+      "evidence": "Model version configuration; upgrade test records; exit plan for high and severe systems.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "GOVERN 6.2",
+        "MANAGE 3.2"
+      ],
+      "iso_42001": [
+        "A.6.2.6",
+        "A.10.3"
+      ],
+      "eu_ai_act": [
+        "Art. 15",
+        "Art. 25"
+      ],
+      "owasp_llm": [
+        "LLM04"
+      ],
+      "owasp_asi": [
+        "ASI04"
+      ],
+      "mitre_atlas": [
+        "AML.T0099"
+      ],
+      "domain": "Supply chain",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "IAM-01",
+      "title": "Distinct identity for every agent",
+      "requirement": "Each agent runs under its own non-human identity, never a shared account or a person's account, so every action can be traced to the agent and to the person or process that started it.",
+      "evidence": "Identity register; sample of actions traced end to end.",
+      "min_tier": 1,
+      "nist_ai_rmf": [
+        "MEASURE 2.8"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [],
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI03"
+      ],
+      "mitre_atlas": [],
+      "tooling": [
+        "ai-threat-modelling-engine"
+      ],
+      "domain": "Agent identity and authority",
+      "applies_from": "tier 1 Retrieve"
+    },
+    {
+      "id": "IAM-02",
+      "title": "Least privilege and short-lived delegated credentials",
+      "requirement": "Agents receive only the tools, scopes and data the task needs. Credentials are short-lived and bound to a specific task and resource; for MCP this means audience-bound tokens, and tokens are never passed through to downstream services.",
+      "evidence": "Scope reviews; token lifetime configuration; MCP authorization settings.",
+      "min_tier": 1,
+      "nist_ai_rmf": [
+        "MAP 4.2"
+      ],
+      "iso_42001": [
+        "A.9.4"
+      ],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM03"
+      ],
+      "owasp_asi": [
+        "ASI02",
+        "ASI03"
+      ],
+      "mitre_atlas": [
+        "AML.T0055",
+        "AML.T0098"
+      ],
+      "tooling": [
+        "agentlint",
+        "mcp-adversarial-harness",
+        "ai-threat-modelling-engine"
+      ],
+      "domain": "Agent identity and authority",
+      "applies_from": "tier 1 Retrieve"
+    },
+    {
+      "id": "IAM-03",
+      "title": "Secrets kept out of agent context",
+      "requirement": "Credentials and keys never appear in prompts, agent configuration files, memory or tool descriptions. Agents obtain them from a secrets broker at the moment of use, and the model never sees them.",
+      "evidence": "Configuration scans; secrets-broker integration records.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MEASURE 2.7"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM02",
+        "LLM08"
+      ],
+      "owasp_asi": [
+        "ASI03"
+      ],
+      "mitre_atlas": [
+        "AML.T0083"
+      ],
+      "tooling": [
+        "agentlint"
+      ],
+      "domain": "Agent identity and authority",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "INP-01",
+      "title": "External content treated as untrusted",
+      "requirement": "Content from tools, documents, web pages, email and other agents is labelled as data, kept separate from instructions, and cannot on its own trigger a privileged action.",
+      "evidence": "Design review showing trust labelling; test results for indirect injection.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MEASURE 2.7"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [
+        "Art. 15"
+      ],
+      "owasp_llm": [
+        "LLM01"
+      ],
+      "owasp_asi": [
+        "ASI01"
+      ],
+      "mitre_atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "tooling": [
+        "agentlint",
+        "mcp-adversarial-harness",
+        "llm-prompt-injection-fuzzer"
+      ],
+      "domain": "Input and context integrity",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "INP-02",
+      "title": "Scanning of agent instruction files",
+      "requirement": "Agent instruction files (skills, AGENTS.md, IDE rules, MCP configuration) are scanned in CI for hidden Unicode, override patterns and exfiltration sinks before they are merged or installed.",
+      "evidence": "CI configuration; scan results on recent merges.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "MEASURE 2.7"
+      ],
+      "iso_42001": [
+        "A.6.2.4"
+      ],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM01"
+      ],
+      "owasp_asi": [
+        "ASI01",
+        "ASI04"
+      ],
+      "mitre_atlas": [
+        "AML.T0081",
+        "AML.T0068"
+      ],
+      "tooling": [
+        "agentlint"
+      ],
+      "domain": "Input and context integrity",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "INP-03",
+      "title": "Memory and retrieval integrity",
+      "requirement": "Writes to long-term memory and retrieval indexes are limited to trusted sources and tagged with their provenance. Memory can be inspected and purged per user and per agent.",
+      "evidence": "Write-path design; provenance fields; purge procedure and test.",
+      "min_tier": 1,
+      "nist_ai_rmf": [
+        "MEASURE 2.7"
+      ],
+      "iso_42001": [
+        "A.7.5"
+      ],
+      "eu_ai_act": [
+        "Art. 15"
+      ],
+      "owasp_llm": [
+        "LLM05",
+        "LLM09"
+      ],
+      "owasp_asi": [
+        "ASI06"
+      ],
+      "mitre_atlas": [
+        "AML.T0080.000",
+        "AML.T0070"
+      ],
+      "domain": "Input and context integrity",
+      "applies_from": "tier 1 Retrieve"
+    },
+    {
+      "id": "INP-04",
+      "title": "Hidden context and system-prompt protection",
+      "requirement": "System prompts, internal instructions and tool schemas are treated as extractable: they never hold secrets or serve as the sole access control, and applications are tested against prompt-extraction attacks before release.",
+      "evidence": "Prompt review confirming no secrets or sole controls; extraction test results.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "MEASURE 2.7"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [
+        "Art. 15"
+      ],
+      "owasp_llm": [
+        "LLM08"
+      ],
+      "owasp_asi": [
+        "ASI01"
+      ],
+      "mitre_atlas": [
+        "AML.T0069.002"
+      ],
+      "tooling": [
+        "llm-prompt-injection-fuzzer"
+      ],
+      "domain": "Input and context integrity",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "ACT-01",
+      "title": "Human approval for consequential actions",
+      "requirement": "Actions that move money, delete or change records, send external communications, change access or run code outside a sandbox need explicit human approval that shows the exact action and its parameters.",
+      "evidence": "Action catalogue with approval requirements; approval logs.",
+      "min_tier": 2,
+      "nist_ai_rmf": [
+        "MAP 3.5"
+      ],
+      "iso_42001": [
+        "A.9.2"
+      ],
+      "eu_ai_act": [
+        "Art. 14"
+      ],
+      "owasp_llm": [
+        "LLM03"
+      ],
+      "owasp_asi": [
+        "ASI02",
+        "ASI09"
+      ],
+      "mitre_atlas": [
+        "AML.T0101",
+        "AML.T0086"
+      ],
+      "domain": "Action and tool control",
+      "applies_from": "tier 2 Act with approval"
+    },
+    {
+      "id": "ACT-02",
+      "title": "Policy enforced outside the model",
+      "requirement": "Allowed tools, parameters, destinations and rates are enforced by a policy layer that the model cannot change. The model's own judgement is never the only control on what an agent does.",
+      "evidence": "Policy configuration; denied-action logs.",
+      "min_tier": 1,
+      "nist_ai_rmf": [
+        "MAP 4.2"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [
+        "Art. 15"
+      ],
+      "owasp_llm": [
+        "LLM03"
+      ],
+      "owasp_asi": [
+        "ASI01",
+        "ASI02"
+      ],
+      "mitre_atlas": [
+        "AML.T0051.000",
+        "AML.T0053"
+      ],
+      "tooling": [
+        "mcp-adversarial-harness",
+        "agentlint"
+      ],
+      "domain": "Action and tool control",
+      "applies_from": "tier 1 Retrieve"
+    },
+    {
+      "id": "ACT-03",
+      "title": "Sandboxed code execution",
+      "requirement": "Code and commands generated by an agent run in an isolated, short-lived sandbox with no standing credentials and network access limited to an allow-list.",
+      "evidence": "Sandbox configuration; escape-test results.",
+      "min_tier": 2,
+      "nist_ai_rmf": [
+        "MEASURE 2.7"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM10"
+      ],
+      "owasp_asi": [
+        "ASI05"
+      ],
+      "mitre_atlas": [
+        "AML.T0105"
+      ],
+      "tooling": [
+        "ai-threat-modelling-engine"
+      ],
+      "domain": "Action and tool control",
+      "applies_from": "tier 2 Act with approval"
+    },
+    {
+      "id": "ACT-04",
+      "title": "Egress and exfiltration controls",
+      "requirement": "Agents can reach only approved destinations. Outbound requests, rendered links and images are filtered so that data cannot leave through URLs or markdown.",
+      "evidence": "Egress allow-list; output-rendering filter tests.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MEASURE 2.7",
+        "MEASURE 2.10"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM02"
+      ],
+      "owasp_asi": [
+        "ASI02"
+      ],
+      "mitre_atlas": [
+        "AML.T0086",
+        "AML.T0136"
+      ],
+      "tooling": [
+        "agentlint",
+        "mcp-adversarial-harness",
+        "ai-threat-modelling-engine"
+      ],
+      "domain": "Action and tool control",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "ACT-05",
+      "title": "Trust boundaries between agents",
+      "requirement": "Messages between agents are authenticated and treated as untrusted input. No agent can grant another more authority than it holds itself, and delegation depth and fan-out are capped.",
+      "evidence": "Inter-agent protocol design; authority-propagation tests.",
+      "min_tier": 2,
+      "nist_ai_rmf": [
+        "MAP 4.2"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [],
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI07",
+        "ASI08"
+      ],
+      "mitre_atlas": [
+        "AML.T0118",
+        "AML.T0143"
+      ],
+      "tooling": [
+        "llm-prompt-injection-fuzzer"
+      ],
+      "domain": "Action and tool control",
+      "applies_from": "tier 2 Act with approval"
+    },
+    {
+      "id": "ACT-06",
+      "title": "Resource and spend limits",
+      "requirement": "Each agent has limits on tokens, tool calls, spend and run time, and halts automatically when a limit is reached.",
+      "evidence": "Budget configuration; halt events.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MANAGE 2.4"
+      ],
+      "iso_42001": [
+        "A.6.2.6"
+      ],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM06"
+      ],
+      "owasp_asi": [
+        "ASI08"
+      ],
+      "mitre_atlas": [
+        "AML.T0034.002",
+        "AML.T0029"
+      ],
+      "tooling": [
+        "ai-threat-modelling-engine"
+      ],
+      "domain": "Action and tool control",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "DAT-01",
+      "title": "Data classes approved per system and provider",
+      "requirement": "The classes of data each AI system and provider may process are defined. Restricted data cannot reach a model or tool that is not approved for it.",
+      "evidence": "Data-use matrix; DLP rules on AI traffic.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "MEASURE 2.10"
+      ],
+      "iso_42001": [
+        "A.7.2"
+      ],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM02"
+      ],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "tooling": [
+        "ai-threat-modelling-engine"
+      ],
+      "domain": "Data protection",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "DAT-02",
+      "title": "Safe handling of model output",
+      "requirement": "Model output is validated and encoded before it reaches browsers, shells, databases or other systems, in the same way as untrusted user input.",
+      "evidence": "Code review findings; output-handling tests.",
+      "min_tier": 1,
+      "or_impact": "moderate",
+      "nist_ai_rmf": [
+        "MEASURE 2.7"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM10"
+      ],
+      "owasp_asi": [
+        "ASI05"
+      ],
+      "mitre_atlas": [],
+      "tooling": [
+        "mcp-adversarial-harness"
+      ],
+      "domain": "Data protection",
+      "applies_from": "tier 1 Retrieve, or Moderate impact and above"
+    },
+    {
+      "id": "DAT-03",
+      "title": "Permission-aware retrieval and tenant isolation",
+      "requirement": "Retrieval indexes, vector stores, semantic caches and agent memory enforce the invoking user's access permissions at query time and isolate data between tenants and roles so no query can surface unauthorised records.",
+      "evidence": "Retrieval authorisation design; cross-role and cross-tenant query test results.",
+      "min_tier": 1,
+      "or_impact": "moderate",
+      "nist_ai_rmf": [
+        "MAP 4.2",
+        "MEASURE 2.10"
+      ],
+      "iso_42001": [
+        "A.4.3",
+        "A.7.4"
+      ],
+      "eu_ai_act": [
+        "Art. 10"
+      ],
+      "owasp_llm": [
+        "LLM02",
+        "LLM09"
+      ],
+      "owasp_asi": [
+        "ASI03",
+        "ASI06"
+      ],
+      "mitre_atlas": [
+        "AML.T0082"
+      ],
+      "domain": "Data protection",
+      "applies_from": "tier 1 Retrieve, or Moderate impact and above"
+    },
+    {
+      "id": "DAT-04",
+      "title": "Privacy and secret minimisation in prompts and logs",
+      "requirement": "Personal data and secrets are redacted, tokenised or minimised before prompts reach external model providers and before prompts, parameters or results are written to operational logs, balancing auditability with privacy law.",
+      "evidence": "Redaction pipeline configuration; sample log inspection; retention and access controls.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "MEASURE 2.10"
+      ],
+      "iso_42001": [
+        "A.7.2",
+        "A.7.6"
+      ],
+      "eu_ai_act": [
+        "Art. 10",
+        "Art. 12"
+      ],
+      "owasp_llm": [
+        "LLM02"
+      ],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Data protection",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "OPS-01",
+      "title": "Action-level logging",
+      "requirement": "Every prompt, tool call, parameter set, approval decision and result is logged with the agent's identity and a correlation ID, retained according to policy and protected from tampering.",
+      "evidence": "Log schema; retention settings; integrity controls.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MEASURE 2.4",
+        "MANAGE 4.1"
+      ],
+      "iso_42001": [
+        "A.6.2.8"
+      ],
+      "eu_ai_act": [
+        "Art. 12",
+        "Art. 26"
+      ],
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI10"
+      ],
+      "mitre_atlas": [],
+      "tooling": [
+        "ai-threat-modelling-engine"
+      ],
+      "domain": "Monitoring and response",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "OPS-02",
+      "title": "Kill switch and credential revocation",
+      "requirement": "Any agent can be paused, its credentials revoked and its recent actions listed within a set time: 15 minutes for tier 3. The procedure is exercised at least twice a year.",
+      "evidence": "Runbook; exercise records with measured times.",
+      "min_tier": 2,
+      "or_impact": "severe",
+      "nist_ai_rmf": [
+        "MANAGE 2.3",
+        "MANAGE 2.4",
+        "MEASURE 2.6"
+      ],
+      "iso_42001": [
+        "A.6.2.6"
+      ],
+      "eu_ai_act": [
+        "Art. 14"
+      ],
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI08",
+        "ASI10"
+      ],
+      "mitre_atlas": [],
+      "domain": "Monitoring and response",
+      "applies_from": "tier 2 Act with approval, or Severe impact"
+    },
+    {
+      "id": "OPS-03",
+      "title": "AI incident response",
+      "requirement": "Incident runbooks cover prompt injection, data leakage through agents, runaway or rogue agents and compromised MCP servers, including regulatory notification where it is required. Staff and users have a clear channel to report concerns about an AI system's behaviour.",
+      "evidence": "Runbooks; exercise reports; incident records; reporting channel and its log.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MANAGE 4.1",
+        "MANAGE 4.3",
+        "GOVERN 4.3"
+      ],
+      "iso_42001": [
+        "A.3.3",
+        "A.8.4"
+      ],
+      "eu_ai_act": [
+        "Art. 73"
+      ],
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI10"
+      ],
+      "mitre_atlas": [],
+      "domain": "Monitoring and response",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "OPS-04",
+      "title": "Behavioural monitoring",
+      "requirement": "Each agent's normal behaviour is baselined. Unusual tools, destinations, volumes or deviation from the assigned goal raise an alert.",
+      "evidence": "Detection rules; alert history and triage outcomes.",
+      "min_tier": 2,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MEASURE 2.4",
+        "MEASURE 3.1"
+      ],
+      "iso_42001": [
+        "A.6.2.6"
+      ],
+      "eu_ai_act": [
+        "Art. 72"
+      ],
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI01",
+        "ASI10"
+      ],
+      "mitre_atlas": [],
+      "domain": "Monitoring and response",
+      "applies_from": "tier 2 Act with approval, or High impact and above"
+    },
+    {
+      "id": "TST-01",
+      "title": "Adversarial testing before release",
+      "requirement": "Systems at tier 2 and above, or rated high or severe impact, are tested before release, and after material change, for prompt injection, tool misuse and data leakage using a maintained attack corpus. Results are recorded against acceptance thresholds.",
+      "evidence": "Test reports with bypass rates against thresholds.",
+      "min_tier": 2,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MEASURE 1.1",
+        "MEASURE 2.7"
+      ],
+      "iso_42001": [
+        "A.6.2.4"
+      ],
+      "eu_ai_act": [
+        "Art. 15"
+      ],
+      "owasp_llm": [
+        "LLM01",
+        "LLM02"
+      ],
+      "owasp_asi": [
+        "ASI01",
+        "ASI02"
+      ],
+      "mitre_atlas": [
+        "AML.T0051",
+        "AML.T0051.000",
+        "AML.T0054"
+      ],
+      "tooling": [
+        "llm-prompt-injection-fuzzer",
+        "mcp-adversarial-harness"
+      ],
+      "domain": "Testing and assurance",
+      "applies_from": "tier 2 Act with approval, or High impact and above"
+    },
+    {
+      "id": "TST-02",
+      "title": "Continuous regression testing",
+      "requirement": "The attack corpus runs in CI against the production system prompt and configuration. A bypass rate above threshold blocks the release.",
+      "evidence": "CI pipeline; trend of bypass rate by release.",
+      "min_tier": 2,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MEASURE 1.2",
+        "MEASURE 2.4"
+      ],
+      "iso_42001": [
+        "A.6.2.4"
+      ],
+      "eu_ai_act": [],
+      "owasp_llm": [
+        "LLM01"
+      ],
+      "owasp_asi": [
+        "ASI01"
+      ],
+      "mitre_atlas": [
+        "AML.T0051"
+      ],
+      "tooling": [
+        "llm-prompt-injection-fuzzer"
+      ],
+      "domain": "Testing and assurance",
+      "applies_from": "tier 2 Act with approval, or High impact and above"
+    },
+    {
+      "id": "TST-03",
+      "title": "Independent assurance",
+      "requirement": "Tier 3 agents and severe-impact systems receive independent review, by internal audit or an external party, at least once a year.",
+      "evidence": "Assurance reports and management responses.",
+      "min_tier": 3,
+      "or_impact": "severe",
+      "nist_ai_rmf": [
+        "MEASURE 1.3"
+      ],
+      "iso_42001": [],
+      "eu_ai_act": [],
+      "owasp_llm": [],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Testing and assurance",
+      "applies_from": "tier 3 Act autonomously, or Severe impact"
+    },
+    {
+      "id": "TST-04",
+      "title": "Accuracy, grounding and bias evaluation",
+      "requirement": "Systems are evaluated before release and after model or prompt changes for task accuracy, grounding against authoritative sources (hallucination rate) and, where outputs affect individuals or groups, bias and fairness across protected groups.",
+      "evidence": "Evaluation test sets, metrics, acceptance thresholds and sign-off records.",
+      "min_tier": 1,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MEASURE 2.1",
+        "MEASURE 2.3",
+        "MEASURE 2.5",
+        "MEASURE 2.11"
+      ],
+      "iso_42001": [
+        "A.6.2.4",
+        "A.7.4"
+      ],
+      "eu_ai_act": [
+        "Art. 10",
+        "Art. 15"
+      ],
+      "owasp_llm": [
+        "LLM07"
+      ],
+      "owasp_asi": [],
+      "mitre_atlas": [],
+      "domain": "Testing and assurance",
+      "applies_from": "tier 1 Retrieve, or High impact and above"
+    },
+    {
+      "id": "HUM-01",
+      "title": "Disclosure of AI interaction",
+      "requirement": "People are told when they are dealing with an AI system or receiving AI-generated content, and agents acting for someone identify themselves to third parties.",
+      "evidence": "UI copy; content-marking configuration; agent identification headers.",
+      "min_tier": 0,
+      "nist_ai_rmf": [
+        "MEASURE 2.8"
+      ],
+      "iso_42001": [
+        "A.8.2"
+      ],
+      "eu_ai_act": [
+        "Art. 50"
+      ],
+      "owasp_llm": [
+        "LLM07"
+      ],
+      "owasp_asi": [
+        "ASI09"
+      ],
+      "mitre_atlas": [],
+      "domain": "Human oversight and transparency",
+      "applies_from": "tier 0 Assist"
+    },
+    {
+      "id": "HUM-02",
+      "title": "Oversight that is meaningful, not ceremonial",
+      "requirement": "Approval screens state what will happen and why, rather than asking for a bare yes or no. Approval rates and decision times are monitored to detect rubber-stamping.",
+      "evidence": "Approval UI review; approval-rate and decision-time metrics.",
+      "min_tier": 2,
+      "or_impact": "high",
+      "nist_ai_rmf": [
+        "MAP 3.5",
+        "MAP 2.2"
+      ],
+      "iso_42001": [
+        "A.9.2"
+      ],
+      "eu_ai_act": [
+        "Art. 14"
+      ],
+      "owasp_llm": [
+        "LLM07"
+      ],
+      "owasp_asi": [
+        "ASI09"
+      ],
+      "mitre_atlas": [],
+      "tooling": [
+        "mcp-adversarial-harness"
+      ],
+      "domain": "Human oversight and transparency",
+      "applies_from": "tier 2 Act with approval, or High impact and above"
+    }
+  ],
+  "kris": [
+    {
+      "id": "KRI-01",
+      "name": "Inventory coverage",
+      "measure": "Registered AI systems, agents and components with a named owner, as a share of all found by discovery",
+      "green": "≥ 98%",
+      "amber": "90% to < 98%",
+      "red": "< 90%",
+      "thresholds": {
+        "unit": "percent",
+        "direction": "higher_is_better",
+        "green_min": 98,
+        "amber_min": 90
+      },
+      "controls": [
+        "INV-01",
+        "GOV-01"
+      ]
+    },
+    {
+      "id": "KRI-02",
+      "name": "Unregistered AI found",
+      "measure": "New AI tools, MCP servers or agents found in use without registration, per quarter",
+      "green": "≤ 5",
+      "amber": "6–15",
+      "red": "> 15",
+      "thresholds": {
+        "unit": "count",
+        "direction": "lower_is_better",
+        "green_max": 5,
+        "amber_max": 15
+      },
+      "controls": [
+        "INV-01",
+        "SUP-01"
+      ]
+    },
+    {
+      "id": "KRI-03",
+      "name": "Assessment currency",
+      "measure": "Tier 2 and 3 systems, and high or severe impact systems, whose threat and impact assessment reflects their current tools, data and tier",
+      "green": "100%",
+      "amber": "95% to < 100%",
+      "red": "< 95%",
+      "thresholds": {
+        "unit": "percent",
+        "direction": "higher_is_better",
+        "green_min": 100,
+        "amber_min": 95
+      },
+      "controls": [
+        "INV-03"
+      ]
+    },
+    {
+      "id": "KRI-04",
+      "name": "Prompt injection bypass rate",
+      "measure": "Median share of the standard attack corpus that succeeds against tier 2 and 3 agents",
+      "green": "≤ 5%",
+      "amber": "> 5% to 15%",
+      "red": "> 15%",
+      "thresholds": {
+        "unit": "percent",
+        "direction": "lower_is_better",
+        "green_max": 5,
+        "amber_max": 15
+      },
+      "controls": [
+        "TST-01",
+        "TST-02"
+      ],
+      "note": "Use the same corpus every quarter so results are comparable, and add new techniques as a separate line until there is a baseline for them. Report the median across agents, and name any single agent above the red threshold. The [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer) produces this number per category."
+    },
+    {
+      "id": "KRI-05",
+      "name": "Time to stop an agent",
+      "measure": "Longest time, in the latest exercise, to pause a tier 3 agent and revoke its credentials",
+      "green": "≤ 15 min",
+      "amber": "> 15 to 60 min",
+      "red": "> 60 min, or no exercise in 6 months",
+      "thresholds": {
+        "unit": "minutes",
+        "direction": "lower_is_better",
+        "green_max": 15,
+        "amber_max": 60
+      },
+      "controls": [
+        "OPS-02"
+      ],
+      "note": "Measure from the decision to stop until the agent has stopped acting and its credentials no longer work, not until someone has opened a ticket. An exercise that has not happened counts as red."
+    },
+    {
+      "id": "KRI-06",
+      "name": "Unreviewed tool changes",
+      "measure": "MCP tool definitions in use that changed since their last review",
+      "green": "0",
+      "amber": "1–2, each ≤ 48 hours old",
+      "red": "> 2, or any > 48 hours old",
+      "thresholds": {
+        "unit": "count",
+        "direction": "lower_is_better",
+        "green_max": 0,
+        "amber_max": 2
+      },
+      "controls": [
+        "SUP-02"
+      ],
+      "note": "MCP servers can change a tool's description after it has been approved. This indicator only works if tool definitions are fingerprinted at approval time; if they are not, report it as \"not measurable\" rather than zero."
+    },
+    {
+      "id": "KRI-07",
+      "name": "Rubber-stamp rate",
+      "measure": "Human approvals given in under three seconds, as a share of all approvals",
+      "green": "< 10%",
+      "amber": "10% to 25%",
+      "red": "> 25%",
+      "thresholds": {
+        "unit": "percent",
+        "direction": "lower_is_better",
+        "green_max": 9.99,
+        "amber_max": 25
+      },
+      "controls": [
+        "HUM-02",
+        "ACT-01"
+      ],
+      "note": "Three seconds is roughly the time it takes to read one line. A high rate usually means approvals are requested too often, not that reviewers are careless. The fix is fewer, clearer approval requests."
+    },
+    {
+      "id": "KRI-08",
+      "name": "Over-privileged agents",
+      "measure": "Agents holding scopes beyond their documented need at the last access review",
+      "green": "< 5%",
+      "amber": "5% to 15%",
+      "red": "> 15%",
+      "thresholds": {
+        "unit": "percent",
+        "direction": "lower_is_better",
+        "green_max": 4.99,
+        "amber_max": 15
+      },
+      "controls": [
+        "IAM-02"
+      ]
+    },
+    {
+      "id": "KRI-09",
+      "name": "Agents without their own identity",
+      "measure": "Agents acting under a person's account or a shared account",
+      "green": "0",
+      "amber": "1–2, with approved exception",
+      "red": "> 2, or any without exception",
+      "thresholds": {
+        "unit": "count",
+        "direction": "lower_is_better",
+        "green_max": 0,
+        "amber_max": 2
+      },
+      "controls": [
+        "IAM-01"
+      ]
+    },
+    {
+      "id": "KRI-10",
+      "name": "Overdue AI security findings",
+      "measure": "Critical and high findings on AI systems past their remediation deadline",
+      "green": "0",
+      "amber": "1–3",
+      "red": "> 3",
+      "thresholds": {
+        "unit": "count",
+        "direction": "lower_is_better",
+        "green_max": 0,
+        "amber_max": 3
+      },
+      "controls": [
+        "TST-01",
+        "TST-03"
+      ]
+    },
+    {
+      "id": "KRI-11",
+      "name": "AI security incidents",
+      "measure": "Incidents involving AI systems in the quarter, by severity",
+      "green": "No severity 1 or 2",
+      "amber": "One severity 2",
+      "red": "Any severity 1, or ≥ 2 severity 2",
+      "controls": [
+        "OPS-03",
+        "OPS-04"
+      ]
+    },
+    {
+      "id": "KRI-12",
+      "name": "Training coverage",
+      "measure": "In-scope staff who completed role-based AI training in the last 12 months",
+      "green": "≥ 95%",
+      "amber": "85% to < 95%",
+      "red": "< 85%",
+      "thresholds": {
+        "unit": "percent",
+        "direction": "higher_is_better",
+        "green_min": 95,
+        "amber_min": 85
+      },
+      "controls": [
+        "GOV-04"
+      ]
+    },
+    {
+      "id": "KRI-13",
+      "name": "Overdue risk exceptions",
+      "measure": "Active AI policy or control exceptions past their 90-day expiry date (tracked in the [exception register](../templates/exception-register-template.md))",
+      "green": "0",
+      "amber": "1–2, renewal in progress",
+      "red": "> 2, or any tier 3 exception overdue",
+      "thresholds": {
+        "unit": "count",
+        "direction": "lower_is_better",
+        "green_max": 0,
+        "amber_max": 2
+      },
+      "controls": [
+        "GOV-02",
+        "SUP-01"
+      ]
+    }
+  ],
+  "components": {
+    "C1": {
+      "name": "User and approver",
+      "why": "Source of legitimate instructions, and the human check on consequential actions"
+    },
+    "C2": {
+      "name": "Orchestrator agent",
+      "why": "Decides what to do next; holds the agent's authority"
+    },
+    "C3": {
+      "name": "System prompt and instruction files",
+      "why": "Defines behaviour; includes skills, AGENTS.md, IDE rules and MCP configuration"
+    },
+    "C4": {
+      "name": "Tools and MCP servers",
+      "why": "Where the agent's actions take effect; tool descriptions and results are read by the model"
+    },
+    "C5": {
+      "name": "Memory and retrieval index",
+      "why": "Persists across sessions, so a poisoned entry keeps working"
+    },
+    "C6": {
+      "name": "Sub-agents and peer agents",
+      "why": "Can pass instructions and authority between agents"
+    },
+    "C7": {
+      "name": "Identity broker and secrets",
+      "why": "Issues the credentials the agent acts with"
+    },
+    "C8": {
+      "name": "Code sandbox",
+      "why": "Runs code the agent writes"
+    },
+    "C9": {
+      "name": "Policy enforcement layer",
+      "why": "Enforces limits the model cannot change"
+    }
+  },
+  "threats": [
+    {
+      "id": "T-01",
+      "title": "Direct prompt injection",
+      "components": [
+        "C1",
+        "C2"
+      ],
+      "scenario": "A user tells the agent to ignore its instructions and act outside its purpose.",
+      "owasp_llm": [
+        "LLM01"
+      ],
+      "owasp_asi": [
+        "ASI01"
+      ],
+      "mitre_atlas": [
+        "AML.T0051.000"
+      ],
+      "controls": [
+        "INP-01",
+        "ACT-02"
+      ],
+      "test": "Injection corpus against the production prompt ([fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer))"
+    },
+    {
+      "id": "T-02",
+      "title": "Indirect prompt injection",
+      "components": [
+        "C2",
+        "C4",
+        "C5"
+      ],
+      "scenario": "A document, web page or email the agent reads contains instructions that redirect it.",
+      "owasp_llm": [
+        "LLM01"
+      ],
+      "owasp_asi": [
+        "ASI01"
+      ],
+      "mitre_atlas": [
+        "AML.T0051.001"
+      ],
+      "controls": [
+        "INP-01",
+        "ACT-01",
+        "ACT-02"
+      ],
+      "test": "Indirect and tool-result probes ([fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer), [MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness))"
+    },
+    {
+      "id": "T-03",
+      "title": "Tool poisoning",
+      "components": [
+        "C4"
+      ],
+      "scenario": "An MCP server's tool description contains hidden instructions that the model follows whenever the tool is listed.",
+      "owasp_llm": [
+        "LLM04"
+      ],
+      "owasp_asi": [
+        "ASI04"
+      ],
+      "mitre_atlas": [
+        "AML.T0110.000"
+      ],
+      "controls": [
+        "SUP-01",
+        "SUP-02",
+        "ACT-02"
+      ],
+      "test": "Description-injection probes ([MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness))"
+    },
+    {
+      "id": "T-04",
+      "title": "Tool rug pull",
+      "components": [
+        "C4"
+      ],
+      "scenario": "A server behaves well during review, then changes its tool definitions or behaviour once approved.",
+      "owasp_llm": [
+        "LLM04"
+      ],
+      "owasp_asi": [
+        "ASI04"
+      ],
+      "mitre_atlas": [
+        "AML.T0109"
+      ],
+      "controls": [
+        "SUP-02"
+      ],
+      "test": "Fingerprint tool definitions at approval; alert on any difference ([MCP fingerprinting starter](../examples/mcp-fingerprint/README.md))"
+    },
+    {
+      "id": "T-05",
+      "title": "Malicious instruction file",
+      "components": [
+        "C3"
+      ],
+      "scenario": "A skill or rules file pulled from a marketplace or repository hides instructions in invisible Unicode or comments.",
+      "owasp_llm": [
+        "LLM01"
+      ],
+      "owasp_asi": [
+        "ASI04"
+      ],
+      "mitre_atlas": [
+        "AML.T0081"
+      ],
+      "controls": [
+        "INP-02",
+        "SUP-01"
+      ],
+      "test": "Static scan in CI ([agentlint](https://github.com/thenayanhazra/agentlint))"
+    },
+    {
+      "id": "T-06",
+      "title": "Exfiltration through a tool call",
+      "components": [
+        "C2",
+        "C4"
+      ],
+      "scenario": "Injected instructions make the agent send data to an attacker using a legitimate tool such as HTTP or email.",
+      "owasp_llm": [
+        "LLM02"
+      ],
+      "owasp_asi": [
+        "ASI02"
+      ],
+      "mitre_atlas": [
+        "AML.T0086"
+      ],
+      "controls": [
+        "ACT-04",
+        "ACT-01",
+        "ACT-02"
+      ],
+      "test": "Exfiltration probes ([MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness))"
+    },
+    {
+      "id": "T-07",
+      "title": "Exfiltration through rendered output",
+      "components": [
+        "C1",
+        "C2"
+      ],
+      "scenario": "The agent outputs a markdown image or link whose URL carries conversation data; the client fetches it automatically.",
+      "owasp_llm": [
+        "LLM02",
+        "LLM10"
+      ],
+      "owasp_asi": [],
+      "mitre_atlas": [
+        "AML.T0136"
+      ],
+      "controls": [
+        "ACT-04",
+        "DAT-02"
+      ],
+      "test": "Image-exfiltration payloads; scan instruction files for image sinks ([agentlint](https://github.com/thenayanhazra/agentlint) rule AGT040)"
+    },
+    {
+      "id": "T-08",
+      "title": "Destructive action",
+      "components": [
+        "C2",
+        "C4"
+      ],
+      "scenario": "The agent deletes data or changes configuration because of an injected or misunderstood instruction.",
+      "owasp_llm": [
+        "LLM03"
+      ],
+      "owasp_asi": [
+        "ASI02"
+      ],
+      "mitre_atlas": [
+        "AML.T0101"
+      ],
+      "controls": [
+        "ACT-01",
+        "ACT-02",
+        "OPS-02"
+      ],
+      "test": "Probes that request destructive tools; confirm approval gates hold"
+    },
+    {
+      "id": "T-09",
+      "title": "Credential theft",
+      "components": [
+        "C3",
+        "C7"
+      ],
+      "scenario": "Keys or tokens placed in configuration, prompts or tool descriptions are read out by the model or harvested through a tool.",
+      "owasp_llm": [
+        "LLM02"
+      ],
+      "owasp_asi": [
+        "ASI03"
+      ],
+      "mitre_atlas": [
+        "AML.T0083",
+        "AML.T0098"
+      ],
+      "controls": [
+        "IAM-03",
+        "IAM-02"
+      ],
+      "test": "Scan configuration for secrets and sensitive paths ([agentlint](https://github.com/thenayanhazra/agentlint) rule AGT042)"
+    },
+    {
+      "id": "T-10",
+      "title": "Confused deputy",
+      "components": [
+        "C4",
+        "C7"
+      ],
+      "scenario": "A server acts with its own broad credentials on behalf of a user who should not have that access, or passes a user token through to another service.",
+      "owasp_llm": [
+        "LLM03"
+      ],
+      "owasp_asi": [
+        "ASI03"
+      ],
+      "mitre_atlas": [],
+      "controls": [
+        "IAM-02"
+      ],
+      "test": "Confused-deputy probes ([MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness)); review token audience settings"
+    },
+    {
+      "id": "T-11",
+      "title": "Memory poisoning",
+      "components": [
+        "C5"
+      ],
+      "scenario": "An attacker gets an instruction written into long-term memory, where it influences later sessions and other users.",
+      "owasp_llm": [
+        "LLM05"
+      ],
+      "owasp_asi": [
+        "ASI06"
+      ],
+      "mitre_atlas": [
+        "AML.T0080.000"
+      ],
+      "controls": [
+        "INP-03"
+      ],
+      "test": "Attempt memory writes from untrusted content; check provenance tags"
+    },
+    {
+      "id": "T-12",
+      "title": "Retrieval index poisoning",
+      "components": [
+        "C5"
+      ],
+      "scenario": "Planted documents in a retrieval index steer answers or carry indirect injections.",
+      "owasp_llm": [
+        "LLM09"
+      ],
+      "owasp_asi": [
+        "ASI06"
+      ],
+      "mitre_atlas": [
+        "AML.T0070"
+      ],
+      "controls": [
+        "INP-03",
+        "DAT-01"
+      ],
+      "test": "Seed test documents; confirm they are excluded or labelled"
+    },
+    {
+      "id": "T-13",
+      "title": "Sandbox escape",
+      "components": [
+        "C8"
+      ],
+      "scenario": "Code written by the agent breaks out of its sandbox or reaches credentials and networks it should not.",
+      "owasp_llm": [
+        "LLM10"
+      ],
+      "owasp_asi": [
+        "ASI05"
+      ],
+      "mitre_atlas": [
+        "AML.T0105"
+      ],
+      "controls": [
+        "ACT-03"
+      ],
+      "test": "Escape and egress tests inside the sandbox"
+    },
+    {
+      "id": "T-14",
+      "title": "Instructions spreading between agents",
+      "components": [
+        "C6"
+      ],
+      "scenario": "A compromised agent passes injected instructions or excess authority to other agents, which act on them.",
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI07",
+        "ASI08"
+      ],
+      "mitre_atlas": [
+        "AML.T0118",
+        "AML.T0143"
+      ],
+      "controls": [
+        "ACT-05"
+      ],
+      "test": "Inject at one agent; trace whether others act on it"
+    },
+    {
+      "id": "T-15",
+      "title": "Runaway consumption",
+      "components": [
+        "C2"
+      ],
+      "scenario": "A loop or adversarial input makes the agent call tools or models without end, running up cost or exhausting a service.",
+      "owasp_llm": [
+        "LLM06"
+      ],
+      "owasp_asi": [
+        "ASI08"
+      ],
+      "mitre_atlas": [
+        "AML.T0034.002"
+      ],
+      "controls": [
+        "ACT-06",
+        "OPS-02"
+      ],
+      "test": "Load and loop tests against budgets"
+    },
+    {
+      "id": "T-16",
+      "title": "Approval fatigue",
+      "components": [
+        "C1"
+      ],
+      "scenario": "Approvals are requested so often, or presented so vaguely, that reviewers approve without reading.",
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI09"
+      ],
+      "mitre_atlas": [],
+      "controls": [
+        "HUM-02",
+        "ACT-01"
+      ],
+      "test": "Measure approval time and rate; review approval screens"
+    },
+    {
+      "id": "T-17",
+      "title": "Undetected goal drift",
+      "components": [
+        "C2"
+      ],
+      "scenario": "The agent gradually pursues something other than its assigned goal, and no one notices.",
+      "owasp_llm": [],
+      "owasp_asi": [
+        "ASI10"
+      ],
+      "mitre_atlas": [],
+      "controls": [
+        "OPS-04",
+        "OPS-01",
+        "OPS-02"
+      ],
+      "test": "Compare actions against the agent's baseline and stated goal"
+    },
+    {
+      "id": "T-18",
+      "title": "Cross-tenant or unauthorised retrieval",
+      "components": [
+        "C5"
+      ],
+      "scenario": "The retrieval index or semantic cache returns documents belonging to another user, role or tenant because access controls are not enforced at query time.",
+      "owasp_llm": [
+        "LLM02",
+        "LLM09"
+      ],
+      "owasp_asi": [
+        "ASI06"
+      ],
+      "mitre_atlas": [
+        "AML.T0082"
+      ],
+      "controls": [
+        "DAT-03",
+        "INP-03"
+      ],
+      "test": "Query as a low-privilege or second-tenant user for restricted seed documents"
+    },
+    {
+      "id": "T-19",
+      "title": "Hidden context and system-prompt extraction",
+      "components": [
+        "C2",
+        "C3"
+      ],
+      "scenario": "A user or injected prompt extracts the system prompt, internal tool instructions or business rules.",
+      "owasp_llm": [
+        "LLM08"
+      ],
+      "owasp_asi": [],
+      "mitre_atlas": [
+        "AML.T0069.002"
+      ],
+      "controls": [
+        "INP-04",
+        "IAM-03"
+      ],
+      "test": "Prompt-extraction probes ([fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer)); confirm no secrets or sole controls live in prompts"
+    },
+    {
+      "id": "T-20",
+      "title": "Cross-server MCP tool shadowing",
+      "components": [
+        "C4"
+      ],
+      "scenario": "A malicious or compromised MCP server registers a tool name or description that shadows or overrides a trusted server's tool across the same client session.",
+      "owasp_llm": [
+        "LLM04"
+      ],
+      "owasp_asi": [
+        "ASI04"
+      ],
+      "mitre_atlas": [
+        "AML.T0110"
+      ],
+      "controls": [
+        "SUP-01",
+        "SUP-02",
+        "ACT-02"
+      ],
+      "test": "Tool-shadowing probes ([MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness)); enforce namespaced tool allow-lists"
+    }
+  ]
+}

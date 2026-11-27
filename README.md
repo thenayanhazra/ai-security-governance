@@ -25,6 +25,9 @@ Most AI governance material was written for systems that answer questions. Agent
 | Platform and procurement | [MCP server and agent component policy](policies/mcp-and-agent-supply-chain-policy.md) and [vendor contract checklist](templates/vendor-contract-checklist.md) | Ready-to-adopt policy for MCP servers, skills and instruction files, plus provider due-diligence clauses |
 | Governance operations | [AI inventory](templates/ai-inventory-guide.md) ([CSV](templates/ai-inventory-template.csv)), [RACI & forum charter](templates/raci-and-forum-charter.md), [gate checklists](templates/lifecycle-gate-checklists.md) and [exception register](templates/exception-register-template.md) | Day-one working templates for every lifecycle gate, approval body, exception and decommissioning |
 | Incident response & SRE | [Kill-switch runbook](runbooks/agent-kill-switch-runbook.md) and [AI incident response playbooks](runbooks/ai-incident-response-playbooks.md) | Emergency halt and revocation procedure (with `KRI-05` drill log), four AI incident playbooks and EU AI Act Art. 73 timelines |
+| Platform & DevSecOps | [OPA reference policy](examples/opa/README.md), [MCP fingerprinting CLI](examples/mcp-fingerprint/README.md) and [CI gate workflow](examples/ci/ai-governance-gate.yml) | Runnable policy-as-code, `SUP-02` rug-pull detection and PR evidence automation |
+| Programme leads | [30/60/90-day adoption playbook](docs/adoption-playbook.md) and [interactive control selector](docs/control-selector.html) | Rollout plan, 4-level maturity rubric and browser filter for applicable controls by tier, impact and framework |
+| Tooling & GRC integration | [`dist/governance.json`](dist/governance.json), [`dist/oscal-catalog.json`](dist/oscal-catalog.json) and [JSON Schemas](schemas/controls.schema.json) | Versioned machine-readable bundle, NIST OSCAL 1.1.2 catalog and Draft 2020-12 schemas |
 | Everyone | [Regulatory and standards horizon](regulatory/horizon.md) | The versions mapped and the dates that matter, as of November 2026 |
 
 ## How it fits together
@@ -37,6 +40,7 @@ flowchart LR
   K --> B["Board report"]
   T["Reference threat model"] --> C
   P["Policies, templates<br/>& runbooks"] --> C
+  C --> G["Governance-as-code<br/>JSON · OSCAL · OPA · CI"]
   C --> O["Open-source tooling<br/>tests the controls"]
 ```
 
@@ -53,22 +57,23 @@ The controls point to four open-source tools that produce evidence for them:
 
 ## How the mappings stay accurate
 
-Framework mappings go stale quietly, and a wrong citation in front of an auditor is worse than none. So the controls live in one data file, [`data/controls.yaml`](data/controls.yaml), and everything else is generated from it.
+Framework mappings go stale quietly, and a wrong citation in front of an auditor is worse than none. So controls, KRIs and threats live in structured YAML under `data/` ([`controls.yaml`](data/controls.yaml), [`kris.yaml`](data/kris.yaml), [`threats.yaml`](data/threats.yaml)), validated against [JSON Schemas](schemas/controls.schema.json), and every Markdown catalogue, crosswalk, JSON bundle, OSCAL catalog and HTML selector is generated from them.
 
 - [`tools/validate.py`](tools/validate.py) rejects any NIST, ISO, EU AI Act, OWASP or MITRE ATLAS identifier that is not in the [reference list](data/references.yaml) for the version in use.
 - Every MITRE ATLAS ID, in the data and in the prose, is checked against [MITRE's published data](https://github.com/mitre-atlas/atlas-data). CI warns when MITRE releases a new version.
-- Every control ID cited in prose, and every relative link and heading anchor in the repository, must resolve.
-- [`tools/build.py --check`](tools/build.py) fails if the catalogue or crosswalk has been edited by hand.
+- Every control, KRI and threat ID cited in prose, and every relative link and heading anchor in the repository, must resolve.
+- [`tools/build.py --check`](tools/build.py) fails if any generated file has been edited by hand.
 
 ```bash
-pip install pyyaml
-python tools/build.py      # regenerate catalogue and crosswalk
-python tools/validate.py   # check every mapping and link
+pip install -e ".[dev]"
+python tools/build.py      # regenerate docs, crosswalks, JSON, OSCAL and selector UI
+python tools/validate.py   # check every mapping, reference, ATLAS ID and anchor
+pytest -q                  # run unit tests
 ```
 
 ## Adapting it
 
-Fork it and change it. Calibrate the [KRI thresholds](board/kri-library.md) to your risk appetite, replace the roles in the framework with your own committee structure, and add controls in `data/controls.yaml`. The validator will tell you if a new mapping does not exist.
+Fork it and change it. Start with the [30/60/90-day adoption playbook](docs/adoption-playbook.md), calibrate the [KRI thresholds](data/kris.yaml) to your risk appetite, replace the roles in the [RACI and forum charter](templates/raci-and-forum-charter.md) with your own committee structure, and add controls in [`data/controls.yaml`](data/controls.yaml). The validator will tell you if a new mapping does not exist. See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow and [CHANGELOG.md](CHANGELOG.md) for releases.
 
 What it is not: legal advice, a certification scheme, or a substitute for judging your own systems. It is a starting point that a security and risk function can adopt in weeks rather than build over quarters.
 

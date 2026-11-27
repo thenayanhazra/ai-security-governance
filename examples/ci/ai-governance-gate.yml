@@ -1,0 +1,63 @@
+# Example CI/CD governance gate workflow
+# Copy into your agent repository as .github/workflows/ai-governance-gate.yml
+# Produces automated audit evidence for INP-02, SUP-02, TST-01, TST-02 and KRI-04.
+
+name: AI Governance Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  instruction-and-supply-chain:
+    name: Instruction & MCP supply-chain checks (INP-02, SUP-02)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan instruction files and MCP configs (agentlint)
+        run: |
+          cargo install --locked --git https://github.com/thenayanhazra/agentlint agentlint-cli
+          agentlint scan . --format sarif --out agentlint.sarif
+
+      - name: Upload agentlint SARIF
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: agentlint.sarif
+
+      # Uncomment when verifying an exported MCP tools/list manifest against its approved lockfile:
+      # - name: Verify MCP tool-definition fingerprints (SUP-02 / KRI-06)
+      #   run: |
+      #     python scripts/fingerprint_mcp.py check mcp-tools.json --lock mcp-tools.lock.json
+
+  adversarial-assessment:
+    name: End-to-end AI security assessment (TST-01, TST-02, KRI-04)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install AI Security Assessment kit
+        run: |
+          pip install "ai-security-assessment[tools] @ git+https://github.com/thenayanhazra/ai-security-assessment"
+
+      - name: Run assessment and fail if overall rating is Red
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ai-assess run assessment.yaml --out report/ --fail-on red
+
+      - name: Archive governance evidence bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-governance-evidence
+          path: report/

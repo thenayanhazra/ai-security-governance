@@ -1,0 +1,232 @@
+# Single source of truth for the agentic AI reference threat model.
+# Edit here, then run: python tools/build.py && python tools/validate.py
+
+components:
+  C1:
+    name: User and approver
+    why: Source of legitimate instructions, and the human check on consequential actions
+  C2:
+    name: Orchestrator agent
+    why: Decides what to do next; holds the agent's authority
+  C3:
+    name: System prompt and instruction files
+    why: Defines behaviour; includes skills, AGENTS.md, IDE rules and MCP configuration
+  C4:
+    name: Tools and MCP servers
+    why: Where the agent's actions take effect; tool descriptions and results are read by the model
+  C5:
+    name: Memory and retrieval index
+    why: Persists across sessions, so a poisoned entry keeps working
+  C6:
+    name: Sub-agents and peer agents
+    why: Can pass instructions and authority between agents
+  C7:
+    name: Identity broker and secrets
+    why: Issues the credentials the agent acts with
+  C8:
+    name: Code sandbox
+    why: Runs code the agent writes
+  C9:
+    name: Policy enforcement layer
+    why: Enforces limits the model cannot change
+
+threats:
+  - id: T-01
+    title: Direct prompt injection
+    components: [C1, C2]
+    scenario: A user tells the agent to ignore its instructions and act outside its purpose.
+    owasp_llm: [LLM01]
+    owasp_asi: [ASI01]
+    mitre_atlas: [AML.T0051.000]
+    controls: [INP-01, ACT-02]
+    test: Injection corpus against the production prompt ([fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer))
+
+  - id: T-02
+    title: Indirect prompt injection
+    components: [C2, C4, C5]
+    scenario: A document, web page or email the agent reads contains instructions that redirect it.
+    owasp_llm: [LLM01]
+    owasp_asi: [ASI01]
+    mitre_atlas: [AML.T0051.001]
+    controls: [INP-01, ACT-01, ACT-02]
+    test: Indirect and tool-result probes ([fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer), [MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness))
+
+  - id: T-03
+    title: Tool poisoning
+    components: [C4]
+    scenario: An MCP server's tool description contains hidden instructions that the model follows whenever the tool is listed.
+    owasp_llm: [LLM04]
+    owasp_asi: [ASI04]
+    mitre_atlas: [AML.T0110.000]
+    controls: [SUP-01, SUP-02, ACT-02]
+    test: Description-injection probes ([MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness))
+
+  - id: T-04
+    title: Tool rug pull
+    components: [C4]
+    scenario: A server behaves well during review, then changes its tool definitions or behaviour once approved.
+    owasp_llm: [LLM04]
+    owasp_asi: [ASI04]
+    mitre_atlas: [AML.T0109]
+    controls: [SUP-02]
+    test: Fingerprint tool definitions at approval; alert on any difference ([MCP fingerprinting starter](../examples/mcp-fingerprint/README.md))
+
+  - id: T-05
+    title: Malicious instruction file
+    components: [C3]
+    scenario: A skill or rules file pulled from a marketplace or repository hides instructions in invisible Unicode or comments.
+    owasp_llm: [LLM01]
+    owasp_asi: [ASI04]
+    mitre_atlas: [AML.T0081]
+    controls: [INP-02, SUP-01]
+    test: Static scan in CI ([agentlint](https://github.com/thenayanhazra/agentlint))
+
+  - id: T-06
+    title: Exfiltration through a tool call
+    components: [C2, C4]
+    scenario: Injected instructions make the agent send data to an attacker using a legitimate tool such as HTTP or email.
+    owasp_llm: [LLM02]
+    owasp_asi: [ASI02]
+    mitre_atlas: [AML.T0086]
+    controls: [ACT-04, ACT-01, ACT-02]
+    test: Exfiltration probes ([MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness))
+
+  - id: T-07
+    title: Exfiltration through rendered output
+    components: [C1, C2]
+    scenario: The agent outputs a markdown image or link whose URL carries conversation data; the client fetches it automatically.
+    owasp_llm: [LLM02, LLM10]
+    owasp_asi: []
+    mitre_atlas: [AML.T0136]
+    controls: [ACT-04, DAT-02]
+    test: Image-exfiltration payloads; scan instruction files for image sinks ([agentlint](https://github.com/thenayanhazra/agentlint) rule AGT040)
+
+  - id: T-08
+    title: Destructive action
+    components: [C2, C4]
+    scenario: The agent deletes data or changes configuration because of an injected or misunderstood instruction.
+    owasp_llm: [LLM03]
+    owasp_asi: [ASI02]
+    mitre_atlas: [AML.T0101]
+    controls: [ACT-01, ACT-02, OPS-02]
+    test: Probes that request destructive tools; confirm approval gates hold
+
+  - id: T-09
+    title: Credential theft
+    components: [C3, C7]
+    scenario: Keys or tokens placed in configuration, prompts or tool descriptions are read out by the model or harvested through a tool.
+    owasp_llm: [LLM02]
+    owasp_asi: [ASI03]
+    mitre_atlas: [AML.T0083, AML.T0098]
+    controls: [IAM-03, IAM-02]
+    test: Scan configuration for secrets and sensitive paths ([agentlint](https://github.com/thenayanhazra/agentlint) rule AGT042)
+
+  - id: T-10
+    title: Confused deputy
+    components: [C4, C7]
+    scenario: A server acts with its own broad credentials on behalf of a user who should not have that access, or passes a user token through to another service.
+    owasp_llm: [LLM03]
+    owasp_asi: [ASI03]
+    mitre_atlas: []
+    controls: [IAM-02]
+    test: Confused-deputy probes ([MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness)); review token audience settings
+
+  - id: T-11
+    title: Memory poisoning
+    components: [C5]
+    scenario: An attacker gets an instruction written into long-term memory, where it influences later sessions and other users.
+    owasp_llm: [LLM05]
+    owasp_asi: [ASI06]
+    mitre_atlas: [AML.T0080.000]
+    controls: [INP-03]
+    test: Attempt memory writes from untrusted content; check provenance tags
+
+  - id: T-12
+    title: Retrieval index poisoning
+    components: [C5]
+    scenario: Planted documents in a retrieval index steer answers or carry indirect injections.
+    owasp_llm: [LLM09]
+    owasp_asi: [ASI06]
+    mitre_atlas: [AML.T0070]
+    controls: [INP-03, DAT-01]
+    test: Seed test documents; confirm they are excluded or labelled
+
+  - id: T-13
+    title: Sandbox escape
+    components: [C8]
+    scenario: Code written by the agent breaks out of its sandbox or reaches credentials and networks it should not.
+    owasp_llm: [LLM10]
+    owasp_asi: [ASI05]
+    mitre_atlas: [AML.T0105]
+    controls: [ACT-03]
+    test: Escape and egress tests inside the sandbox
+
+  - id: T-14
+    title: Instructions spreading between agents
+    components: [C6]
+    scenario: A compromised agent passes injected instructions or excess authority to other agents, which act on them.
+    owasp_llm: []
+    owasp_asi: [ASI07, ASI08]
+    mitre_atlas: [AML.T0118, AML.T0143]
+    controls: [ACT-05]
+    test: Inject at one agent; trace whether others act on it
+
+  - id: T-15
+    title: Runaway consumption
+    components: [C2]
+    scenario: A loop or adversarial input makes the agent call tools or models without end, running up cost or exhausting a service.
+    owasp_llm: [LLM06]
+    owasp_asi: [ASI08]
+    mitre_atlas: [AML.T0034.002]
+    controls: [ACT-06, OPS-02]
+    test: Load and loop tests against budgets
+
+  - id: T-16
+    title: Approval fatigue
+    components: [C1]
+    scenario: Approvals are requested so often, or presented so vaguely, that reviewers approve without reading.
+    owasp_llm: []
+    owasp_asi: [ASI09]
+    mitre_atlas: []
+    controls: [HUM-02, ACT-01]
+    test: Measure approval time and rate; review approval screens
+
+  - id: T-17
+    title: Undetected goal drift
+    components: [C2]
+    scenario: The agent gradually pursues something other than its assigned goal, and no one notices.
+    owasp_llm: []
+    owasp_asi: [ASI10]
+    mitre_atlas: []
+    controls: [OPS-04, OPS-01, OPS-02]
+    test: Compare actions against the agent's baseline and stated goal
+
+  - id: T-18
+    title: Cross-tenant or unauthorised retrieval
+    components: [C5]
+    scenario: The retrieval index or semantic cache returns documents belonging to another user, role or tenant because access controls are not enforced at query time.
+    owasp_llm: [LLM02, LLM09]
+    owasp_asi: [ASI06]
+    mitre_atlas: [AML.T0082]
+    controls: [DAT-03, INP-03]
+    test: Query as a low-privilege or second-tenant user for restricted seed documents
+
+  - id: T-19
+    title: Hidden context and system-prompt extraction
+    components: [C2, C3]
+    scenario: A user or injected prompt extracts the system prompt, internal tool instructions or business rules.
+    owasp_llm: [LLM08]
+    owasp_asi: []
+    mitre_atlas: [AML.T0069.002]
+    controls: [INP-04, IAM-03]
+    test: Prompt-extraction probes ([fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer)); confirm no secrets or sole controls live in prompts
+
+  - id: T-20
+    title: Cross-server MCP tool shadowing
+    components: [C4]
+    scenario: A malicious or compromised MCP server registers a tool name or description that shadows or overrides a trusted server's tool across the same client session.
+    owasp_llm: [LLM04]
+    owasp_asi: [ASI04]
+    mitre_atlas: [AML.T0110]
+    controls: [SUP-01, SUP-02, ACT-02]
+    test: Tool-shadowing probes ([MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness)); enforce namespaced tool allow-lists

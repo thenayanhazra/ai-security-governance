@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thenayanhazra/ai-security-governance/schemas/kris.schema.json",
+  "title": "AI Security Governance Key Risk Indicators",
+  "type": "object",
+  "required": ["kris"],
+  "additionalProperties": false,
+  "properties": {
+    "kris": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "measure", "green", "amber", "red", "controls"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^KRI-[0-9]{2}$" },
+          "name": { "type": "string", "minLength": 1 },
+          "measure": { "type": "string", "minLength": 1 },
+          "green": { "type": "string", "minLength": 1 },
+          "amber": { "type": "string", "minLength": 1 },
+          "red": { "type": "string", "minLength": 1 },
+          "controls": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "pattern": "^[A-Z]{3}-[0-9]{2}$" },
+            "uniqueItems": true
+          },
+          "thresholds": {
+            "type": "object",
+            "required": ["unit", "direction"],
+            "additionalProperties": false,
+            "properties": {
+              "unit": { "type": "string", "enum": ["percent", "count", "minutes"] },
+              "direction": { "type": "string", "enum": ["higher_is_better", "lower_is_better"] },
+              "green_min": { "type": "number" },
+              "amber_min": { "type": "number" },
+              "green_max": { "type": "number" },
+              "amber_max": { "type": "number" }
+            }
+          },
+          "note": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

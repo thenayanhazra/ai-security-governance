@@ -16,8 +16,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pyyaml
+      - name: Install dependencies
+        run: pip install pyyaml pytest check-jsonschema
+      - name: Validate YAML data against JSON Schemas
+        run: |
+          check-jsonschema --schemafile schemas/controls.schema.json data/controls.yaml
+          check-jsonschema --schemafile schemas/kris.schema.json data/kris.yaml
+          check-jsonschema --schemafile schemas/threats.schema.json data/threats.yaml
       - name: Generated files are up to date
         run: python tools/build.py --check
-      - name: Mappings, ATLAS IDs and links are valid
+      - name: Mappings, ATLAS IDs, references and anchors are valid
         run: python tools/validate.py
+      - name: Run unit tests
+        run: pytest -q

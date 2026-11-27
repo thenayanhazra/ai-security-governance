@@ -1,0 +1,2327 @@
+{
+  "catalog": {
+    "uuid": "d3b146f6-fca8-5fce-8619-31560cdc5267",
+    "metadata": {
+      "title": "AI Security Governance Control Catalogue",
+      "version": "1.0.0",
+      "oscal-version": "1.1.2",
+      "remarks": "Generated from data/controls.yaml and data/references.yaml.",
+      "props": [
+        {
+          "name": "framework-nist-ai-rmf",
+          "value": "AI RMF 1.0 (NIST AI 100-1). NIST has said 1.0 is under revision."
+        },
+        {
+          "name": "framework-iso-42001",
+          "value": "ISO/IEC 42001:2023, Annex A (all 38 reference controls)"
+        },
+        {
+          "name": "framework-eu-ai-act",
+          "value": "Regulation (EU) 2024/1689 as amended by Regulation (EU) 2026/1744 (Digital Omnibus on AI)"
+        },
+        {
+          "name": "framework-owasp-llm",
+          "value": "2026 edition (published August 2026)"
+        },
+        {
+          "name": "framework-owasp-asi",
+          "value": "2026 edition (published December 2025)"
+        },
+        {
+          "name": "framework-mitre-atlas",
+          "value": "v2026.10"
+        }
+      ]
+    },
+    "groups": [
+      {
+        "id": "gov",
+        "title": "Governance and accountability",
+        "controls": [
+          {
+            "id": "gov-01",
+            "title": "Accountable ownership",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 2.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 2.3"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.3.2"
+              }
+            ],
+            "parts": [
+              {
+                "id": "gov-01_stmt",
+                "name": "statement",
+                "prose": "A named executive owns enterprise AI risk. Every AI system and agent in the inventory has an accountable business owner and a technical owner, and their decision rights are written down."
+              },
+              {
+                "id": "gov-01_evid",
+                "name": "assessment-objective",
+                "prose": "AI risk RACI; owner fields populated for every inventory entry."
+              }
+            ]
+          },
+          {
+            "id": "gov-02",
+            "title": "AI policy and risk appetite",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 1.2"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 1.3"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 1.4"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 1.5"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.2.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.2.4"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 5"
+              }
+            ],
+            "parts": [
+              {
+                "id": "gov-02_stmt",
+                "name": "statement",
+                "prose": "A board-approved AI policy sets risk appetite, prohibited uses and the highest autonomy tier the organisation will accept for each class of data and action. It is reviewed at least once a year and after any major AI incident."
+              },
+              {
+                "id": "gov-02_evid",
+                "name": "assessment-objective",
+                "prose": "Approved policy with version history; board or committee minutes."
+              }
+            ]
+          },
+          {
+            "id": "gov-03",
+            "title": "Regulatory obligations register",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 1.1"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.2.3"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 6"
+              }
+            ],
+            "parts": [
+              {
+                "id": "gov-03_stmt",
+                "name": "statement",
+                "prose": "The AI laws that apply to each system, and the dates they take effect, are recorded against that system, including its EU AI Act risk classification. The register is reviewed when the system or the law changes."
+              },
+              {
+                "id": "gov-03_evid",
+                "name": "assessment-objective",
+                "prose": "Obligations register linked to the inventory; review log."
+              }
+            ]
+          },
+          {
+            "id": "gov-04",
+            "title": "AI literacy and role training",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 2.2"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 4.1"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.4.6"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 4"
+              }
+            ],
+            "parts": [
+              {
+                "id": "gov-04_stmt",
+                "name": "statement",
+                "prose": "People who build, approve, operate or oversee AI systems receive training for their role, including how prompt injection and agent misuse work. Completion is tracked."
+              },
+              {
+                "id": "gov-04_evid",
+                "name": "assessment-objective",
+                "prose": "Training curriculum by role; completion records."
+              }
+            ]
+          },
+          {
+            "id": "gov-05",
+            "title": "Governance of coding agents and SaaS-embedded AI",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 1.6"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 6.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 3.3"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.4.4"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.9.4"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.10.3"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 26"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM03"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM04"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI02"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI04"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0081"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "agentlint"
+              }
+            ],
+            "parts": [
+              {
+                "id": "gov-05_stmt",
+                "name": "statement",
+                "prose": "AI capabilities embedded in SaaS platforms (such as office, CRM and ticketing copilots) and developer coding agents follow the same inventory, data-use and approval rules as custom-built agents. Vendor AI features default to off until reviewed, and coding agents operate with branch protection, mandatory human pull-request review and isolated credentials."
+              },
+              {
+                "id": "gov-05_evid",
+                "name": "assessment-objective",
+                "prose": "SaaS AI feature review records; repository protection and coding-agent policy settings."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "inv",
+        "title": "Inventory and classification",
+        "controls": [
+          {
+            "id": "inv-01",
+            "title": "Inventory of AI systems, agents and components",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 1.6"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 1.1"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.4.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.7"
+              }
+            ],
+            "parts": [
+              {
+                "id": "inv-01_stmt",
+                "name": "statement",
+                "prose": "Every AI system, agent, model, MCP server and skill in use is recorded with its owner, purpose, data accessed, tools granted, autonomy tier and status. Discovery runs regularly to find unregistered use."
+              },
+              {
+                "id": "inv-01_evid",
+                "name": "assessment-objective",
+                "prose": "Inventory export; discovery reports and how findings were resolved."
+              }
+            ]
+          },
+          {
+            "id": "inv-02",
+            "title": "Autonomy and impact classification",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 2.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 3.3"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 5.1"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.5.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.5.4"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 6"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM03"
+              }
+            ],
+            "parts": [
+              {
+                "id": "inv-02_stmt",
+                "name": "statement",
+                "prose": "Each agent is assigned an autonomy tier based on what it can do without human approval, and an impact rating based on the worst credible outcome. Together they decide which controls apply."
+              },
+              {
+                "id": "inv-02_evid",
+                "name": "assessment-objective",
+                "prose": "Classification record per system, approved by the risk owner."
+              }
+            ]
+          },
+          {
+            "id": "inv-03",
+            "title": "Threat and impact assessment before release",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "2"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 2 Act with approval, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 1.5"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 4.2"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 5.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 1.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 1.3"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.5.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.5.3"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.5"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 9"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "ai-threat-modelling-engine"
+              }
+            ],
+            "parts": [
+              {
+                "id": "inv-03_stmt",
+                "name": "statement",
+                "prose": "Systems at tier 2 and above, or rated high or severe impact, have a documented threat model and impact assessment, approved by the risk owner, before production and after any material change to tools, data or autonomy."
+              },
+              {
+                "id": "inv-03_evid",
+                "name": "assessment-objective",
+                "prose": "Signed assessment; change records that triggered reassessment."
+              }
+            ]
+          },
+          {
+            "id": "inv-04",
+            "title": "Safe retirement",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 1.7"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.6"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI10"
+              }
+            ],
+            "parts": [
+              {
+                "id": "inv-04_stmt",
+                "name": "statement",
+                "prose": "When an agent or component is withdrawn, its credentials are revoked, its memory and retrieval indexes are purged or archived under retention rules, its tool connections are removed and the inventory is updated."
+              },
+              {
+                "id": "inv-04_evid",
+                "name": "assessment-objective",
+                "prose": "Decommissioning checklist; credential revocation records."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sup",
+        "title": "Supply chain",
+        "controls": [
+          {
+            "id": "sup-01",
+            "title": "Approved sources for models, MCP servers and skills",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 6.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 4.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 3.1"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.10.3"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 25"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM04"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI04"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0010.005"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0110"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0111"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "agentlint"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "mcp-adversarial-harness"
+              }
+            ],
+            "parts": [
+              {
+                "id": "sup-01_stmt",
+                "name": "statement",
+                "prose": "Models, MCP servers, skills and agent plugins are used only from an approved registry. New entries pass an intake review covering provenance, maintainer, licence, permissions requested, static scanning and adversarial testing."
+              },
+              {
+                "id": "sup-01_evid",
+                "name": "assessment-objective",
+                "prose": "Registry with intake records; rejected-request log."
+              }
+            ]
+          },
+          {
+            "id": "sup-02",
+            "title": "Version pinning and tool-definition change detection",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 3.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 3.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.10.3"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM04"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI04"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0109"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0110.000"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "agentlint"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "ai-threat-modelling-engine"
+              }
+            ],
+            "parts": [
+              {
+                "id": "sup-02_stmt",
+                "name": "statement",
+                "prose": "Approved components are pinned to a reviewed version or hash. Tool definitions are fingerprinted, and any change to a tool's description, schema or permissions blocks its use until it is reviewed again."
+              },
+              {
+                "id": "sup-02_evid",
+                "name": "assessment-objective",
+                "prose": "Lock files or hashes; change alerts and their review outcomes."
+              }
+            ]
+          },
+          {
+            "id": "sup-03",
+            "title": "Contract terms for AI providers",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 6.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 6.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.10.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.10.3"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 25"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM04"
+              }
+            ],
+            "parts": [
+              {
+                "id": "sup-03_stmt",
+                "name": "statement",
+                "prose": "Contracts with model and AI service providers cover data use and retention, training on customer data, incident notification, sub-processors, notice of model changes and audit rights."
+              },
+              {
+                "id": "sup-03_evid",
+                "name": "assessment-objective",
+                "prose": "Contract clause checklist per provider."
+              }
+            ]
+          },
+          {
+            "id": "sup-04",
+            "title": "Model version pinning and provider change management",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 6.2"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 3.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.6"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.10.3"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 15"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 25"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM04"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI04"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0099"
+              }
+            ],
+            "parts": [
+              {
+                "id": "sup-04_stmt",
+                "name": "statement",
+                "prose": "Production systems pin explicit model snapshots rather than rolling aliases where providers support it. Upstream model updates, deprecations or tool provider changes trigger regression testing before promotion, and high or severe impact systems maintain a documented fallback or exit path."
+              },
+              {
+                "id": "sup-04_evid",
+                "name": "assessment-objective",
+                "prose": "Model version configuration; upgrade test records; exit plan for high and severe systems."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "iam",
+        "title": "Agent identity and authority",
+        "controls": [
+          {
+            "id": "iam-01",
+            "title": "Distinct identity for every agent",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.8"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI03"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "ai-threat-modelling-engine"
+              }
+            ],
+            "parts": [
+              {
+                "id": "iam-01_stmt",
+                "name": "statement",
+                "prose": "Each agent runs under its own non-human identity, never a shared account or a person's account, so every action can be traced to the agent and to the person or process that started it."
+              },
+              {
+                "id": "iam-01_evid",
+                "name": "assessment-objective",
+                "prose": "Identity register; sample of actions traced end to end."
+              }
+            ]
+          },
+          {
+            "id": "iam-02",
+            "title": "Least privilege and short-lived delegated credentials",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 4.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.9.4"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM03"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI02"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI03"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0055"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0098"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "agentlint"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "mcp-adversarial-harness"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "ai-threat-modelling-engine"
+              }
+            ],
+            "parts": [
+              {
+                "id": "iam-02_stmt",
+                "name": "statement",
+                "prose": "Agents receive only the tools, scopes and data the task needs. Credentials are short-lived and bound to a specific task and resource; for MCP this means audience-bound tokens, and tokens are never passed through to downstream services."
+              },
+              {
+                "id": "iam-02_evid",
+                "name": "assessment-objective",
+                "prose": "Scope reviews; token lifetime configuration; MCP authorization settings."
+              }
+            ]
+          },
+          {
+            "id": "iam-03",
+            "title": "Secrets kept out of agent context",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.7"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM02"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM08"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI03"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0083"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "agentlint"
+              }
+            ],
+            "parts": [
+              {
+                "id": "iam-03_stmt",
+                "name": "statement",
+                "prose": "Credentials and keys never appear in prompts, agent configuration files, memory or tool descriptions. Agents obtain them from a secrets broker at the moment of use, and the model never sees them."
+              },
+              {
+                "id": "iam-03_evid",
+                "name": "assessment-objective",
+                "prose": "Configuration scans; secrets-broker integration records."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "inp",
+        "title": "Input and context integrity",
+        "controls": [
+          {
+            "id": "inp-01",
+            "title": "External content treated as untrusted",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.7"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 15"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM01"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI01"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0051.001"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0053"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "agentlint"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "mcp-adversarial-harness"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "llm-prompt-injection-fuzzer"
+              }
+            ],
+            "parts": [
+              {
+                "id": "inp-01_stmt",
+                "name": "statement",
+                "prose": "Content from tools, documents, web pages, email and other agents is labelled as data, kept separate from instructions, and cannot on its own trigger a privileged action."
+              },
+              {
+                "id": "inp-01_evid",
+                "name": "assessment-objective",
+                "prose": "Design review showing trust labelling; test results for indirect injection."
+              }
+            ]
+          },
+          {
+            "id": "inp-02",
+            "title": "Scanning of agent instruction files",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.7"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.4"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM01"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI01"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI04"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0081"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0068"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "agentlint"
+              }
+            ],
+            "parts": [
+              {
+                "id": "inp-02_stmt",
+                "name": "statement",
+                "prose": "Agent instruction files (skills, AGENTS.md, IDE rules, MCP configuration) are scanned in CI for hidden Unicode, override patterns and exfiltration sinks before they are merged or installed."
+              },
+              {
+                "id": "inp-02_evid",
+                "name": "assessment-objective",
+                "prose": "CI configuration; scan results on recent merges."
+              }
+            ]
+          },
+          {
+            "id": "inp-03",
+            "title": "Memory and retrieval integrity",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.7"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.7.5"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 15"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM05"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM09"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI06"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0080.000"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0070"
+              }
+            ],
+            "parts": [
+              {
+                "id": "inp-03_stmt",
+                "name": "statement",
+                "prose": "Writes to long-term memory and retrieval indexes are limited to trusted sources and tagged with their provenance. Memory can be inspected and purged per user and per agent."
+              },
+              {
+                "id": "inp-03_evid",
+                "name": "assessment-objective",
+                "prose": "Write-path design; provenance fields; purge procedure and test."
+              }
+            ]
+          },
+          {
+            "id": "inp-04",
+            "title": "Hidden context and system-prompt protection",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.7"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 15"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM08"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI01"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0069.002"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "llm-prompt-injection-fuzzer"
+              }
+            ],
+            "parts": [
+              {
+                "id": "inp-04_stmt",
+                "name": "statement",
+                "prose": "System prompts, internal instructions and tool schemas are treated as extractable: they never hold secrets or serve as the sole access control, and applications are tested against prompt-extraction attacks before release."
+              },
+              {
+                "id": "inp-04_evid",
+                "name": "assessment-objective",
+                "prose": "Prompt review confirming no secrets or sole controls; extraction test results."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act",
+        "title": "Action and tool control",
+        "controls": [
+          {
+            "id": "act-01",
+            "title": "Human approval for consequential actions",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "2"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 2 Act with approval"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 3.5"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.9.2"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 14"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM03"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI02"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI09"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0101"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0086"
+              }
+            ],
+            "parts": [
+              {
+                "id": "act-01_stmt",
+                "name": "statement",
+                "prose": "Actions that move money, delete or change records, send external communications, change access or run code outside a sandbox need explicit human approval that shows the exact action and its parameters."
+              },
+              {
+                "id": "act-01_evid",
+                "name": "assessment-objective",
+                "prose": "Action catalogue with approval requirements; approval logs."
+              }
+            ]
+          },
+          {
+            "id": "act-02",
+            "title": "Policy enforced outside the model",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 4.2"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 15"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM03"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI01"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI02"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0051.000"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0053"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "mcp-adversarial-harness"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "agentlint"
+              }
+            ],
+            "parts": [
+              {
+                "id": "act-02_stmt",
+                "name": "statement",
+                "prose": "Allowed tools, parameters, destinations and rates are enforced by a policy layer that the model cannot change. The model's own judgement is never the only control on what an agent does."
+              },
+              {
+                "id": "act-02_evid",
+                "name": "assessment-objective",
+                "prose": "Policy configuration; denied-action logs."
+              }
+            ]
+          },
+          {
+            "id": "act-03",
+            "title": "Sandboxed code execution",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "2"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 2 Act with approval"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.7"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM10"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI05"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0105"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "ai-threat-modelling-engine"
+              }
+            ],
+            "parts": [
+              {
+                "id": "act-03_stmt",
+                "name": "statement",
+                "prose": "Code and commands generated by an agent run in an isolated, short-lived sandbox with no standing credentials and network access limited to an allow-list."
+              },
+              {
+                "id": "act-03_evid",
+                "name": "assessment-objective",
+                "prose": "Sandbox configuration; escape-test results."
+              }
+            ]
+          },
+          {
+            "id": "act-04",
+            "title": "Egress and exfiltration controls",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.7"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.10"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM02"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI02"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0086"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0136"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "agentlint"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "mcp-adversarial-harness"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "ai-threat-modelling-engine"
+              }
+            ],
+            "parts": [
+              {
+                "id": "act-04_stmt",
+                "name": "statement",
+                "prose": "Agents can reach only approved destinations. Outbound requests, rendered links and images are filtered so that data cannot leave through URLs or markdown."
+              },
+              {
+                "id": "act-04_evid",
+                "name": "assessment-objective",
+                "prose": "Egress allow-list; output-rendering filter tests."
+              }
+            ]
+          },
+          {
+            "id": "act-05",
+            "title": "Trust boundaries between agents",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "2"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 2 Act with approval"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 4.2"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI07"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI08"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0118"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0143"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "llm-prompt-injection-fuzzer"
+              }
+            ],
+            "parts": [
+              {
+                "id": "act-05_stmt",
+                "name": "statement",
+                "prose": "Messages between agents are authenticated and treated as untrusted input. No agent can grant another more authority than it holds itself, and delegation depth and fan-out are capped."
+              },
+              {
+                "id": "act-05_evid",
+                "name": "assessment-objective",
+                "prose": "Inter-agent protocol design; authority-propagation tests."
+              }
+            ]
+          },
+          {
+            "id": "act-06",
+            "title": "Resource and spend limits",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 2.4"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.6"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM06"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI08"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0034.002"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0029"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "ai-threat-modelling-engine"
+              }
+            ],
+            "parts": [
+              {
+                "id": "act-06_stmt",
+                "name": "statement",
+                "prose": "Each agent has limits on tokens, tool calls, spend and run time, and halts automatically when a limit is reached."
+              },
+              {
+                "id": "act-06_evid",
+                "name": "assessment-objective",
+                "prose": "Budget configuration; halt events."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "dat",
+        "title": "Data protection",
+        "controls": [
+          {
+            "id": "dat-01",
+            "title": "Data classes approved per system and provider",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.10"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.7.2"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM02"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "ai-threat-modelling-engine"
+              }
+            ],
+            "parts": [
+              {
+                "id": "dat-01_stmt",
+                "name": "statement",
+                "prose": "The classes of data each AI system and provider may process are defined. Restricted data cannot reach a model or tool that is not approved for it."
+              },
+              {
+                "id": "dat-01_evid",
+                "name": "assessment-objective",
+                "prose": "Data-use matrix; DLP rules on AI traffic."
+              }
+            ]
+          },
+          {
+            "id": "dat-02",
+            "title": "Safe handling of model output",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or Moderate impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "moderate"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.7"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM10"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI05"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "mcp-adversarial-harness"
+              }
+            ],
+            "parts": [
+              {
+                "id": "dat-02_stmt",
+                "name": "statement",
+                "prose": "Model output is validated and encoded before it reaches browsers, shells, databases or other systems, in the same way as untrusted user input."
+              },
+              {
+                "id": "dat-02_evid",
+                "name": "assessment-objective",
+                "prose": "Code review findings; output-handling tests."
+              }
+            ]
+          },
+          {
+            "id": "dat-03",
+            "title": "Permission-aware retrieval and tenant isolation",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or Moderate impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "moderate"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 4.2"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.10"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.4.3"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.7.4"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 10"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM02"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM09"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI03"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI06"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0082"
+              }
+            ],
+            "parts": [
+              {
+                "id": "dat-03_stmt",
+                "name": "statement",
+                "prose": "Retrieval indexes, vector stores, semantic caches and agent memory enforce the invoking user's access permissions at query time and isolate data between tenants and roles so no query can surface unauthorised records."
+              },
+              {
+                "id": "dat-03_evid",
+                "name": "assessment-objective",
+                "prose": "Retrieval authorisation design; cross-role and cross-tenant query test results."
+              }
+            ]
+          },
+          {
+            "id": "dat-04",
+            "title": "Privacy and secret minimisation in prompts and logs",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.10"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.7.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.7.6"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 10"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 12"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM02"
+              }
+            ],
+            "parts": [
+              {
+                "id": "dat-04_stmt",
+                "name": "statement",
+                "prose": "Personal data and secrets are redacted, tokenised or minimised before prompts reach external model providers and before prompts, parameters or results are written to operational logs, balancing auditability with privacy law."
+              },
+              {
+                "id": "dat-04_evid",
+                "name": "assessment-objective",
+                "prose": "Redaction pipeline configuration; sample log inspection; retention and access controls."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ops",
+        "title": "Monitoring and response",
+        "controls": [
+          {
+            "id": "ops-01",
+            "title": "Action-level logging",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.4"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 4.1"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.8"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 12"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 26"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI10"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "ai-threat-modelling-engine"
+              }
+            ],
+            "parts": [
+              {
+                "id": "ops-01_stmt",
+                "name": "statement",
+                "prose": "Every prompt, tool call, parameter set, approval decision and result is logged with the agent's identity and a correlation ID, retained according to policy and protected from tampering."
+              },
+              {
+                "id": "ops-01_evid",
+                "name": "assessment-objective",
+                "prose": "Log schema; retention settings; integrity controls."
+              }
+            ]
+          },
+          {
+            "id": "ops-02",
+            "title": "Kill switch and credential revocation",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "2"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 2 Act with approval, or Severe impact"
+              },
+              {
+                "name": "or-impact",
+                "value": "severe"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 2.3"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 2.4"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.6"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.6"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 14"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI08"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI10"
+              }
+            ],
+            "parts": [
+              {
+                "id": "ops-02_stmt",
+                "name": "statement",
+                "prose": "Any agent can be paused, its credentials revoked and its recent actions listed within a set time: 15 minutes for tier 3. The procedure is exercised at least twice a year."
+              },
+              {
+                "id": "ops-02_evid",
+                "name": "assessment-objective",
+                "prose": "Runbook; exercise records with measured times."
+              }
+            ]
+          },
+          {
+            "id": "ops-03",
+            "title": "AI incident response",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 4.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MANAGE 4.3"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "GOVERN 4.3"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.3.3"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.8.4"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 73"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI10"
+              }
+            ],
+            "parts": [
+              {
+                "id": "ops-03_stmt",
+                "name": "statement",
+                "prose": "Incident runbooks cover prompt injection, data leakage through agents, runaway or rogue agents and compromised MCP servers, including regulatory notification where it is required. Staff and users have a clear channel to report concerns about an AI system's behaviour."
+              },
+              {
+                "id": "ops-03_evid",
+                "name": "assessment-objective",
+                "prose": "Runbooks; exercise reports; incident records; reporting channel and its log."
+              }
+            ]
+          },
+          {
+            "id": "ops-04",
+            "title": "Behavioural monitoring",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "2"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 2 Act with approval, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.4"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 3.1"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.6"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 72"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI01"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI10"
+              }
+            ],
+            "parts": [
+              {
+                "id": "ops-04_stmt",
+                "name": "statement",
+                "prose": "Each agent's normal behaviour is baselined. Unusual tools, destinations, volumes or deviation from the assigned goal raise an alert."
+              },
+              {
+                "id": "ops-04_evid",
+                "name": "assessment-objective",
+                "prose": "Detection rules; alert history and triage outcomes."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tst",
+        "title": "Testing and assurance",
+        "controls": [
+          {
+            "id": "tst-01",
+            "title": "Adversarial testing before release",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "2"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 2 Act with approval, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 1.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.7"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.4"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 15"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM01"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM02"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI01"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI02"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0051"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0051.000"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0054"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "llm-prompt-injection-fuzzer"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "mcp-adversarial-harness"
+              }
+            ],
+            "parts": [
+              {
+                "id": "tst-01_stmt",
+                "name": "statement",
+                "prose": "Systems at tier 2 and above, or rated high or severe impact, are tested before release, and after material change, for prompt injection, tool misuse and data leakage using a maintained attack corpus. Results are recorded against acceptance thresholds."
+              },
+              {
+                "id": "tst-01_evid",
+                "name": "assessment-objective",
+                "prose": "Test reports with bypass rates against thresholds."
+              }
+            ]
+          },
+          {
+            "id": "tst-02",
+            "title": "Continuous regression testing",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "2"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 2 Act with approval, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 1.2"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.4"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.4"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM01"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI01"
+              },
+              {
+                "name": "mitre-atlas",
+                "value": "AML.T0051"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "llm-prompt-injection-fuzzer"
+              }
+            ],
+            "parts": [
+              {
+                "id": "tst-02_stmt",
+                "name": "statement",
+                "prose": "The attack corpus runs in CI against the production system prompt and configuration. A bypass rate above threshold blocks the release."
+              },
+              {
+                "id": "tst-02_evid",
+                "name": "assessment-objective",
+                "prose": "CI pipeline; trend of bypass rate by release."
+              }
+            ]
+          },
+          {
+            "id": "tst-03",
+            "title": "Independent assurance",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "3"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 3 Act autonomously, or Severe impact"
+              },
+              {
+                "name": "or-impact",
+                "value": "severe"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 1.3"
+              }
+            ],
+            "parts": [
+              {
+                "id": "tst-03_stmt",
+                "name": "statement",
+                "prose": "Tier 3 agents and severe-impact systems receive independent review, by internal audit or an external party, at least once a year."
+              },
+              {
+                "id": "tst-03_evid",
+                "name": "assessment-objective",
+                "prose": "Assurance reports and management responses."
+              }
+            ]
+          },
+          {
+            "id": "tst-04",
+            "title": "Accuracy, grounding and bias evaluation",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "1"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 1 Retrieve, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.1"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.3"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.5"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.11"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.6.2.4"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.7.4"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 10"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 15"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM07"
+              }
+            ],
+            "parts": [
+              {
+                "id": "tst-04_stmt",
+                "name": "statement",
+                "prose": "Systems are evaluated before release and after model or prompt changes for task accuracy, grounding against authoritative sources (hallucination rate) and, where outputs affect individuals or groups, bias and fairness across protected groups."
+              },
+              {
+                "id": "tst-04_evid",
+                "name": "assessment-objective",
+                "prose": "Evaluation test sets, metrics, acceptance thresholds and sign-off records."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hum",
+        "title": "Human oversight and transparency",
+        "controls": [
+          {
+            "id": "hum-01",
+            "title": "Disclosure of AI interaction",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "0"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 0 Assist"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MEASURE 2.8"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.8.2"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 50"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM07"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI09"
+              }
+            ],
+            "parts": [
+              {
+                "id": "hum-01_stmt",
+                "name": "statement",
+                "prose": "People are told when they are dealing with an AI system or receiving AI-generated content, and agents acting for someone identify themselves to third parties."
+              },
+              {
+                "id": "hum-01_evid",
+                "name": "assessment-objective",
+                "prose": "UI copy; content-marking configuration; agent identification headers."
+              }
+            ]
+          },
+          {
+            "id": "hum-02",
+            "title": "Oversight that is meaningful, not ceremonial",
+            "props": [
+              {
+                "name": "min-tier",
+                "value": "2"
+              },
+              {
+                "name": "applies-from",
+                "value": "tier 2 Act with approval, or High impact and above"
+              },
+              {
+                "name": "or-impact",
+                "value": "high"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 3.5"
+              },
+              {
+                "name": "nist-ai-rmf",
+                "value": "MAP 2.2"
+              },
+              {
+                "name": "iso-42001",
+                "value": "A.9.2"
+              },
+              {
+                "name": "eu-ai-act",
+                "value": "Art. 14"
+              },
+              {
+                "name": "owasp-llm",
+                "value": "LLM07"
+              },
+              {
+                "name": "owasp-asi",
+                "value": "ASI09"
+              },
+              {
+                "name": "open-source-tooling",
+                "value": "mcp-adversarial-harness"
+              }
+            ],
+            "parts": [
+              {
+                "id": "hum-02_stmt",
+                "name": "statement",
+                "prose": "Approval screens state what will happen and why, rather than asking for a bare yes or no. Approval rates and decision times are monitored to detect rubber-stamping."
+              },
+              {
+                "id": "hum-02_evid",
+                "name": "assessment-objective",
+                "prose": "Approval UI review; approval-rate and decision-time metrics."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

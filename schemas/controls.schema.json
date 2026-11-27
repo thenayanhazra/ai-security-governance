@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thenayanhazra/ai-security-governance/schemas/controls.schema.json",
+  "title": "AI Security Governance Control Catalogue",
+  "type": "object",
+  "required": ["domains", "controls"],
+  "additionalProperties": false,
+  "properties": {
+    "domains": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[A-Z]{3}$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "controls": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "requirement",
+          "evidence",
+          "min_tier",
+          "nist_ai_rmf",
+          "iso_42001",
+          "eu_ai_act",
+          "owasp_llm",
+          "owasp_asi",
+          "mitre_atlas"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-Z]{3}-[0-9]{2}$" },
+          "title": { "type": "string", "minLength": 1 },
+          "requirement": { "type": "string", "minLength": 1 },
+          "evidence": { "type": "string", "minLength": 1 },
+          "min_tier": { "type": "integer", "minimum": 0, "maximum": 3 },
+          "or_impact": { "type": "string", "enum": ["low", "moderate", "high", "severe"] },
+          "nist_ai_rmf": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "iso_42001": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "eu_ai_act": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "owasp_llm": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "owasp_asi": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+          "mitre_atlas": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^AML\\.T[0-9]{4}(\\.[0-9]{3})?$" },
+            "uniqueItems": true
+          },
+          "tooling": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ai-threat-modelling-engine",
+                "mcp-adversarial-harness",
+                "agentlint",
+                "llm-prompt-injection-fuzzer"
+              ]
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}
