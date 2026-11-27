@@ -79,6 +79,24 @@ controls:
     owasp_asi: []
     mitre_atlas: []
 
+  - id: GOV-05
+    title: Governance of coding agents and SaaS-embedded AI
+    requirement: >-
+      AI capabilities embedded in SaaS platforms (such as office, CRM and ticketing
+      copilots) and developer coding agents follow the same inventory, data-use and
+      approval rules as custom-built agents. Vendor AI features default to off until
+      reviewed, and coding agents operate with branch protection, mandatory human
+      pull-request review and isolated credentials.
+    evidence: SaaS AI feature review records; repository protection and coding-agent policy settings.
+    min_tier: 0
+    nist_ai_rmf: [GOVERN 1.6, GOVERN 6.1, MAP 3.3]
+    iso_42001: [A.4.4, A.9.4, A.10.3]
+    eu_ai_act: [Art. 26]
+    owasp_llm: [LLM03, LLM04]
+    owasp_asi: [ASI02, ASI04]
+    mitre_atlas: [AML.T0081]
+    tooling: [agentlint]
+
   - id: INV-01
     title: Inventory of AI systems, agents and components
     requirement: >-
@@ -191,6 +209,23 @@ controls:
     owasp_asi: []
     mitre_atlas: []
 
+  - id: SUP-04
+    title: Model version pinning and provider change management
+    requirement: >-
+      Production systems pin explicit model snapshots rather than rolling aliases
+      where providers support it. Upstream model updates, deprecations or tool
+      provider changes trigger regression testing before promotion, and high or
+      severe impact systems maintain a documented fallback or exit path.
+    evidence: Model version configuration; upgrade test records; exit plan for high and severe systems.
+    min_tier: 1
+    or_impact: high
+    nist_ai_rmf: [GOVERN 6.2, MANAGE 3.2]
+    iso_42001: [A.6.2.6, A.10.3]
+    eu_ai_act: [Art. 15, Art. 25]
+    owasp_llm: [LLM04]
+    owasp_asi: [ASI04]
+    mitre_atlas: [AML.T0099]
+
   - id: IAM-01
     title: Distinct identity for every agent
     requirement: >-
@@ -287,6 +322,22 @@ controls:
     owasp_llm: [LLM05, LLM09]
     owasp_asi: [ASI06]
     mitre_atlas: [AML.T0080.000, AML.T0070]
+
+  - id: INP-04
+    title: Hidden context and system-prompt protection
+    requirement: >-
+      System prompts, internal instructions and tool schemas are treated as
+      extractable: they never hold secrets or serve as the sole access control, and
+      applications are tested against prompt-extraction attacks before release.
+    evidence: Prompt review confirming no secrets or sole controls; extraction test results.
+    min_tier: 0
+    nist_ai_rmf: [MEASURE 2.7]
+    iso_42001: []
+    eu_ai_act: [Art. 15]
+    owasp_llm: [LLM08]
+    owasp_asi: [ASI01]
+    mitre_atlas: [AML.T0069.002]
+    tooling: [llm-prompt-injection-fuzzer]
 
   - id: ACT-01
     title: Human approval for consequential actions
@@ -413,6 +464,37 @@ controls:
     mitre_atlas: []
     tooling: [mcp-adversarial-harness]
 
+  - id: DAT-03
+    title: Permission-aware retrieval and tenant isolation
+    requirement: >-
+      Retrieval indexes, vector stores, semantic caches and agent memory enforce the
+      invoking user's access permissions at query time and isolate data between
+      tenants and roles so no query can surface unauthorised records.
+    evidence: Retrieval authorisation design; cross-role and cross-tenant query test results.
+    min_tier: 1
+    or_impact: moderate
+    nist_ai_rmf: [MAP 4.2, MEASURE 2.10]
+    iso_42001: [A.4.3, A.7.4]
+    eu_ai_act: [Art. 10]
+    owasp_llm: [LLM02, LLM09]
+    owasp_asi: [ASI03, ASI06]
+    mitre_atlas: [AML.T0082]
+
+  - id: DAT-04
+    title: Privacy and secret minimisation in prompts and logs
+    requirement: >-
+      Personal data and secrets are redacted, tokenised or minimised before prompts
+      reach external model providers and before prompts, parameters or results are
+      written to operational logs, balancing auditability with privacy law.
+    evidence: Redaction pipeline configuration; sample log inspection; retention and access controls.
+    min_tier: 0
+    nist_ai_rmf: [MEASURE 2.10]
+    iso_42001: [A.7.2, A.7.6]
+    eu_ai_act: [Art. 10, Art. 12]
+    owasp_llm: [LLM02]
+    owasp_asi: []
+    mitre_atlas: []
+
   - id: OPS-01
     title: Action-level logging
     requirement: >-
@@ -524,6 +606,22 @@ controls:
     iso_42001: []
     eu_ai_act: []
     owasp_llm: []
+    owasp_asi: []
+    mitre_atlas: []
+
+  - id: TST-04
+    title: Accuracy, grounding and bias evaluation
+    requirement: >-
+      Systems are evaluated before release and after model or prompt changes for task
+      accuracy, grounding against authoritative sources (hallucination rate) and, where
+      outputs affect individuals or groups, bias and fairness across protected groups.
+    evidence: Evaluation test sets, metrics, acceptance thresholds and sign-off records.
+    min_tier: 1
+    or_impact: high
+    nist_ai_rmf: [MEASURE 2.1, MEASURE 2.3, MEASURE 2.5, MEASURE 2.11]
+    iso_42001: [A.6.2.4, A.7.4]
+    eu_ai_act: [Art. 10, Art. 15]
+    owasp_llm: [LLM07]
     owasp_asi: []
     mitre_atlas: []
 

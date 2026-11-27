@@ -21,6 +21,7 @@ Framework versions:
 | [GOV-02](../framework/control-catalogue.md#gov-02) AI policy and risk appetite | GOVERN 1.2, GOVERN 1.3, GOVERN 1.4, MAP 1.5 | A.2.2, A.2.4 | Art. 5 | — | — | — |
 | [GOV-03](../framework/control-catalogue.md#gov-03) Regulatory obligations register | GOVERN 1.1 | A.2.3 | Art. 6 | — | — | — |
 | [GOV-04](../framework/control-catalogue.md#gov-04) AI literacy and role training | GOVERN 2.2, GOVERN 4.1 | A.4.6 | Art. 4 | — | — | — |
+| [GOV-05](../framework/control-catalogue.md#gov-05) Governance of coding agents and SaaS-embedded AI | GOVERN 1.6, GOVERN 6.1, MAP 3.3 | A.4.4, A.9.4, A.10.3 | Art. 26 | LLM03, LLM04 | ASI02, ASI04 | AML.T0081 |
 | [INV-01](../framework/control-catalogue.md#inv-01) Inventory of AI systems, agents and components | GOVERN 1.6, MAP 1.1 | A.4.2, A.6.2.7 | — | — | — | — |
 | [INV-02](../framework/control-catalogue.md#inv-02) Autonomy and impact classification | MAP 2.1, MAP 3.3, MAP 5.1 | A.5.2, A.5.4 | Art. 6 | LLM03 | — | — |
 | [INV-03](../framework/control-catalogue.md#inv-03) Threat and impact assessment before release | GOVERN 1.5, GOVERN 4.2, MAP 5.1, MANAGE 1.1, MANAGE 1.3 | A.5.2, A.5.3, A.6.2.5 | Art. 9 | — | — | — |
@@ -28,12 +29,14 @@ Framework versions:
 | [SUP-01](../framework/control-catalogue.md#sup-01) Approved sources for models, MCP servers and skills | GOVERN 6.1, MAP 4.1, MANAGE 3.1 | A.10.3 | Art. 25 | LLM04 | ASI04 | AML.T0010.005, AML.T0110, AML.T0111 |
 | [SUP-02](../framework/control-catalogue.md#sup-02) Version pinning and tool-definition change detection | MANAGE 3.1, MANAGE 3.2 | A.10.3 | — | LLM04 | ASI04 | AML.T0109, AML.T0110.000 |
 | [SUP-03](../framework/control-catalogue.md#sup-03) Contract terms for AI providers | GOVERN 6.1, GOVERN 6.2 | A.10.2, A.10.3 | Art. 25 | LLM04 | — | — |
+| [SUP-04](../framework/control-catalogue.md#sup-04) Model version pinning and provider change management | GOVERN 6.2, MANAGE 3.2 | A.6.2.6, A.10.3 | Art. 15, Art. 25 | LLM04 | ASI04 | AML.T0099 |
 | [IAM-01](../framework/control-catalogue.md#iam-01) Distinct identity for every agent | MEASURE 2.8 | — | — | — | ASI03 | — |
 | [IAM-02](../framework/control-catalogue.md#iam-02) Least privilege and short-lived delegated credentials | MAP 4.2 | A.9.4 | — | LLM03 | ASI02, ASI03 | AML.T0055, AML.T0098 |
 | [IAM-03](../framework/control-catalogue.md#iam-03) Secrets kept out of agent context | MEASURE 2.7 | — | — | LLM02, LLM08 | ASI03 | AML.T0083 |
 | [INP-01](../framework/control-catalogue.md#inp-01) External content treated as untrusted | MEASURE 2.7 | — | Art. 15 | LLM01 | ASI01 | AML.T0051.001, AML.T0053 |
 | [INP-02](../framework/control-catalogue.md#inp-02) Scanning of agent instruction files | MEASURE 2.7 | A.6.2.4 | — | LLM01 | ASI01, ASI04 | AML.T0081, AML.T0068 |
 | [INP-03](../framework/control-catalogue.md#inp-03) Memory and retrieval integrity | MEASURE 2.7 | A.7.5 | Art. 15 | LLM05, LLM09 | ASI06 | AML.T0080.000, AML.T0070 |
+| [INP-04](../framework/control-catalogue.md#inp-04) Hidden context and system-prompt protection | MEASURE 2.7 | — | Art. 15 | LLM08 | ASI01 | AML.T0069.002 |
 | [ACT-01](../framework/control-catalogue.md#act-01) Human approval for consequential actions | MAP 3.5 | A.9.2 | Art. 14 | LLM03 | ASI02, ASI09 | AML.T0101, AML.T0086 |
 | [ACT-02](../framework/control-catalogue.md#act-02) Policy enforced outside the model | MAP 4.2 | — | Art. 15 | LLM03 | ASI01, ASI02 | AML.T0051.000, AML.T0053 |
 | [ACT-03](../framework/control-catalogue.md#act-03) Sandboxed code execution | MEASURE 2.7 | — | — | LLM10 | ASI05 | AML.T0105 |
@@ -42,6 +45,8 @@ Framework versions:
 | [ACT-06](../framework/control-catalogue.md#act-06) Resource and spend limits | MANAGE 2.4 | A.6.2.6 | — | LLM06 | ASI08 | AML.T0034.002, AML.T0029 |
 | [DAT-01](../framework/control-catalogue.md#dat-01) Data classes approved per system and provider | MEASURE 2.10 | A.7.2 | — | LLM02 | — | — |
 | [DAT-02](../framework/control-catalogue.md#dat-02) Safe handling of model output | MEASURE 2.7 | — | — | LLM10 | ASI05 | — |
+| [DAT-03](../framework/control-catalogue.md#dat-03) Permission-aware retrieval and tenant isolation | MAP 4.2, MEASURE 2.10 | A.4.3, A.7.4 | Art. 10 | LLM02, LLM09 | ASI03, ASI06 | AML.T0082 |
+| [DAT-04](../framework/control-catalogue.md#dat-04) Privacy and secret minimisation in prompts and logs | MEASURE 2.10 | A.7.2, A.7.6 | Art. 10, Art. 12 | LLM02 | — | — |
 | [OPS-01](../framework/control-catalogue.md#ops-01) Action-level logging | MEASURE 2.4, MANAGE 4.1 | A.6.2.8 | Art. 12, Art. 26 | — | ASI10 | — |
 | [OPS-02](../framework/control-catalogue.md#ops-02) Kill switch and credential revocation | MANAGE 2.3, MANAGE 2.4, MEASURE 2.6 | A.6.2.6 | Art. 14 | — | ASI08, ASI10 | — |
 | [OPS-03](../framework/control-catalogue.md#ops-03) AI incident response | MANAGE 4.1, MANAGE 4.3, GOVERN 4.3 | A.3.3, A.8.4 | Art. 73 | — | ASI10 | — |
@@ -49,6 +54,7 @@ Framework versions:
 | [TST-01](../framework/control-catalogue.md#tst-01) Adversarial testing before release | MEASURE 1.1, MEASURE 2.7 | A.6.2.4 | Art. 15 | LLM01, LLM02 | ASI01, ASI02 | AML.T0051, AML.T0051.000, AML.T0054 |
 | [TST-02](../framework/control-catalogue.md#tst-02) Continuous regression testing | MEASURE 1.2, MEASURE 2.4 | A.6.2.4 | — | LLM01 | ASI01 | AML.T0051 |
 | [TST-03](../framework/control-catalogue.md#tst-03) Independent assurance | MEASURE 1.3 | — | — | — | — | — |
+| [TST-04](../framework/control-catalogue.md#tst-04) Accuracy, grounding and bias evaluation | MEASURE 2.1, MEASURE 2.3, MEASURE 2.5, MEASURE 2.11 | A.6.2.4, A.7.4 | Art. 10, Art. 15 | LLM07 | — | — |
 | [HUM-01](../framework/control-catalogue.md#hum-01) Disclosure of AI interaction | MEASURE 2.8 | A.8.2 | Art. 50 | LLM07 | ASI09 | — |
 | [HUM-02](../framework/control-catalogue.md#hum-02) Oversight that is meaningful, not ceremonial | MAP 3.5, MAP 2.2 | A.9.2 | Art. 14 | LLM07 | ASI09 | — |
 
@@ -60,12 +66,12 @@ Framework versions:
 
 | Entry | Controls |
 |---|---|
-| ASI01 Agent Goal Hijack | [INP-01](../framework/control-catalogue.md#inp-01), [INP-02](../framework/control-catalogue.md#inp-02), [ACT-02](../framework/control-catalogue.md#act-02), [OPS-04](../framework/control-catalogue.md#ops-04), [TST-01](../framework/control-catalogue.md#tst-01), [TST-02](../framework/control-catalogue.md#tst-02) |
-| ASI02 Tool Misuse and Exploitation | [IAM-02](../framework/control-catalogue.md#iam-02), [ACT-01](../framework/control-catalogue.md#act-01), [ACT-02](../framework/control-catalogue.md#act-02), [ACT-04](../framework/control-catalogue.md#act-04), [TST-01](../framework/control-catalogue.md#tst-01) |
-| ASI03 Identity and Privilege Abuse | [IAM-01](../framework/control-catalogue.md#iam-01), [IAM-02](../framework/control-catalogue.md#iam-02), [IAM-03](../framework/control-catalogue.md#iam-03) |
-| ASI04 Agentic Supply Chain Vulnerabilities | [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-02](../framework/control-catalogue.md#sup-02), [INP-02](../framework/control-catalogue.md#inp-02) |
+| ASI01 Agent Goal Hijack | [INP-01](../framework/control-catalogue.md#inp-01), [INP-02](../framework/control-catalogue.md#inp-02), [INP-04](../framework/control-catalogue.md#inp-04), [ACT-02](../framework/control-catalogue.md#act-02), [OPS-04](../framework/control-catalogue.md#ops-04), [TST-01](../framework/control-catalogue.md#tst-01), [TST-02](../framework/control-catalogue.md#tst-02) |
+| ASI02 Tool Misuse and Exploitation | [GOV-05](../framework/control-catalogue.md#gov-05), [IAM-02](../framework/control-catalogue.md#iam-02), [ACT-01](../framework/control-catalogue.md#act-01), [ACT-02](../framework/control-catalogue.md#act-02), [ACT-04](../framework/control-catalogue.md#act-04), [TST-01](../framework/control-catalogue.md#tst-01) |
+| ASI03 Identity and Privilege Abuse | [IAM-01](../framework/control-catalogue.md#iam-01), [IAM-02](../framework/control-catalogue.md#iam-02), [IAM-03](../framework/control-catalogue.md#iam-03), [DAT-03](../framework/control-catalogue.md#dat-03) |
+| ASI04 Agentic Supply Chain Vulnerabilities | [GOV-05](../framework/control-catalogue.md#gov-05), [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-02](../framework/control-catalogue.md#sup-02), [SUP-04](../framework/control-catalogue.md#sup-04), [INP-02](../framework/control-catalogue.md#inp-02) |
 | ASI05 Unexpected Code Execution | [ACT-03](../framework/control-catalogue.md#act-03), [DAT-02](../framework/control-catalogue.md#dat-02) |
-| ASI06 Memory and Context Poisoning | [INP-03](../framework/control-catalogue.md#inp-03) |
+| ASI06 Memory and Context Poisoning | [INP-03](../framework/control-catalogue.md#inp-03), [DAT-03](../framework/control-catalogue.md#dat-03) |
 | ASI07 Insecure Inter-Agent Communication | [ACT-05](../framework/control-catalogue.md#act-05) |
 | ASI08 Cascading Failures | [ACT-05](../framework/control-catalogue.md#act-05), [ACT-06](../framework/control-catalogue.md#act-06), [OPS-02](../framework/control-catalogue.md#ops-02) |
 | ASI09 Human-Agent Trust Exploitation | [ACT-01](../framework/control-catalogue.md#act-01), [HUM-01](../framework/control-catalogue.md#hum-01), [HUM-02](../framework/control-catalogue.md#hum-02) |
@@ -78,19 +84,19 @@ Framework versions:
 | Entry | Controls |
 |---|---|
 | LLM01 Prompt Injection | [INP-01](../framework/control-catalogue.md#inp-01), [INP-02](../framework/control-catalogue.md#inp-02), [TST-01](../framework/control-catalogue.md#tst-01), [TST-02](../framework/control-catalogue.md#tst-02) |
-| LLM02 Sensitive Information Disclosure | [IAM-03](../framework/control-catalogue.md#iam-03), [ACT-04](../framework/control-catalogue.md#act-04), [DAT-01](../framework/control-catalogue.md#dat-01), [TST-01](../framework/control-catalogue.md#tst-01) |
-| LLM03 Excessive Agency | [INV-02](../framework/control-catalogue.md#inv-02), [IAM-02](../framework/control-catalogue.md#iam-02), [ACT-01](../framework/control-catalogue.md#act-01), [ACT-02](../framework/control-catalogue.md#act-02) |
-| LLM04 Supply Chain | [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-02](../framework/control-catalogue.md#sup-02), [SUP-03](../framework/control-catalogue.md#sup-03) |
+| LLM02 Sensitive Information Disclosure | [IAM-03](../framework/control-catalogue.md#iam-03), [ACT-04](../framework/control-catalogue.md#act-04), [DAT-01](../framework/control-catalogue.md#dat-01), [DAT-03](../framework/control-catalogue.md#dat-03), [DAT-04](../framework/control-catalogue.md#dat-04), [TST-01](../framework/control-catalogue.md#tst-01) |
+| LLM03 Excessive Agency | [GOV-05](../framework/control-catalogue.md#gov-05), [INV-02](../framework/control-catalogue.md#inv-02), [IAM-02](../framework/control-catalogue.md#iam-02), [ACT-01](../framework/control-catalogue.md#act-01), [ACT-02](../framework/control-catalogue.md#act-02) |
+| LLM04 Supply Chain | [GOV-05](../framework/control-catalogue.md#gov-05), [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-02](../framework/control-catalogue.md#sup-02), [SUP-03](../framework/control-catalogue.md#sup-03), [SUP-04](../framework/control-catalogue.md#sup-04) |
 | LLM05 Data and Model Poisoning | [INP-03](../framework/control-catalogue.md#inp-03) |
 | LLM06 Unbounded Consumption | [ACT-06](../framework/control-catalogue.md#act-06) |
-| LLM07 Misinformation | [HUM-01](../framework/control-catalogue.md#hum-01), [HUM-02](../framework/control-catalogue.md#hum-02) |
-| LLM08 Hidden Context Exposure | [IAM-03](../framework/control-catalogue.md#iam-03) |
-| LLM09 Vector and Embedding Weaknesses | [INP-03](../framework/control-catalogue.md#inp-03) |
+| LLM07 Misinformation | [TST-04](../framework/control-catalogue.md#tst-04), [HUM-01](../framework/control-catalogue.md#hum-01), [HUM-02](../framework/control-catalogue.md#hum-02) |
+| LLM08 Hidden Context Exposure | [IAM-03](../framework/control-catalogue.md#iam-03), [INP-04](../framework/control-catalogue.md#inp-04) |
+| LLM09 Vector and Embedding Weaknesses | [INP-03](../framework/control-catalogue.md#inp-03), [DAT-03](../framework/control-catalogue.md#dat-03) |
 | LLM10 Improper Output Handling | [ACT-03](../framework/control-catalogue.md#act-03), [DAT-02](../framework/control-catalogue.md#dat-02) |
 
 ### MITRE ATLAS (agentic and LLM techniques in scope)
 
-25 of 28 entries mapped.
+28 of 28 entries mapped.
 
 | Entry | Controls |
 |---|---|
@@ -104,15 +110,15 @@ Framework versions:
 | AML.T0054 LLM Jailbreak | [TST-01](../framework/control-catalogue.md#tst-01) |
 | AML.T0055 Unsecured Credentials | [IAM-02](../framework/control-catalogue.md#iam-02) |
 | AML.T0068 LLM Prompt Obfuscation | [INP-02](../framework/control-catalogue.md#inp-02) |
-| AML.T0069.002 Discover LLM System Information: System Prompt | *Not mapped* |
+| AML.T0069.002 Discover LLM System Information: System Prompt | [INP-04](../framework/control-catalogue.md#inp-04) |
 | AML.T0070 RAG Poisoning | [INP-03](../framework/control-catalogue.md#inp-03) |
 | AML.T0080.000 AI Agent Context Poisoning: Memory | [INP-03](../framework/control-catalogue.md#inp-03) |
-| AML.T0081 Modify AI Agent Configuration | [INP-02](../framework/control-catalogue.md#inp-02) |
-| AML.T0082 RAG Credential Harvesting | *Not mapped* |
+| AML.T0081 Modify AI Agent Configuration | [GOV-05](../framework/control-catalogue.md#gov-05), [INP-02](../framework/control-catalogue.md#inp-02) |
+| AML.T0082 RAG Credential Harvesting | [DAT-03](../framework/control-catalogue.md#dat-03) |
 | AML.T0083 Credentials from AI Agent Configuration | [IAM-03](../framework/control-catalogue.md#iam-03) |
 | AML.T0086 Exfiltration via AI Agent Tool Invocation | [ACT-01](../framework/control-catalogue.md#act-01), [ACT-04](../framework/control-catalogue.md#act-04) |
 | AML.T0098 AI Agent Tool Credential Harvesting | [IAM-02](../framework/control-catalogue.md#iam-02) |
-| AML.T0099 AI Agent Tool Data Poisoning | *Not mapped* |
+| AML.T0099 AI Agent Tool Data Poisoning | [SUP-04](../framework/control-catalogue.md#sup-04) |
 | AML.T0101 Data Destruction via AI Agent Tool Invocation | [ACT-01](../framework/control-catalogue.md#act-01) |
 | AML.T0105 Escape to Host | [ACT-03](../framework/control-catalogue.md#act-03) |
 | AML.T0109 AI Supply Chain Rug Pull | [SUP-02](../framework/control-catalogue.md#sup-02) |
@@ -125,7 +131,7 @@ Framework versions:
 
 ### EU AI Act
 
-12 of 21 entries mapped.
+13 of 21 entries mapped.
 
 | Entry | Controls |
 |---|---|
@@ -133,16 +139,16 @@ Framework versions:
 | Art. 5 Prohibited AI practices | [GOV-02](../framework/control-catalogue.md#gov-02) |
 | Art. 6 Classification rules for high-risk AI systems | [GOV-03](../framework/control-catalogue.md#gov-03), [INV-02](../framework/control-catalogue.md#inv-02) |
 | Art. 9 Risk management system (high-risk) | [INV-03](../framework/control-catalogue.md#inv-03) |
-| Art. 10 Data and data governance (high-risk) | *Not mapped* |
+| Art. 10 Data and data governance (high-risk) | [DAT-03](../framework/control-catalogue.md#dat-03), [DAT-04](../framework/control-catalogue.md#dat-04), [TST-04](../framework/control-catalogue.md#tst-04) |
 | Art. 11 Technical documentation (high-risk) | *Not mapped* |
-| Art. 12 Record-keeping (high-risk) | [OPS-01](../framework/control-catalogue.md#ops-01) |
+| Art. 12 Record-keeping (high-risk) | [DAT-04](../framework/control-catalogue.md#dat-04), [OPS-01](../framework/control-catalogue.md#ops-01) |
 | Art. 13 Transparency and provision of information to deployers (high-risk) | *Not mapped* |
 | Art. 14 Human oversight (high-risk) | [ACT-01](../framework/control-catalogue.md#act-01), [OPS-02](../framework/control-catalogue.md#ops-02), [HUM-02](../framework/control-catalogue.md#hum-02) |
-| Art. 15 Accuracy, robustness and cybersecurity (high-risk) | [INP-01](../framework/control-catalogue.md#inp-01), [INP-03](../framework/control-catalogue.md#inp-03), [ACT-02](../framework/control-catalogue.md#act-02), [TST-01](../framework/control-catalogue.md#tst-01) |
+| Art. 15 Accuracy, robustness and cybersecurity (high-risk) | [SUP-04](../framework/control-catalogue.md#sup-04), [INP-01](../framework/control-catalogue.md#inp-01), [INP-03](../framework/control-catalogue.md#inp-03), [INP-04](../framework/control-catalogue.md#inp-04), [ACT-02](../framework/control-catalogue.md#act-02), [TST-01](../framework/control-catalogue.md#tst-01), [TST-04](../framework/control-catalogue.md#tst-04) |
 | Art. 16 Obligations of providers of high-risk AI systems | *Not mapped* |
 | Art. 17 Quality management system (high-risk) | *Not mapped* |
-| Art. 25 Responsibilities along the AI value chain | [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-03](../framework/control-catalogue.md#sup-03) |
-| Art. 26 Obligations of deployers of high-risk AI systems | [OPS-01](../framework/control-catalogue.md#ops-01) |
+| Art. 25 Responsibilities along the AI value chain | [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-03](../framework/control-catalogue.md#sup-03), [SUP-04](../framework/control-catalogue.md#sup-04) |
+| Art. 26 Obligations of deployers of high-risk AI systems | [GOV-05](../framework/control-catalogue.md#gov-05), [OPS-01](../framework/control-catalogue.md#ops-01) |
 | Art. 27 Fundamental rights impact assessment (deployers of high-risk systems) | *Not mapped* |
 | Art. 43 Conformity assessment (high-risk) | *Not mapped* |
 | Art. 50 Transparency obligations for certain AI systems | [HUM-01](../framework/control-catalogue.md#hum-01) |
@@ -153,7 +159,7 @@ Framework versions:
 
 ### ISO/IEC 42001 Annex A
 
-23 of 38 entries mapped.
+27 of 38 entries mapped.
 
 | Entry | Controls |
 |---|---|
@@ -163,8 +169,8 @@ Framework versions:
 | A.3.2 AI roles and responsibilities | [GOV-01](../framework/control-catalogue.md#gov-01) |
 | A.3.3 Reporting of concerns | [OPS-03](../framework/control-catalogue.md#ops-03) |
 | A.4.2 Resource documentation | [INV-01](../framework/control-catalogue.md#inv-01) |
-| A.4.3 Data resources | *Not mapped* |
-| A.4.4 Tooling resources | *Not mapped* |
+| A.4.3 Data resources | [DAT-03](../framework/control-catalogue.md#dat-03) |
+| A.4.4 Tooling resources | [GOV-05](../framework/control-catalogue.md#gov-05) |
 | A.4.5 System and computing resources | *Not mapped* |
 | A.4.6 Human resources | [GOV-04](../framework/control-catalogue.md#gov-04) |
 | A.5.2 AI system impact assessment process | [INV-02](../framework/control-catalogue.md#inv-02), [INV-03](../framework/control-catalogue.md#inv-03) |
@@ -175,30 +181,30 @@ Framework versions:
 | A.6.1.3 Processes for responsible AI system design and development | *Not mapped* |
 | A.6.2.2 AI system requirements and specification | *Not mapped* |
 | A.6.2.3 Documentation of AI system design and development | *Not mapped* |
-| A.6.2.4 AI system verification and validation | [INP-02](../framework/control-catalogue.md#inp-02), [TST-01](../framework/control-catalogue.md#tst-01), [TST-02](../framework/control-catalogue.md#tst-02) |
+| A.6.2.4 AI system verification and validation | [INP-02](../framework/control-catalogue.md#inp-02), [TST-01](../framework/control-catalogue.md#tst-01), [TST-02](../framework/control-catalogue.md#tst-02), [TST-04](../framework/control-catalogue.md#tst-04) |
 | A.6.2.5 AI system deployment | [INV-03](../framework/control-catalogue.md#inv-03) |
-| A.6.2.6 AI system operation and monitoring | [INV-04](../framework/control-catalogue.md#inv-04), [ACT-06](../framework/control-catalogue.md#act-06), [OPS-02](../framework/control-catalogue.md#ops-02), [OPS-04](../framework/control-catalogue.md#ops-04) |
+| A.6.2.6 AI system operation and monitoring | [INV-04](../framework/control-catalogue.md#inv-04), [SUP-04](../framework/control-catalogue.md#sup-04), [ACT-06](../framework/control-catalogue.md#act-06), [OPS-02](../framework/control-catalogue.md#ops-02), [OPS-04](../framework/control-catalogue.md#ops-04) |
 | A.6.2.7 AI system technical documentation | [INV-01](../framework/control-catalogue.md#inv-01) |
 | A.6.2.8 AI system recording of event logs | [OPS-01](../framework/control-catalogue.md#ops-01) |
-| A.7.2 Data for development and enhancement of AI system | [DAT-01](../framework/control-catalogue.md#dat-01) |
+| A.7.2 Data for development and enhancement of AI system | [DAT-01](../framework/control-catalogue.md#dat-01), [DAT-04](../framework/control-catalogue.md#dat-04) |
 | A.7.3 Acquisition of data | *Not mapped* |
-| A.7.4 Quality of data for AI systems | *Not mapped* |
+| A.7.4 Quality of data for AI systems | [DAT-03](../framework/control-catalogue.md#dat-03), [TST-04](../framework/control-catalogue.md#tst-04) |
 | A.7.5 Data provenance | [INP-03](../framework/control-catalogue.md#inp-03) |
-| A.7.6 Data preparation | *Not mapped* |
+| A.7.6 Data preparation | [DAT-04](../framework/control-catalogue.md#dat-04) |
 | A.8.2 System documentation and information for users | [HUM-01](../framework/control-catalogue.md#hum-01) |
 | A.8.3 External reporting | *Not mapped* |
 | A.8.4 Communication of incidents | [OPS-03](../framework/control-catalogue.md#ops-03) |
 | A.8.5 Information for interested parties | *Not mapped* |
 | A.9.2 Processes for responsible use of AI systems | [ACT-01](../framework/control-catalogue.md#act-01), [HUM-02](../framework/control-catalogue.md#hum-02) |
 | A.9.3 Objectives for responsible use of AI system | *Not mapped* |
-| A.9.4 Intended use of the AI system | [IAM-02](../framework/control-catalogue.md#iam-02) |
+| A.9.4 Intended use of the AI system | [GOV-05](../framework/control-catalogue.md#gov-05), [IAM-02](../framework/control-catalogue.md#iam-02) |
 | A.10.2 Allocating responsibilities | [SUP-03](../framework/control-catalogue.md#sup-03) |
-| A.10.3 Suppliers | [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-02](../framework/control-catalogue.md#sup-02), [SUP-03](../framework/control-catalogue.md#sup-03) |
+| A.10.3 Suppliers | [GOV-05](../framework/control-catalogue.md#gov-05), [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-02](../framework/control-catalogue.md#sup-02), [SUP-03](../framework/control-catalogue.md#sup-03), [SUP-04](../framework/control-catalogue.md#sup-04) |
 | A.10.4 Customers | *Not mapped* |
 
 ### NIST AI RMF
 
-41 of 72 entries mapped.
+45 of 72 entries mapped.
 
 | Entry | Controls |
 |---|---|
@@ -207,7 +213,7 @@ Framework versions:
 | GOVERN 1.3 Risk management effort is matched to risk tolerance | [GOV-02](../framework/control-catalogue.md#gov-02) |
 | GOVERN 1.4 Risk management process and outcomes are set through transparent policies and controls | [GOV-02](../framework/control-catalogue.md#gov-02) |
 | GOVERN 1.5 Ongoing monitoring and periodic review are planned, with roles and frequency defined | [INV-03](../framework/control-catalogue.md#inv-03) |
-| GOVERN 1.6 Mechanisms are in place to inventory AI systems, resourced by risk priority | [INV-01](../framework/control-catalogue.md#inv-01) |
+| GOVERN 1.6 Mechanisms are in place to inventory AI systems, resourced by risk priority | [GOV-05](../framework/control-catalogue.md#gov-05), [INV-01](../framework/control-catalogue.md#inv-01) |
 | GOVERN 1.7 Decommissioning and phase-out processes do not increase risk | [INV-04](../framework/control-catalogue.md#inv-04) |
 | GOVERN 2.1 Roles, responsibilities and lines of communication for AI risk are documented and clear | [GOV-01](../framework/control-catalogue.md#gov-01) |
 | GOVERN 2.2 Personnel and partners receive AI risk training | [GOV-04](../framework/control-catalogue.md#gov-04) |
@@ -219,8 +225,8 @@ Framework versions:
 | GOVERN 4.3 Practices enable AI testing, incident identification and information sharing | [OPS-03](../framework/control-catalogue.md#ops-03) |
 | GOVERN 5.1 Policies and practices collect and integrate feedback from relevant external AI actors | *Not mapped* |
 | GOVERN 5.2 Mechanisms incorporate adjudicated feedback from relevant AI actors into system design | *Not mapped* |
-| GOVERN 6.1 Policies address AI risks from third-party entities, including IP infringement | [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-03](../framework/control-catalogue.md#sup-03) |
-| GOVERN 6.2 Contingency processes handle failures or incidents in high-risk third-party data or AI systems | [SUP-03](../framework/control-catalogue.md#sup-03) |
+| GOVERN 6.1 Policies address AI risks from third-party entities, including IP infringement | [GOV-05](../framework/control-catalogue.md#gov-05), [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-03](../framework/control-catalogue.md#sup-03) |
+| GOVERN 6.2 Contingency processes handle failures or incidents in high-risk third-party data or AI systems | [SUP-03](../framework/control-catalogue.md#sup-03), [SUP-04](../framework/control-catalogue.md#sup-04) |
 | MAP 1.1 Intended purposes, context, norms, settings and expectations are documented | [INV-01](../framework/control-catalogue.md#inv-01) |
 | MAP 1.2 Interdisciplinary perspectives inform context establishment and are documented | *Not mapped* |
 | MAP 1.3 Organisational mission and goals for AI technology are understood and documented | *Not mapped* |
@@ -232,27 +238,27 @@ Framework versions:
 | MAP 2.3 Scientific integrity and TEVV considerations are identified and documented | *Not mapped* |
 | MAP 3.1 Potential benefits of intended AI system functionality are examined and documented | *Not mapped* |
 | MAP 3.2 Potential costs, including non-monetary costs of errors, are examined and documented | *Not mapped* |
-| MAP 3.3 Targeted application scope is specified and documented | [INV-02](../framework/control-catalogue.md#inv-02) |
+| MAP 3.3 Targeted application scope is specified and documented | [GOV-05](../framework/control-catalogue.md#gov-05), [INV-02](../framework/control-catalogue.md#inv-02) |
 | MAP 3.4 Operator and practitioner proficiency with AI system performance is defined and assessed | *Not mapped* |
 | MAP 3.5 Human oversight processes are defined, assessed and documented | [ACT-01](../framework/control-catalogue.md#act-01), [HUM-02](../framework/control-catalogue.md#hum-02) |
 | MAP 4.1 Approaches for mapping technology and legal risks of components are documented | [SUP-01](../framework/control-catalogue.md#sup-01) |
-| MAP 4.2 Internal risk controls for components, including third-party AI, are identified and documented | [IAM-02](../framework/control-catalogue.md#iam-02), [ACT-02](../framework/control-catalogue.md#act-02), [ACT-05](../framework/control-catalogue.md#act-05) |
+| MAP 4.2 Internal risk controls for components, including third-party AI, are identified and documented | [IAM-02](../framework/control-catalogue.md#iam-02), [ACT-02](../framework/control-catalogue.md#act-02), [ACT-05](../framework/control-catalogue.md#act-05), [DAT-03](../framework/control-catalogue.md#dat-03) |
 | MAP 5.1 Likelihood and magnitude of each identified impact are documented | [INV-02](../framework/control-catalogue.md#inv-02), [INV-03](../framework/control-catalogue.md#inv-03) |
 | MAP 5.2 Regular engagement with relevant AI actors integrates feedback about potential impacts | *Not mapped* |
 | MEASURE 1.1 Metrics are selected for the most significant risks; unmeasured risks are documented | [TST-01](../framework/control-catalogue.md#tst-01) |
 | MEASURE 1.2 Metrics and control effectiveness are regularly reassessed | [TST-02](../framework/control-catalogue.md#tst-02) |
 | MEASURE 1.3 Independent assessors are involved in regular assessments | [TST-03](../framework/control-catalogue.md#tst-03) |
-| MEASURE 2.1 Test sets, metrics and details about TEVV tools are documented | *Not mapped* |
+| MEASURE 2.1 Test sets, metrics and details about TEVV tools are documented | [TST-04](../framework/control-catalogue.md#tst-04) |
 | MEASURE 2.2 Evaluations involving human subjects meet applicable requirements | *Not mapped* |
-| MEASURE 2.3 AI system performance or assurance criteria are measured in conditions similar to deployment | *Not mapped* |
+| MEASURE 2.3 AI system performance or assurance criteria are measured in conditions similar to deployment | [TST-04](../framework/control-catalogue.md#tst-04) |
 | MEASURE 2.4 Functionality and behaviour are monitored in production | [OPS-01](../framework/control-catalogue.md#ops-01), [OPS-04](../framework/control-catalogue.md#ops-04), [TST-02](../framework/control-catalogue.md#tst-02) |
-| MEASURE 2.5 AI system validity and reliability are demonstrated and limitations documented | *Not mapped* |
+| MEASURE 2.5 AI system validity and reliability are demonstrated and limitations documented | [TST-04](../framework/control-catalogue.md#tst-04) |
 | MEASURE 2.6 Safety risks are evaluated regularly and the system fails safely | [OPS-02](../framework/control-catalogue.md#ops-02) |
-| MEASURE 2.7 Security and resilience are evaluated and documented | [IAM-03](../framework/control-catalogue.md#iam-03), [INP-01](../framework/control-catalogue.md#inp-01), [INP-02](../framework/control-catalogue.md#inp-02), [INP-03](../framework/control-catalogue.md#inp-03), [ACT-03](../framework/control-catalogue.md#act-03), [ACT-04](../framework/control-catalogue.md#act-04), [DAT-02](../framework/control-catalogue.md#dat-02), [TST-01](../framework/control-catalogue.md#tst-01) |
+| MEASURE 2.7 Security and resilience are evaluated and documented | [IAM-03](../framework/control-catalogue.md#iam-03), [INP-01](../framework/control-catalogue.md#inp-01), [INP-02](../framework/control-catalogue.md#inp-02), [INP-03](../framework/control-catalogue.md#inp-03), [INP-04](../framework/control-catalogue.md#inp-04), [ACT-03](../framework/control-catalogue.md#act-03), [ACT-04](../framework/control-catalogue.md#act-04), [DAT-02](../framework/control-catalogue.md#dat-02), [TST-01](../framework/control-catalogue.md#tst-01) |
 | MEASURE 2.8 Transparency and accountability risks are examined and documented | [IAM-01](../framework/control-catalogue.md#iam-01), [HUM-01](../framework/control-catalogue.md#hum-01) |
 | MEASURE 2.9 AI model is explained, validated and interpreted in context | *Not mapped* |
-| MEASURE 2.10 Privacy risk is examined and documented | [ACT-04](../framework/control-catalogue.md#act-04), [DAT-01](../framework/control-catalogue.md#dat-01) |
-| MEASURE 2.11 Fairness and bias are evaluated and results documented | *Not mapped* |
+| MEASURE 2.10 Privacy risk is examined and documented | [ACT-04](../framework/control-catalogue.md#act-04), [DAT-01](../framework/control-catalogue.md#dat-01), [DAT-03](../framework/control-catalogue.md#dat-03), [DAT-04](../framework/control-catalogue.md#dat-04) |
+| MEASURE 2.11 Fairness and bias are evaluated and results documented | [TST-04](../framework/control-catalogue.md#tst-04) |
 | MEASURE 2.12 Environmental impact and sustainability of AI model training and management are assessed | *Not mapped* |
 | MEASURE 2.13 Effectiveness of employed TEVV metrics and processes is evaluated and documented | *Not mapped* |
 | MEASURE 3.1 Existing, unanticipated and emerging risks are tracked over time | [OPS-04](../framework/control-catalogue.md#ops-04) |
@@ -270,7 +276,7 @@ Framework versions:
 | MANAGE 2.3 Procedures respond to and recover from previously unknown risks | [OPS-02](../framework/control-catalogue.md#ops-02) |
 | MANAGE 2.4 Mechanisms exist to supersede, disengage or deactivate AI systems | [ACT-06](../framework/control-catalogue.md#act-06), [OPS-02](../framework/control-catalogue.md#ops-02) |
 | MANAGE 3.1 Third-party AI risks are monitored and controls applied | [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-02](../framework/control-catalogue.md#sup-02) |
-| MANAGE 3.2 Pre-trained models are monitored as part of regular maintenance | [SUP-02](../framework/control-catalogue.md#sup-02) |
+| MANAGE 3.2 Pre-trained models are monitored as part of regular maintenance | [SUP-02](../framework/control-catalogue.md#sup-02), [SUP-04](../framework/control-catalogue.md#sup-04) |
 | MANAGE 4.1 Post-deployment monitoring, incident response and change management are implemented | [OPS-01](../framework/control-catalogue.md#ops-01), [OPS-03](../framework/control-catalogue.md#ops-03) |
 | MANAGE 4.2 Measurable activities for continual improvement are integrated into AI system updates | *Not mapped* |
 | MANAGE 4.3 Incidents and errors are communicated and tracked through recovery | [OPS-03](../framework/control-catalogue.md#ops-03) |

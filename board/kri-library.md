@@ -1,6 +1,6 @@
 # Key risk indicators for AI and agents
 
-Twelve indicators that show whether the [risk framework](../framework/ai-agent-risk-framework.md) is working. Each one is measurable from systems most organisations already run, and each links to the controls it tests.
+Thirteen indicators that show whether the [risk framework](../framework/ai-agent-risk-framework.md) is working. Each one is measurable from systems most organisations already run, and each links to the controls it tests.
 
 The thresholds are starting points. Calibrate them to the organisation's risk appetite, its size and how many agents it runs, then hold them steady so trends mean something.
 
@@ -18,6 +18,7 @@ The thresholds are starting points. Calibrate them to the organisation's risk ap
 | KRI-10 | Overdue AI security findings | Critical and high findings on AI systems past their remediation deadline | 0 | 1–3 | > 3 | [TST-01](../framework/control-catalogue.md#tst-01), [TST-03](../framework/control-catalogue.md#tst-03) |
 | KRI-11 | AI security incidents | Incidents involving AI systems in the quarter, by severity | No severity 1 or 2 | One severity 2 | Any severity 1, or ≥ 2 severity 2 | [OPS-03](../framework/control-catalogue.md#ops-03), [OPS-04](../framework/control-catalogue.md#ops-04) |
 | KRI-12 | Training coverage | In-scope staff who completed role-based AI training in the last 12 months | ≥ 95% | 85% to < 95% | < 85% | [GOV-04](../framework/control-catalogue.md#gov-04) |
+| KRI-13 | Overdue risk exceptions | Active AI policy or control exceptions past their 90-day expiry date (tracked in the [exception register](../templates/exception-register-template.md)) | 0 | 1–2, renewal in progress | > 2, or any tier 3 exception overdue | [GOV-02](../framework/control-catalogue.md#gov-02), [SUP-01](../framework/control-catalogue.md#sup-01) |
 
 ## Notes on the harder ones
 

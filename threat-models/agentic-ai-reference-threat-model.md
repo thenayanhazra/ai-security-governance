@@ -1,6 +1,6 @@
 # Reference threat model: agentic AI systems
 
-A starting point for threat modelling any system in which a model plans and takes actions through tools. It describes a typical architecture, the trust boundaries in it, and seventeen threats that recur across agent deployments. Each threat links to the [controls](../framework/control-catalogue.md) that address it and to a way of testing for it.
+A starting point for threat modelling any system in which a model plans and takes actions through tools. It describes a typical architecture, the trust boundaries in it, and twenty threats that recur across agent deployments. Each threat links to the [controls](../framework/control-catalogue.md) that address it and to a way of testing for it.
 
 Use it as a baseline, not a finished model. Remove the components a system does not have, add the ones it does, and record the system-specific threats that this generic model cannot know about.
 
@@ -85,6 +85,9 @@ Every arrow that crosses a trust zone is a place where content can carry instruc
 | T-15 | Runaway consumption | C2 | A loop or adversarial input makes the agent call tools or models without end, running up cost or exhausting a service. | LLM06, ASI08 | AML.T0034.002 | [ACT-06](../framework/control-catalogue.md#act-06), [OPS-02](../framework/control-catalogue.md#ops-02) | Load and loop tests against budgets |
 | T-16 | Approval fatigue | C1 | Approvals are requested so often, or presented so vaguely, that reviewers approve without reading. | ASI09 | — | [HUM-02](../framework/control-catalogue.md#hum-02), [ACT-01](../framework/control-catalogue.md#act-01) | Measure approval time and rate; review approval screens |
 | T-17 | Undetected goal drift | C2 | The agent gradually pursues something other than its assigned goal, and no one notices. | ASI10 | — | [OPS-04](../framework/control-catalogue.md#ops-04), [OPS-01](../framework/control-catalogue.md#ops-01), [OPS-02](../framework/control-catalogue.md#ops-02) | Compare actions against the agent's baseline and stated goal |
+| T-18 | Cross-tenant or unauthorised retrieval | C5 | The retrieval index or semantic cache returns documents belonging to another user, role or tenant because access controls are not enforced at query time. | LLM02, LLM09, ASI06 | AML.T0082 | [DAT-03](../framework/control-catalogue.md#dat-03), [INP-03](../framework/control-catalogue.md#inp-03) | Query as a low-privilege or second-tenant user for restricted seed documents |
+| T-19 | Hidden context and system-prompt extraction | C2, C3 | A user or injected prompt extracts the system prompt, internal tool instructions or business rules. | LLM08 | AML.T0069.002 | [INP-04](../framework/control-catalogue.md#inp-04), [IAM-03](../framework/control-catalogue.md#iam-03) | Prompt-extraction probes ([fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer)); confirm no secrets or sole controls live in prompts |
+| T-20 | Cross-server MCP tool shadowing | C4 | A malicious or compromised MCP server registers a tool name or description that shadows or overrides a trusted server's tool across the same client session. | LLM04, ASI04 | AML.T0110 | [SUP-01](../framework/control-catalogue.md#sup-01), [SUP-02](../framework/control-catalogue.md#sup-02), [ACT-02](../framework/control-catalogue.md#act-02) | Tool-shadowing probes ([MCP harness](https://github.com/thenayanhazra/mcp-adversarial-harness)); enforce namespaced tool allow-lists |
 
 ## Using this model
 

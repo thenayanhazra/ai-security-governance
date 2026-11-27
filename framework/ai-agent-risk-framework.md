@@ -80,28 +80,30 @@ Ten domains organise the [control catalogue](control-catalogue.md). Each describ
 
 ## Lifecycle gates
 
-Controls are checked at five points. A system cannot pass a gate until the artefacts for that gate exist.
+Controls are checked at five points. A system cannot pass a gate until the artefacts for that gate exist. Use the [lifecycle gate checklists](../templates/lifecycle-gate-checklists.md) to record sign-off at each gate.
 
 | Gate | When | Required artefacts | Key controls |
 |---|---|---|---|
-| 1. Propose | Before any build or purchase | Inventory entry; intended purpose; provisional tier and impact | [INV-01](control-catalogue.md#inv-01), [INV-02](control-catalogue.md#inv-02), [GOV-03](control-catalogue.md#gov-03) |
-| 2. Design | Before integration with real data or tools | Threat model; data-use approval; tool and permission list; component intake records | [INV-03](control-catalogue.md#inv-03), [SUP-01](control-catalogue.md#sup-01), [IAM-02](control-catalogue.md#iam-02), [DAT-01](control-catalogue.md#dat-01) |
-| 3. Pre-release | Before production | Adversarial test results against thresholds; logging and kill switch verified; approval per the route above | [TST-01](control-catalogue.md#tst-01), [OPS-01](control-catalogue.md#ops-01), [OPS-02](control-catalogue.md#ops-02), [ACT-01](control-catalogue.md#act-01) |
-| 4. Operate | Continuously | Monitoring alerts; regression test trend; change reviews; periodic re-approval | [OPS-04](control-catalogue.md#ops-04), [TST-02](control-catalogue.md#tst-02), [SUP-02](control-catalogue.md#sup-02) |
+| 1. Propose | Before any build, purchase or SaaS toggle | [Inventory entry](../templates/ai-inventory-guide.md); intended purpose; provisional tier and impact | [INV-01](control-catalogue.md#inv-01), [INV-02](control-catalogue.md#inv-02), [GOV-03](control-catalogue.md#gov-03), [GOV-05](control-catalogue.md#gov-05) |
+| 2. Design | Before integration with real data or tools | Threat model; data-use approval; tool and permission list; [vendor contract checklist](../templates/vendor-contract-checklist.md); component intake records | [INV-03](control-catalogue.md#inv-03), [SUP-01](control-catalogue.md#sup-01), [IAM-02](control-catalogue.md#iam-02), [DAT-01](control-catalogue.md#dat-01), [DAT-03](control-catalogue.md#dat-03) |
+| 3. Pre-release | Before production | Adversarial and accuracy/bias test results against thresholds; logging and [kill switch](../runbooks/agent-kill-switch-runbook.md) verified; approval per the route above | [TST-01](control-catalogue.md#tst-01), [TST-04](control-catalogue.md#tst-04), [OPS-01](control-catalogue.md#ops-01), [OPS-02](control-catalogue.md#ops-02), [ACT-01](control-catalogue.md#act-01) |
+| 4. Operate | Continuously | Monitoring alerts; regression test trend; change reviews; periodic re-approval; [exception register](../templates/exception-register-template.md) | [OPS-04](control-catalogue.md#ops-04), [TST-02](control-catalogue.md#tst-02), [SUP-02](control-catalogue.md#sup-02), [SUP-04](control-catalogue.md#sup-04) |
 | 5. Retire | When the system is withdrawn | Credentials revoked; memory and indexes purged or archived; inventory updated | [INV-04](control-catalogue.md#inv-04), [INP-03](control-catalogue.md#inp-03), [INV-01](control-catalogue.md#inv-01) |
 
 Any material change (new tools, new data, a higher tier, a different model) sends the system back to gate 2.
 
 ## Roles
 
+Detailed decision rights and quorum rules live in the [RACI and AI risk forum charter](../templates/raci-and-forum-charter.md).
+
 | Role | Accountable for |
 |---|---|
-| Board or risk committee | Approving AI risk appetite and the AI policy; receiving the quarterly AI risk report |
+| Board or risk committee | Approving AI risk appetite and the [enterprise AI policy](../policies/enterprise-ai-policy.md); receiving the quarterly AI risk report |
 | Executive AI risk owner | Running the framework; approving higher-risk systems; reporting to the board. Often the CISO or CRO. |
 | AI risk forum | Cross-functional approval body: security, privacy, legal, architecture and the business |
 | Business owner | The purpose, value and outcomes of a specific system, and accepting its residual risk |
 | Technical owner | Building and operating the system within its approved tier and controls |
-| Security | Threat modelling, adversarial testing, monitoring and incident response |
+| Security | Threat modelling, adversarial testing, monitoring and [incident response](../runbooks/ai-incident-response-playbooks.md) |
 | Legal and privacy | Regulatory classification, data-use approval and contractual terms |
 | Internal audit | Independent assurance that controls operate as described |
 

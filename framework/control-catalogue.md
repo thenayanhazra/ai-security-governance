@@ -2,19 +2,19 @@
 
 # Control catalogue
 
-34 controls in 10 domains. Each control states what must be true, the evidence an assessor would ask for, the autonomy tier and impact rating that trigger it, and where it maps in the major frameworks. Tiers and impact ratings are defined in the [risk framework](ai-agent-risk-framework.md#autonomy-tiers).
+40 controls in 10 domains. Each control states what must be true, the evidence an assessor would ask for, the autonomy tier and impact rating that trigger it, and where it maps in the major frameworks. Tiers and impact ratings are defined in the [risk framework](ai-agent-risk-framework.md#autonomy-tiers).
 
 | Domain | Controls |
 |---|---|
-| Governance and accountability | [GOV-01](#gov-01), [GOV-02](#gov-02), [GOV-03](#gov-03), [GOV-04](#gov-04) |
+| Governance and accountability | [GOV-01](#gov-01), [GOV-02](#gov-02), [GOV-03](#gov-03), [GOV-04](#gov-04), [GOV-05](#gov-05) |
 | Inventory and classification | [INV-01](#inv-01), [INV-02](#inv-02), [INV-03](#inv-03), [INV-04](#inv-04) |
-| Supply chain | [SUP-01](#sup-01), [SUP-02](#sup-02), [SUP-03](#sup-03) |
+| Supply chain | [SUP-01](#sup-01), [SUP-02](#sup-02), [SUP-03](#sup-03), [SUP-04](#sup-04) |
 | Agent identity and authority | [IAM-01](#iam-01), [IAM-02](#iam-02), [IAM-03](#iam-03) |
-| Input and context integrity | [INP-01](#inp-01), [INP-02](#inp-02), [INP-03](#inp-03) |
+| Input and context integrity | [INP-01](#inp-01), [INP-02](#inp-02), [INP-03](#inp-03), [INP-04](#inp-04) |
 | Action and tool control | [ACT-01](#act-01), [ACT-02](#act-02), [ACT-03](#act-03), [ACT-04](#act-04), [ACT-05](#act-05), [ACT-06](#act-06) |
-| Data protection | [DAT-01](#dat-01), [DAT-02](#dat-02) |
+| Data protection | [DAT-01](#dat-01), [DAT-02](#dat-02), [DAT-03](#dat-03), [DAT-04](#dat-04) |
 | Monitoring and response | [OPS-01](#ops-01), [OPS-02](#ops-02), [OPS-03](#ops-03), [OPS-04](#ops-04) |
-| Testing and assurance | [TST-01](#tst-01), [TST-02](#tst-02), [TST-03](#tst-03) |
+| Testing and assurance | [TST-01](#tst-01), [TST-02](#tst-02), [TST-03](#tst-03), [TST-04](#tst-04) |
 | Human oversight and transparency | [HUM-01](#hum-01), [HUM-02](#hum-02) |
 
 ## Governance and accountability
@@ -65,6 +65,22 @@ People who build, approve, operate or oversee AI systems receive training for th
 - **NIST AI RMF:** GOVERN 2.2, GOVERN 4.1
 - **ISO/IEC 42001:** A.4.6
 - **EU AI Act:** Art. 4
+
+### GOV-05
+
+**Governance of coding agents and SaaS-embedded AI**
+
+AI capabilities embedded in SaaS platforms (such as office, CRM and ticketing copilots) and developer coding agents follow the same inventory, data-use and approval rules as custom-built agents. Vendor AI features default to off until reviewed, and coding agents operate with branch protection, mandatory human pull-request review and isolated credentials.
+
+- **Applies from:** tier 0 Assist
+- **Evidence:** SaaS AI feature review records; repository protection and coding-agent policy settings.
+- **NIST AI RMF:** GOVERN 1.6, GOVERN 6.1, MAP 3.3
+- **ISO/IEC 42001:** A.4.4, A.9.4, A.10.3
+- **EU AI Act:** Art. 26
+- **OWASP LLM 2026:** LLM03 Excessive Agency, LLM04 Supply Chain
+- **OWASP Agentic 2026:** ASI02 Tool Misuse and Exploitation, ASI04 Agentic Supply Chain Vulnerabilities
+- **MITRE ATLAS:** AML.T0081 Modify AI Agent Configuration
+- **Open-source tooling:** [agentlint](https://github.com/thenayanhazra/agentlint)
 
 ## Inventory and classification
 
@@ -163,6 +179,21 @@ Contracts with model and AI service providers cover data use and retention, trai
 - **EU AI Act:** Art. 25
 - **OWASP LLM 2026:** LLM04 Supply Chain
 
+### SUP-04
+
+**Model version pinning and provider change management**
+
+Production systems pin explicit model snapshots rather than rolling aliases where providers support it. Upstream model updates, deprecations or tool provider changes trigger regression testing before promotion, and high or severe impact systems maintain a documented fallback or exit path.
+
+- **Applies from:** tier 1 Retrieve, or High impact and above
+- **Evidence:** Model version configuration; upgrade test records; exit plan for high and severe systems.
+- **NIST AI RMF:** GOVERN 6.2, MANAGE 3.2
+- **ISO/IEC 42001:** A.6.2.6, A.10.3
+- **EU AI Act:** Art. 15, Art. 25
+- **OWASP LLM 2026:** LLM04 Supply Chain
+- **OWASP Agentic 2026:** ASI04 Agentic Supply Chain Vulnerabilities
+- **MITRE ATLAS:** AML.T0099 AI Agent Tool Data Poisoning
+
 ## Agent identity and authority
 
 ### IAM-01
@@ -252,6 +283,21 @@ Writes to long-term memory and retrieval indexes are limited to trusted sources 
 - **OWASP LLM 2026:** LLM05 Data and Model Poisoning, LLM09 Vector and Embedding Weaknesses
 - **OWASP Agentic 2026:** ASI06 Memory and Context Poisoning
 - **MITRE ATLAS:** AML.T0080.000 AI Agent Context Poisoning: Memory, AML.T0070 RAG Poisoning
+
+### INP-04
+
+**Hidden context and system-prompt protection**
+
+System prompts, internal instructions and tool schemas are treated as extractable: they never hold secrets or serve as the sole access control, and applications are tested against prompt-extraction attacks before release.
+
+- **Applies from:** tier 0 Assist
+- **Evidence:** Prompt review confirming no secrets or sole controls; extraction test results.
+- **NIST AI RMF:** MEASURE 2.7
+- **EU AI Act:** Art. 15
+- **OWASP LLM 2026:** LLM08 Hidden Context Exposure
+- **OWASP Agentic 2026:** ASI01 Agent Goal Hijack
+- **MITRE ATLAS:** AML.T0069.002 Discover LLM System Information: System Prompt
+- **Open-source tooling:** [LLM Prompt Injection Fuzzer](https://github.com/thenayanhazra/llm-prompt-injection-fuzzer)
 
 ## Action and tool control
 
@@ -369,6 +415,34 @@ Model output is validated and encoded before it reaches browsers, shells, databa
 - **OWASP Agentic 2026:** ASI05 Unexpected Code Execution
 - **Open-source tooling:** [MCP Adversarial Harness](https://github.com/thenayanhazra/mcp-adversarial-harness)
 
+### DAT-03
+
+**Permission-aware retrieval and tenant isolation**
+
+Retrieval indexes, vector stores, semantic caches and agent memory enforce the invoking user's access permissions at query time and isolate data between tenants and roles so no query can surface unauthorised records.
+
+- **Applies from:** tier 1 Retrieve, or Moderate impact and above
+- **Evidence:** Retrieval authorisation design; cross-role and cross-tenant query test results.
+- **NIST AI RMF:** MAP 4.2, MEASURE 2.10
+- **ISO/IEC 42001:** A.4.3, A.7.4
+- **EU AI Act:** Art. 10
+- **OWASP LLM 2026:** LLM02 Sensitive Information Disclosure, LLM09 Vector and Embedding Weaknesses
+- **OWASP Agentic 2026:** ASI03 Identity and Privilege Abuse, ASI06 Memory and Context Poisoning
+- **MITRE ATLAS:** AML.T0082 RAG Credential Harvesting
+
+### DAT-04
+
+**Privacy and secret minimisation in prompts and logs**
+
+Personal data and secrets are redacted, tokenised or minimised before prompts reach external model providers and before prompts, parameters or results are written to operational logs, balancing auditability with privacy law.
+
+- **Applies from:** tier 0 Assist
+- **Evidence:** Redaction pipeline configuration; sample log inspection; retention and access controls.
+- **NIST AI RMF:** MEASURE 2.10
+- **ISO/IEC 42001:** A.7.2, A.7.6
+- **EU AI Act:** Art. 10, Art. 12
+- **OWASP LLM 2026:** LLM02 Sensitive Information Disclosure
+
 ## Monitoring and response
 
 ### OPS-01
@@ -466,6 +540,19 @@ Tier 3 agents and severe-impact systems receive independent review, by internal 
 - **Applies from:** tier 3 Act autonomously, or Severe impact
 - **Evidence:** Assurance reports and management responses.
 - **NIST AI RMF:** MEASURE 1.3
+
+### TST-04
+
+**Accuracy, grounding and bias evaluation**
+
+Systems are evaluated before release and after model or prompt changes for task accuracy, grounding against authoritative sources (hallucination rate) and, where outputs affect individuals or groups, bias and fairness across protected groups.
+
+- **Applies from:** tier 1 Retrieve, or High impact and above
+- **Evidence:** Evaluation test sets, metrics, acceptance thresholds and sign-off records.
+- **NIST AI RMF:** MEASURE 2.1, MEASURE 2.3, MEASURE 2.5, MEASURE 2.11
+- **ISO/IEC 42001:** A.6.2.4, A.7.4
+- **EU AI Act:** Art. 10, Art. 15
+- **OWASP LLM 2026:** LLM07 Misinformation
 
 ## Human oversight and transparency
 
